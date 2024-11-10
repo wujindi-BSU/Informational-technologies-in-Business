@@ -1,0 +1,102 @@
+---
+title: "HW - What should I major in?"
+
+---
+
+The first step in the process of turning information into knowledge process is to summarize and describe the raw information - the data.
+In this assignment we explore data on college majors and earnings, specifically the data begin the FiveThirtyEight story ["The Economic Guide To Picking A College Major"](https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/).
+
+These data originally come from the American Community Survey (ACS) 2010-2012 Public Use Microdata Series.
+
+We should also note that there are many considerations that go into picking a major.
+Earnings potential and employment prospects are two of them, and they are important, but they don't tell the whole story.
+Keep this in mind as you analyze the data.
+
+
+## Packages
+
+Use `pandas` for data warnagling and processing,`letsplot` and `matplotlib` for visualization.
+
+## Data
+
+The data can be found on [Kaggle](https://www.kaggle.com/datasets/tunguz/college-majors).
+
+
+Let's think about some questions we might want to answer with these data:
+
+-   Which major has the lowest unemployment rate?
+-   Which major has the highest percentage of women?
+-   How do the distributions of median income compare across major categories?
+-   Do women tend to choose majors with lower or higher earnings?
+
+In the next section we aim to answer these questions.
+
+# Exercises
+
+## Which major has the lowest unemployment rate?
+
+In order to answer this question all you need to use `pandas` sorting and grouping functions.
+
+## Which major has the highest percentage of women?
+
+To answer such a question we need to arrange the data in descending order.
+For example, if earlier we were interested in the major with the highest unemployment rate, we would use the following:
+
+* Using what you've learned so far, arrange the data in descending order with respect to proportion of women in a major, and display only the major, the total number of people with major, and proportion of women. Show only the top 3 majors.
+
+## How do the distributions of median income compare across major categories?
+
+```{marginfigure}
+A percentile is a measure used in statistics indicating the value below which a given percentage of observations in a group of observations fall. For example, the 20th percentile is the value below which 20% of the observations may be found. (Source: [Wikipedia](https://en.wikipedia.org/wiki/Percentile)
+```
+
+There are three types of incomes reported in this data frame: `p25th`, `median`, and `p75th`.
+These correspond to the 25th, 50th, and 75th percentiles of the income distribution of sampled individuals for a given major.
+
+* Why do we often choose the median, rather than the mean, to describe the typical income of a group of people?
+
+The question we want to answer "How do the distributions of median income compare across major categories?".
+We need to do a few things to answer this question: First, we need to group the data by `major_category`.
+Then, we need a way to summarize the distributions of median income within these groups.
+This decision will depend on the shapes of these distributions.
+So first, we need to visualize the data.
+
+Let's start simple and take a look at the distribution of all median incomes, without considering the major categories. Create a hishogram.
+Consider the binwidth we chose for our histogram.
+It's good practice to always think in the context of the data and try out a few binwidths before settling on a binwidth.
+You might ask yourself: "What would be a meaningful difference in median incomes?" $1 is obviously too little, $10000 might be too high.
+
+* Try binwidths of $1000 and $5000 and choose one. Explain your reasoning for your choice.
+
+
+* Plot the distribution of `median` income using a histogram, faceted by `major_category`.
+    Use the `binwidth` you chose in the earlier exercise.
+
+Now that we've seen the shapes of the distributions of median incomes for each major category, we should have a better idea for which summary statistic to use to quantify the typical median income.
+
+* Which major category has the highest typical (you'll need to decide what this means) median income?
+
+* Which major category is the least popular in this sample?
+
+
+## All STEM fields aren't the same
+
+One of the sections of the [FiveThirtyEight story](https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/) is "All STEM fields aren't the same".
+Let's see if this is true.
+
+First, let's create a list called `stem_categories` that lists the major categories that are considered STEM fields.
+
+Then, use this to create a new variable in our dataframe indicating whether a major is STEM or not.
+
+We can use the logical operators to also filter our data for STEM majors whose median earnings is less than median for all majors' median earnings.
+
+
+* Which STEM majors have median salaries equal to or less than the median for all majors' median earnings? Your output should only show the major name and median, 25th percentile, and 75th percentile earning for that major as and should be sorted such that the major with the highest median earning is on top.
+
+## What types of majors do women tend to major in?
+
+* Create a scatterplot of median income vs. proportion of women in that major, coloured by whether the major is in a STEM field or not. Describe the association between these three variables.
+
+## Further exploration
+
+* Ask a question of interest to you, and answer it using summary statistic(s) and/or visualization(s).
