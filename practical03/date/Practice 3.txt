@@ -1,3 +1,0 @@
-1. Go through https://aeturrell.github.io/coding-for-economists/data-extraction.html up to 'Extracting data from PDFs' section. Recreate the code on your  machine.
-2. Go through https://www.geeksforgeeks.org/scrape-imdb-movie-rating-and-details-using-python/. Recreate the code on your  machine.
-3. Scrape data from https://movie.douban.com/top250 and make visualizations. Use https://blog.csdn.net/qq_51749909/article/details/143106786 as an example.
