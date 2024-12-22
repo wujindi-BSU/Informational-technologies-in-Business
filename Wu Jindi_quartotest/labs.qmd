@@ -1,0 +1,548 @@
+---
+title: "Labs"
+---
+
+# 1.Getting_&_Knowing_Your_Data
+
+## Ex1_World Food Facts
+### Exercise 1
+#### Step 1. Go to https://www.kaggle.com/openfoodfacts/world-food-facts/data
+#### Step 2. Download the dataset to your computer and unzip it.
+#### Step 3. Use the tsv file and assign it to a dataframe called food
+```{python}
+import pandas as pd
+import numpy as np
+food = pd.read_csv('en.openfoodfacts.org.products.tsv',sep='\t')
+```
+#### Step 4. See the first 5 entries
+```{python}
+food.head()
+```
+#### Step 5. What is the number of observations in the dataset?
+```{python}
+food.shape[0]
+```
+#### Step 6. What is the number of columns in the dataset?
+```{python}
+food.shape[1]
+food.info()
+```
+#### Step 7. Print the name of all the columns.
+```{python}
+food.columns
+```
+#### Step 8. What is the name of 105th column?
+```{python}
+food.columns[104]
+```
+#### Step 9. What is the type of the observations of the 105th column?
+```{python}
+food.dtypes[food.columns[104]]
+```
+#### Step 10. How is the dataset indexed?
+```{python}
+food.index
+```
+#### Step 11. What is the product name of the 19th observation?
+```{python}
+food.values[18][7]
+```
+
+## 2.Ex2_Chipotle
+### Ex2 - Getting and Knowing your Data
+This time we are going to pull data directly from the internet.
+Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.
+
+#### Step 1. Import the necessary libraries
+```{python}
+import pandas as pd
+import numpy as np
+```
+#### Step 2. Import the dataset from this [address](https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv). 
+#### Step 3. Assign it to a variable called chipo.
+```{python}
+chipo = pd.read_csv('https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv', sep= '\t')
+```
+#### Step 4. See the first 10 entries
+```{python}
+chipo.head(10)
+```
+#### Step 5. What is the number of observations in the dataset?
+```{python}
+# Solution 1
+chipo.info()
+
+# Solution 2
+
+chipo.shape
+```
+#### Step 6. What is the number of columns in the dataset?
+```{python}
+chipo.shape[1]
+```
+#### Step 7. Print the name of all the columns.
+```{python}
+chipo.head(0)
+```
+#### Step 8. How is the dataset indexed?
+```{python}
+chipo.index
+```
+#### Step 9. Which was the most-ordered item? 
+```{python}
+chipo.groupby(by="item_name").sum().sort_values('quantity',ascending=False).head(1)
+```
+#### Step 10. For the most-ordered item, how many items were ordered?
+```{python}
+chipo.groupby(by="item_name").sum().sort_values('quantity',ascending=False).head(1)
+```
+#### Step 11. What was the most ordered item in the choice_description column?
+chipo.groupby(by="choice_description").sum().sort_values('quantity',ascending=False).head(1)
+#### Step 12. How many items were orderd in total?
+```{python}
+chipo.item_name.count()
+```
+#### Step 13. Turn the item price into a float
+```{python}
+#### Step 13.a. Check the item price type
+chipo.item_price.dtype
+#### Step 13.b. Create a lambda function and change the type of item price
+dollarizer = lambda x: float(x[1:-1])
+chipo.item_price = chipo.item_price.apply(dollarizer)
+#### Step 13.c. Check the item price type
+chipo.item_price.dtype
+```
+#### Step 14. How much was the revenue for the period in the dataset?
+```{python}
+revenue =  (chipo.item_price * chipo.quantity).sum()
+print('Revenue is : $ '+ str(revenue))
+```
+#### Step 15. How many orders were made in the period?
+```{python}
+chipo.order_id.value_counts().count()
+```
+#### Step 16. What is the average revenue amount per order?
+```{python}
+# Solution 1
+
+chipo['revenue'] = chipo['quantity'] * chipo['item_price']
+order_grouped = chipo.groupby(by=['order_id']).sum()
+order_grouped['revenue'].mean()
+# Solution 2
+
+chipo.groupby(by=['order_id']).sum()['revenue'].mean()
+```
+#### Step 17. How many different items are sold?
+```{python}
+chipo.item_name.value_counts().count()
+```
+
+## 3.Ex3_Occupation
+### Ex3 - Getting and Knowing your Data
+This time we are going to pull data directly from the internet.
+Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.
+
+#### Step 1. Import the necessary libraries
+```{python}
+import pandas as pd
+```
+#### Step 2. Import the dataset from this [address](https://raw.githubusercontent.com/justmarkham/DAT8/master/data/u.user). 
+#### Step 3. Assign it to a variable called users and use the 'user_id' as index
+```{python}
+users = pd.read_csv('https://raw.githubusercontent.com/justmarkham/DAT8/master/data/u.user', 
+                      sep='|', index_col='user_id')
+```
+#### Step 4. See the first 25 entries
+```{python}
+users.head(25)
+```
+#### Step 5. See the last 10 entries
+```{python}
+users.tail(10)
+```
+#### Step 6. What is the number of observations in the dataset?
+```{python}
+users.shape[0]
+```
+#### Step 7. What is the number of columns in the dataset?
+```{python}
+users.shape[1]
+```
+#### Step 8. Print the name of all the columns.
+```{python}
+users.columns
+```
+#### Step 9. How is the dataset indexed?
+```{python}
+# "the index" (aka "the labels")
+users.index
+```
+#### Step 10. What is the data type of each column?
+```{python}
+users.dtypes
+```
+#### Step 11. Print only the occupation column
+```{python}
+users.occupation
+
+#or
+
+users['occupation']
+```
+#### Step 12. How many different occupations are in this dataset?
+```{python}
+users.occupation.nunique()
+#or by using value_counts() which returns the count of unique elements
+#users.occupation.value_counts().count()
+```
+#### Step 13. What is the most frequent occupation?
+```{python}
+#Because "most" is asked
+users.occupation.value_counts().head(1).index[0]
+
+#or
+#to have the top 5
+
+# users.occupation.value_counts().head()
+
+```
+#### Step 14. Summarize the DataFrame.
+```{python}
+users.describe() #Notice: by default, only the numeric columns are returned.
+
+``` 
+#### Step 15. Summarize all the columns
+```{python}
+users.describe(include = "all") #Notice: By default, only the numeric columns are returned.
+
+```
+#### Step 16. Summarize only the occupation column
+```{python}
+users.occupation.describe()
+
+```
+#### Step 17. What is the mean age of users?
+```{python}
+round(users.age.mean())
+
+```
+#### Step 18. What is the age with least occurrence?
+```{python}
+users.age.value_counts().tail() #7, 10, 11, 66 and 73 years -> only 1 occurrence
+```
+
+
+
+# 2.Filtering_&_Sorting
+## Ex1_Chipotle
+### Ex1 - Filtering and Sorting Data
+This time we are going to pull data directly from the internet.
+Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.
+
+#### Step 1. Import the necessary libraries
+```{python}
+import pandas as pd
+```
+#### Step 2. Import the dataset from this [address](https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv). 
+#### Step 3. Assign it to a variable called chipo.
+```{python}
+url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
+
+chipo = pd.read_csv(url, sep = '\t')
+
+```
+#### Step 4. How many products cost more than $10.00?
+```{python}
+# clean the item_price column and transform it in a float
+# 清理[item_price]列的数据，将其转换成float类型。
+# float(value[1 : -1])表示字符串切片，将第2位至最后一位截取出来，这里作用是将价格最前面的$符号过滤掉，只保留后面的数字。
+# value的取值就是循环取后面[item_price]列的所有值，全部转换成浮点数，保存至prices这个列表里。
+prices = [float(value[1 : -1]) for value in chipo.item_price]
+
+# reassign the column with the cleaned prices
+# 重新将清理过后的数据赋值给[item_price]列。
+chipo.item_price = prices
+
+# delete the duplicates in item_name and quantity
+# 删除掉[item_name]列与[quantity]列中的重复项。
+# 后面跟的item_name、quantity、choice_description表示参考的列名，这里表示一行里这参考的三列都重复就删除这一行。默认参考所有列。
+chipo_filtered = chipo.drop_duplicates(['item_name','quantity','choice_description'])
+
+# chipo_filtered
+
+# select only the products with quantity equals to 1
+# 筛选出数量为1的商品。
+chipo_one_prod = chipo_filtered[chipo_filtered.quantity == 1]
+chipo_one_prod
+
+# 方法一：
+# 使用nunique()获取指定坐轴中不同元素的数量。
+# 这里显示价格大于10的商品的数量。
+chipo_one_prod[chipo_one_prod['item_price']>10].item_name.nunique()
+# 这里显示所有价格大于10的商品，返回一个DataFrame。
+chipo_one_prod[chipo_one_prod['item_price']>10]
+
+
+# 方法二： 
+# 直接使用query()函数查询。函数作用是使用布尔表达式来查询DataFrame的列，最后返回的DataFrame类型的查询结果。
+# 这里使用'item_price > 10'这个表达式，最后得到一个[item_price]列的值都大于10的DataFrame。再使用item_name.nunique()获取商品名称并得到名称去重之后的数量。
+chipo.query('item_price > 10').item_name.nunique()
+
+```
+#### Step 5. What is the price of each item? 
+```{python}
+###### print a data frame with only two columns item_name and item_price
+# delete the duplicates in item_name and quantity
+# 删除[item_name]与[quantity]中的重复项。
+chipo_filtered = chipo.drop_duplicates(['item_name','quantity'])
+
+# []里的是筛选条件，这里是筛选出[item_name]的值为'Chicken Bowl'，并且[quantity]的值为1的数据。
+chipo[(chipo['item_name'] == 'Chicken Bowl') & (chipo['quantity'] == 1)]
+
+# select only the products with quantity equals to 1
+# 筛选出数量为1的商品。
+chipo_one_prod = chipo_filtered[chipo_filtered.quantity == 1]
+
+# select only the item_name and item_price columns
+# 将[item_name]与[item_price]这两列单独筛选出来。
+price_per_item = chipo_one_prod[['item_name', 'item_price']]
+
+# sort the values from the most to less expensive
+# 按照价格从高到底排列。
+# 使用sort_values()函数进行排序，by表示排序要参考的列，ascending=False表示降序排序，默认升序排序。
+price_per_item.sort_values(by = "item_price", ascending = False).head(20)
+
+```
+#### Step 6. Sort by the name of the item
+```{python}
+chipo.item_name.sort_values()
+
+# OR
+
+chipo.sort_values(by = "item_name")
+
+```
+#### Step 7. What was the quantity of the most expensive item ordered?
+```{python}
+chipo.sort_values(by = "item_price", ascending = False).head(1)
+
+```
+#### Step 8. How many times was a Veggie Salad Bowl ordered?
+```{python}
+chipo_salad = chipo[chipo.item_name == "Veggie Salad Bowl"]
+# chipo_salad = chipo.query('item_name == "Veggie Salad Bowl"')
+
+len(chipo_salad)
+
+```
+#### Step 9. How many times did someone order more than one Canned Soda?
+```{python}
+chipo_drink_steak_bowl = chipo[(chipo.item_name == "Canned Soda") & (chipo.quantity > 1)]
+# chipo_drink_steak_bowl = chipo.query('item_name == "Canned Soda" & quantity > 1')
+
+len(chipo_drink_steak_bowl)
+
+```
+
+
+## Ex2_Euro12
+### Ex2 - Filtering and Sorting Data
+This time we are going to pull data directly from the internet.
+
+#### Step 1. Import the necessary libraries
+```{python}
+import pandas as pd
+```
+#### Step 2. Import the dataset from this [address](https://raw.githubusercontent.com/guipsamora/pandas_exercises/master/02_Filtering_%26_Sorting/Euro12/Euro_2012_stats_TEAM.csv). 
+#### Step 3. Assign it to a variable called euro12.
+```{python}
+euro12 = pd.read_csv('https://raw.githubusercontent.com/guipsamora/pandas_exercises/master/02_Filtering_%26_Sorting/Euro12/Euro_2012_stats_TEAM.csv', sep=',')
+euro12
+```
+#### Step 4. Select only the Goal column.
+```{python}
+euro12.Goals
+```
+#### Step 5. How many team participated in the Euro2012?
+```{python}
+euro12.shape[0]
+```
+#### Step 6. What is the number of columns in the dataset?
+```{python}
+euro12.info()
+```
+#### Step 7. View only the columns Team, Yellow Cards and Red Cards and assign them to a dataframe called discipline
+```{python}
+# filter only giving the column names
+
+discipline = euro12[['Team', 'Yellow Cards', 'Red Cards']]
+discipline
+```
+#### Step 8. Sort the teams by Red Cards, then to Yellow Cards
+```{python}
+discipline.sort_values(['Red Cards', 'Yellow Cards'], ascending = False)
+```
+#### Step 9. Calculate the mean Yellow Cards given per Team
+```{python}
+round(discipline['Yellow Cards'].mean())
+```
+#### Step 10. Filter teams that scored more than 6 goals
+```{python}
+euro12[euro12.Goals > 6]
+```
+#### Step 11. Select the teams that start with G
+```{python}
+euro12[euro12.Team.str.startswith('G')]
+```
+#### Step 12. Select the first 7 columns
+```{python}
+# use .iloc to slices via the position of the passed integers
+# : means all, 0:7 means from 0 to 7
+
+euro12.iloc[: , 0:7]
+```
+#### Step 13. Select all columns except the last 3.
+```{python}
+# use negative to exclude the last 3 columns
+
+euro12.iloc[: , :-3]
+```
+#### Step 14. Present only the Shooting Accuracy from England, Italy and Russia
+```{python}
+# .loc is another way to slice, using the labels of the columns and indexes
+
+euro12.loc[euro12.Team.isin(['England', 'Italy', 'Russia']), ['Team','Shooting Accuracy']]
+```
+
+
+# 3.Visualization
+## Ex1_Chipotle
+### Visualizing Chipotle's Data
+This time we are going to pull data directly from the internet.
+Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.
+
+#### Step 1. Import the necessary libraries
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+from collections import Counter
+
+# set this so the graphs open internally
+%matplotlib inline
+```
+#### Step 2. Import the dataset from this [address](https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv). 
+#### Step 3. Assign it to a variable called chipo.
+```{python}
+url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
+    
+chipo = pd.read_csv(url, sep = '\t')
+```
+#### Step 4. See the first 10 entries
+```{python}
+chipo.head(10)
+```
+#### Step 5. Create a histogram of the top 5 items bought
+```{python}
+# get the Series of the names
+x = chipo.item_name
+
+# use the Counter class from collections to create a dictionary with keys(text) and frequency
+letter_counts = Counter(x)
+
+# convert the dictionary to a DataFrame
+df = pd.DataFrame.from_dict(letter_counts, orient='index')
+
+# sort the values from the top to the least value and slice the first 5 items
+df = df[0].sort_values(ascending = True)[45:50]
+
+# create the plot
+df.plot(kind='bar')
+
+# Set the title and labels
+plt.xlabel('Items')
+plt.ylabel('Number of Times Ordered')
+plt.title('Most ordered Chipotle\'s Items')
+
+# show the plot
+plt.show()
+```
+#### Step 6. Create a scatterplot with the number of items orderered per order price
+#### Hint: Price should be in the X-axis and Items ordered in the Y-axis
+```{python}
+# create a list of prices
+chipo.item_price = [float(value[1:-1]) for value in chipo.item_price] # strip the dollar sign and trailing space
+
+# then groupby the orders and sum
+orders = chipo.groupby('order_id').sum()
+
+# creates the scatterplot
+# plt.scatter(orders.quantity, orders.item_price, s = 50, c = 'green')
+plt.scatter(x = orders.item_price, y = orders.quantity, s = 50, c = 'green')
+
+# Set the title and labels
+plt.xlabel('Order Price')
+plt.ylabel('Items ordered')
+plt.title('Number of items ordered per order price')
+plt.ylim(0)
+```
+#### Step 7. BONUS: Create a question and a graph to answer your own question.
+```{python}
+# Question: What is the distribution of order prices?
+# Create a histogram of order prices
+plt.hist(orders.item_price, bins=20, color='blue', edgecolor='black')
+
+# Set the title and labels
+plt.xlabel('Order Price')
+plt.ylabel('Frequency')
+plt.title('Distribution of Order Prices')
+
+# Show the plot
+```
+
+## Ex2_Scores
+### Scores
+### Introduction:
+
+This time you will create the data.
+
+***Exercise based on [Chris Albon](http://chrisalbon.com/) work, the credits belong to him.***
+
+#### Step 1. Import the necessary libraries
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+
+%matplotlib inline
+```
+#### Step 2. Create the DataFrame that should look like the one below.
+```{python}
+raw_data = {'first_name': ['Jason', 'Molly', 'Tina', 'Jake', 'Amy'], 
+            'last_name': ['Miller', 'Jacobson', 'Ali', 'Milner', 'Cooze'], 
+            'female': [0, 1, 1, 0, 1],
+            'age': [42, 52, 36, 24, 73], 
+            'preTestScore': [4, 24, 31, 2, 3],
+            'postTestScore': [25, 94, 57, 62, 70]}
+
+df = pd.DataFrame(raw_data)
+df
+```
+#### Step 3. Create a Scatterplot of preTestScore and postTestScore, with the size of each point determined by age
+```{python}
+#### Hint: Don't forget to place the labels
+df.plot.scatter(x='preTestScore' , y='postTestScore'  , s=df['age'].values)
+```
+#### Step 4. Create a Scatterplot of preTestScore and postTestScore.
+```{python}
+### This time the size should be 4.5 times the postTestScore and the color determined by sex
+df.plot.scatter(x='preTestScore' , y='postTestScore' , s=df['postTestScore']*4.5 , c='female' , colormap='viridis')
+### BONUS: Create your own question and answer it.
+# Question: How does age correlate with postTestScore?
+
+# Plotting the relationship between age and postTestScore
+plt.scatter(df['age'], df['postTestScore'], color='blue')
+plt.xlabel('Age')
+plt.ylabel('Post-Test Score')
+plt.title('Scatterplot of Age vs Post-Test Score')
+plt.show()
+```

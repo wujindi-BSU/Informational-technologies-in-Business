@@ -1,0 +1,50 @@
+---
+title: "About me"
+---
+
+# Hi,I'm 进子
+```{python}
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+# read picture
+image_path = 'mypicture.jpeg'  # path
+img = mpimg.imread(image_path)
+
+# show
+plt.imshow(img)
+plt.axis('off') 
+plt.show()
+```
+
+### My Background
+
+As a first-year graduate student of Educational Management at Belarusian State University, my academic journey has been deeply influenced by my prior experience as a psychology teacher, where I developed a profound passion for the field of education.My research interests are centred on the application of positive psychology in educational management, with a particular focus on innovative practices that promote positive emotions, positive organisations and positive environments.
+
+I believe that, by employing the principles of positive psychology, we can enhance our understanding of and improve educational environments, thereby facilitating the optimal development of students' potential and well-being.
+
+In addition to my academic pursuits at GBS, I have been actively engaged in voluntary work for the past six years, primarily in the domains of teaching and tutoring during the winter and summer vacation periods. This engagement has not only facilitated the practical application of my psychological knowledge but also enriched my understanding of the importance of positive psychology in educational management. 
+
+It has become evident that my interests lie more in research and teaching, and the experience I have gained from volunteering reinforces the importance of positive psychology in shaping a positive managerial and social atmosphere. Consequently, my current goal is to complete my graduate studies, continue my doctoral studies, and eventually pursue a career as a college teacher.
+
+### Experience
+The focus of my own independent research is the role and innovation of positive psychology in educational management with a view to enhancing teacher well-being, formulating a more stable "psychological contract" and reducing staff turnover. The research revolves around positive environments, positive organisations and positive emotions. It was this project that prompted me to use R to perform some secondary data analysis. Thus far, I have used R to create simple graphs such as scatter plots, box plots and bar graphs.
+
+### Course Goals
+My experience in R has revolved around accomplishing a few very specific tasks, and my "workflow" usually involves a **lot** of Googling. My goals for this class are to:
+
+1. Come away with the knowledge and skills to approach a wide set of problems and tasks using R
+2. Practice a clean and organized method of performing data analyses
+3. improve the data analysis of my research project on positive psychology in education management in Chinese universities and create aesthetically pleasing, publishable data
+4. Understand the mechanisms of action and influencing factors of positive psychology, and better understand how the raw data was eventually transformed into experimental data for my master's thesis.
+5. Get familiar with predictive modeling/machine learning
+
+
+### Hobbies & Fun Facts
+I am a member of the Guangzhou Hiking Club and also enjoy tennis and making Chinese non-heritage cultural crafts. I enjoy every moment of my life, whether it's hiking outdoors, sweating on the court, or immersing myself in the charm of traditional Chinese culture.
+
+I hope that studying at Belarusian State University will be an exciting experience in life, not only in terms of learning professional knowledge, but also in terms of cross-cultural exchange and experience of local customs!
+
+I like to ‘city walk’ in Belarus because photography and reading are an integral part of my life. I love to capture beautiful moments in life with my camera, whether it's a natural landscape, a cityscape or a portrait, photography allows me to see the world from different perspectives and develops my aesthetic and creativity. Reading is a source of knowledge and inspiration for me. Whether it's literature, psychological monographs or scientific articles, books always bring me new inspirations and thoughts.
+
+

@@ -1,0 +1,11 @@
+---
+title: "进子's website and data analysis portfolio"
+---
+
+## Hello, and thanks for visiting! 
+
+
+Welcome to **my website** and _data analysis portfolio._ 
+
+* Here, I'll feature my projects for the Fall 2024 Modern Applied Data Analysis class
+* Please use the `Menu Bar` above to look around.

@@ -1,0 +1,1889 @@
+---
+title: "HomeWork"
+---
+
+# Lecture
+
+## Lecture01
+
+# Coding Basics
+
+In this chapter, you'll learn about the basics of objects, types, operations, conditions, loops, functions, and imports. These are the basic building blocks of almost all programming languages and will serve you well for your coding and economics journey.
+
+This chapter has benefited from the excellent [*Python Programming for Data Science*](https://www.tomasbeuzen.com/python-programming-for-data-science/README.html) book by Tomas Beuzen.
+
+```{tip}
+Remember, you can launch this page interactively by using the 'Colab' button under the rocket symbol (<i class="fas fa-rocket"></i>) at the top of the page. You can also download this page as a Jupyter Notebook to run on your own computer: use the 'download .ipynb' button under the download symbol the top of the page and open that file using Visual Studio Code.
+```
+
+## If you get stuck
+
+It's worth saying at the outset that *no-one* memorises half of the stuff you'll see in this book. 80% or more of time spent programming is actually time spent looking up how to do this or that online, 'debugging' a code for errors, or testing code. This applies to all programmers, regardless of level. You are here to learn the skills and concepts of programming, not the precise syntax (which is easy to look up later).
+
+![xkcd-what-did-you-see](https://imgs.xkcd.com/comics/wisdom_of_the_ancients.png)
+
+Knowing how to Google is one of the most important skills of any coder. No-one remembers every function from every library. Here are some useful coding resources:
+
+- when you have an error, look on Stack Overflow to see if anyone else had the same error (they probably did) and how they overcame it.
+
+- if you're having trouble navigating a new package or library, look up the documentation online. The best libraries put as much effort into documentation as they do the code base.
+
+- use cheat sheets to get on top of a range of functionality quickly. For instance, this excellent (mostly) base Python [Cheat Sheet](https://gto76.github.io/python-cheatsheet/).
+
+- if you're having a coding issue, take a walk to think about the problem, or explain your problem to an animal toy on your desk ([traditionally](https://en.wikipedia.org/wiki/Rubber_duck_debugging) a rubber duck, but other animals are available).
+## Coding Basics
+
+Let's review some basics in the interests of getting you up to speed as quickly as possible. You can use Python as a calculator:
+print(1 / 200 * 30)
+print((59 + 73 + 2) / 3)
+The extra package **numpy** contains many of the additional mathematical operators that you might need. If you don't already have **numpy** installed, open up the terminal in Visual Studio Code (go to "Terminal -> New Terminal" and then type `pip install numpy` into the terminal then hit return). Once you have **numpy** installed, you can import it and use it like this:
+import numpy as np
+
+print(np.sin(np.pi / 2))
+You can create new objects with the assignment operator `=`. You should think of this as copying the value of whatever is on the right-hand side into the variable on the left-hand side.
+x = 3 * 4
+print(x)
+There are several structures in Python that capture multiple objects simultaneously but perhaps the most common is the *list*, which is designated by *square brackets*.
+primes = [1, 2, 3, 5, 7, 11, 13]
+print(primes)
+All Python statements where you create objects (known as *assignment* statements) have the same form:
+
+```
+object_name = value
+```
+
+When reading that code, say "object name gets value" in your head.
+## Comments
+
+Python will ignore any text after `#`. This allows to you to write **comments**, text that is ignored by Python but can be read by other humans. We'll sometimes include comments in examples explaining what's happening with the code.
+
+Comments can be helpful for briefly describing what the subsequent code does.
+# define primes
+primes = [1, 2, 3, 5, 7, 11, 13]
+# multiply primes by 2
+[el * 2 for el in primes]
+With short pieces of code like this, it is not necessary to leave a command for every single line of code and you should try to use informative names wherever you can because these help readers of your code (likely to be you in the future) understand what is going on!
+## Keeping Track of Variables
+
+You can always inspect an already-created object by typing its name into the interactive window:
+primes
+If you want to know what *type* of object it is, use `type(object)` in the interactive window like this:
+type(primes)
+Visual Studio Code has some powerful features to help you keep track of objects:
+
+1. At the top of your interactive window, you should see a 'Variables' button. Click it to see a panel appear with all variables that you've defined.
+2. Hover your mouse over variables you've previously entered into the interactive window; you will see a pop-up that tells you what type of object it is.
+3. If you start typing a variable name into the interactive window, Visual Studio Code will try to auto-complete the name for you. Press the 'tab' key on your keyboard to accept the top option.
+## Calling Functions
+
+If you're an economist, you hardly need to be told you what a function is. In coding, it's much the same as in mathematics: a function has inputs, it performs its function, and it returns any outputs. Python has a large number of built-in functions. You can also import functions from packages (like we did with `np.sin`) or define your own.
+
+In coding, a function has inputs, it performs its function, and it returns any outputs. Let's see a simple example of using a built-in function, `sum()`:
+sum(primes)
+The general structure of functions is the function name, followed by brackets, followed by one or more arguments. Sometimes there will also be *keyword arguments*. For example, `sum()` comes with a keyword argument that tells the function to start counting from a specific number. Let's see this in action by starting from ten:
+sum(primes, start=10)
+If you're ever unsure of what a function does, you can call `help()` on it (itself a function):
+help(sum)
+Or, in Visual Studio Code, hover your mouse over the function name.
+
+
+````{admonition} Exercise
+
+Why does this code not work?
+
+```python
+my_variable = 10
+my_varıable
+```
+
+Look carefully! This may seem like an exercise in pointlessness, but training your brain to notice even the tiniest difference will pay off when programming.
+````
+## Values, variables, and types
+
+A value is datum such as a number or text. There are different types of values: 352.3 is known as a float or double, 22 is an integer, and "Hello World!" is a string. A variable is a name that refers to a value: you can think of a variable as a box that has a value, or multiple values, packed inside it. 
+
+Almost any word can be a variable name as long as it starts with a letter or an underscore, although there are some special keywords that can't be used because they already have a role in the Python language: these include `if`, `while`, `class`, and `lambda`.
+
+Creating a variable in Python is achieved via an assignment (putting a value in the box), and this assignment is done via the `=` operator. The box, or variable, goes on the left while the value we wish to store appears on the right. It's simpler than it sounds:
+a = 10
+print(a)
+This creates a variable `a`, assigns the value 10 to it, and prints it. Sometimes you will hear variables referred to as *objects*. Everything that is not a literal value, such as `10`, is an object. In the above example, `a` is an object that has been assigned the value `10`.
+
+How about this:
+b = "This is a string"
+print(b)
+It's the same thing but with a different **type** of data, a string instead of an integer. Python is *dynamically typed*, which means it will guess what type of variable you're creating as you create it. This has pros and cons, with the main pro being that it makes for more concise code.
+
+```{admonition} Important
+Everything is an object, and every object has a type.
+```
+
+The most basic built-in data types that you'll need to know about are: integers `10`, floats `1.23`, strings `like this`, booleans `True`, and nothing `None`. Python also has a built-in type called a list `[10, 15, 20]` that can contain anything, even *different* types. So
+list_example = [10, 1.23, "like this", True, None]
+print(list_example)
+is completely valid code. `None` is a special type of nothingness, and represents an object with no value. It has type `NoneType` and is more useful than you might think! 
+
+As well as the built-in types, packages can define their own custom types. If you ever want to check the type of a Python variable, you can call the `type()` function on it like so:
+type(list_example)
+This is especially useful for debugging `ValueError` messages.
+
+Below is a table of common data types in Python:
+
+| Name          | Type name  | Type Category  | Description                                   | Example                                    |
+| :-------------------- | :--------- | :------------- | :-------------------------------------------- | :----------------------------------------- |
+| integer               | `int`      | Numeric Type   | positive/negative whole numbers               | `22`                                       |
+| floating point number | `float`    | Numeric Type   | real number in decimal form                   | `3.14159`                                  |
+| boolean               | `bool`     | Boolean Values | true or false                                 | `True`                                     |
+| string                | `str`      | Sequence Type  | text                                          | `"Hello World!"`                 |
+| list                  | `list`     | Sequence Type  | a collection of objects - mutable & ordered   | `['text entry', True, 16]`               |
+| tuple                 | `tuple`    | Sequence Type  | a collection of objects - immutable & ordered | `(51.02, -0.98)`                 |
+| dictionary            | `dict`     | Mapping Type   | mapping of key-value pairs                    | `{'name':'Ada', 'subject':'computer science'}` |
+| none                  | `NoneType` | Null Object    | represents no value                           | `None`                                     |
+| function                  | `function` | Function   | Represents a function                           | `def add_one(x): return x+1`                                     |
+
+````{admonition} Exercise
+What type is this Python object?
+
+```python
+cities_to_temps = {"Paris": 32, "London": 22, "Seville": 36, "Wellesley": 29}
+```
+
+What type is the first key (hint: comma separated entries form key-value pairs)?
+````
+
+### Brackets
+
+You may notice that there are several kinds of brackets that appear in the code we've seen so far, including `[]`, `{}`, and `()`. These can play different roles depending on the context, but the most common uses are:
+
+- `[]` is used to denote a list, eg `['a', 'b']`, or to signify accessing a position using an index, eg `vector[0]` to get the first entry of a variable called vector.
+
+- `{}` is used to denote a set, eg `{'a', 'b'}`, or a dictionary (with pairs of terms), eg `{'first_letter': 'a', 'second_letter': 'b'}`.
+
+- `()` is used to denote a tuple, eg `('a', 'b')`, or the arguments to a function, eg `function(x)` where `x` is the input passed to the function, *or* to indicate the order operations are carried out.
+
+## Lists and slicing
+
+Lists are a really useful way to work with lots of data at once. They're defined with square brackets, with entries separated by commas. You can also construct them by appending entries:
+list_example.append("one more entry")
+print(list_example)
+And you can access earlier entries using an index, which begins at 0 and ends at one less than the length of the list (this is the convention in many programming languages). For instance, to print specific entries at the start, using `0`, and end, using `-1`:
+print(list_example[0])
+print(list_example[-1])
+```{admonition} Exercise
+How might you access the penultimate entry in a list object if you didn't know how many elements it had?
+```
+As well as accessing positions in lists using indexing, you can use *slices* on lists. This uses the colon character, `:`, to stand in for 'from the beginning' or 'until the end' (when only appearing once). For instance, to print just the last two entries, we would use the index `-2:` to mean from the second-to-last onwards. Here are two distinct examples: getting the first three and last three entries to be successively printed:
+print(list_example[:3])
+print(list_example[-3:])
+Slicing can be even more elaborate than that because we can jump entries using a second colon. Here's a full example that begins at the second entry (remember the index starts at 0), runs up until the second-to-last entry (exclusive), and jumps every other entry inbetween (range just produces a list of integers from the value to one less than the last):
+list_of_numbers = list(range(1, 11))
+start = 1
+stop = -1
+step = 2
+print(list_of_numbers[start:stop:step])
+A handy trick is that you can print a reversed list entirely using double colons:
+print(list_of_numbers[::-1])
+````{admonition} Exercise
+Slice the `list_example` from earlier to get only the first five entries.
+````
+As noted, lists can hold any type, including other lists! Here's a valid example of a list that's got a lot going on:
+wacky_list = [
+    3.1415,
+    16,
+    ["five", 4, 3],
+    (91, 93, 90),
+    "Hello World!",
+    True,
+    None,
+    {"key": "value", "key2": "value2"},
+]
+wacky_list
+In reality, it's usually not a good idea to mix data types in a list, but Python is very flexible. Other iterables (objects composed of multiple elements, of which the list is just one in Python) can also store objects of different types.
+```{admonition} Exercise
+Can you identify the types of each of the entries in `wacky_list`?
+```
+
+## Operators
+
+All of the basic operators you see in mathematics are available to use: `+` for addition, `-` for subtraction, `*` for multiplication, `**` for powers, `/` for division, and `%` for modulo. These work as you'd expect on numbers. But these operators are sometimes defined for other built-in data types too. For instance, we can 'sum' strings (which really concatenates them):
+string_one = "This is an example "
+string_two = "of string concatenation"
+string_full = string_one + string_two
+print(string_full)
+It works for lists too:
+list_one = ["apples", "oranges"]
+list_two = ["pears", "satsumas"]
+list_full = list_one + list_two
+print(list_full)
+Perhaps more surprisingly, you can multiply strings!
+string = "apples, "
+print(string * 3)
+Below is a table of the basic arithmetic operations.
+
+| Operator |   Description    |
+| :------: | :--------------: |
+|   `+`    |     addition     |
+|   `-`    |   subtraction    |
+|   `*`    |  multiplication  |
+|   `/`    |     division     |
+|   `**`   |  exponentiation  |
+|   `//`   | integer division / floor division |
+|   `%`    |      modulo      |
+|   `@`    |     matrix multiplication |
+
+As well as the usual operators, Python supports *assignment operators*. An example of one is `x+=3`, which is equivalent to running `x = x + 3`. Pretty much all of the operators can be used in this way.
+
+```{admonition} Exercise
+Using Python operations only, what is 
+
+$$
+\frac{2^5}{7 \cdot (4 - 2^3)}
+$$
+
+```
+
+## Strings
+
+In some ways, strings are treated a bit like lists, meaning you can access the individual characters via slicing and indexing. For example:
+string = "cheesecake"
+print(string[-4:])
+Both lists and strings will also allow you to use the `len()` command to get their length:
+string = "cheesecake"
+print("String has length:")
+print(len(string))
+list_of_numbers = range(1, 20)
+print("List of numbers has length:")
+print(len(list_of_numbers))
+```{admonition} Exercise
+What is the `len` of a list created by `range(n)` where `n` could be any integer?
+```
+Strings have type `string` and can be defined by single or double quotes, eg `string = "cheesecake"` would have been equally valid above. It's best practice to use one convention and stick to it, and most people use double quotes for strings.
+
+There are various functions built into Python to help you work with strings that are particularly useful for cleaning messy data. For example, imagine you have a variable name like 'This Is /A Variable   '. (You may think this is implausibly bad; if only that were true...). Let's see if we can clean this up:
+```{python}
+string = "This Is /A Variable   "
+string = string.replace("/", "").rstrip().lower()
+print(string)
+```
+The steps above replace the character '/', strip out whitespace on the right hand-side of the string, and put everything in lower case. The brackets after the words signify that a function has been applied; we'll see more of functions later.
+
+```{admonition} Exercise
+Using string operations, strip the leading and trailing spaces, make upper case, and remove the underscores from the string `"    this_is_a_better_variable_name   "`.
+```
+
+**Changing Type to String**
+
+We'll look at this in more detail shortly, but while we're on strings, it seems useful to mention it now: you'll often want to output one type of data as another, and Python generally knows what you're trying to achieve if you, for example, `print()` a boolean value. For numbers, there are more options and you can see a big list of advice on string formatting of all kinds of things [here](https://pyformat.info/). For now, let's just see a simple example of something called an f-string, a string that combines a number and a string (these begin with an `f` for formatting):
+value = 20
+sqrt_val = 20 ** 0.5
+print(f"The square root of {value:d} is {sqrt_val:.2f}")
+The formatting command `:d` is an instruction to treat `value` like an integer, while `:.2f` is an instruction to print it like a float with 2 decimal places.
+
+```{note}
+f-strings are only available in Python 3.6+
+```
+
+```{admonition} Exercise
+Write a print command with the `sqrt_val` expressed to 3 decimal places.
+```
+
+## Booleans and conditions
+
+Some of the most important operations you will perform are with `True` and `False` values, also known as boolean data types. There are two types of operation that are associated with booleans: boolean operations, in which existing booleans are combined, and condition operations, which create a boolean when executed.
+
+Boolean operators that return booleans are as follows:
+
+| Operator | Description |
+| :---: | :--- |
+|`x and y`| are `x` and `y` both True? |
+|`x or y` | is at least one of `x` and `y` True? |
+| `not x` | is `x` False? | 
+
+These behave as you'd expect: `True and False` evaluates to `False`, while `True or False` evaluates to `True`. There's also the `not` keyword. For example
+not True
+as you would expect.
+
+Conditions are expressions that evaluate as booleans. A simple example is `10 == 20`. The `==` is an operator that compares the objects on either side and returns `True` if they have the same *values*--though be careful using it with different data types.
+
+Here's a table of conditions that return booleans:
+
+| Operator  | Description                          |
+| :-------- | :----------------------------------- |
+| `x == y ` | is `x` equal to `y`?                 |
+| `x != y`  | is `x` not equal to `y`?             |
+| `x > y`   | is `x` greater than `y`?             |
+| `x >= y`  | is `x` greater than or equal to `y`? |
+| `x < y`   | is `x` less than `y`?                |
+| `x <= y`  | is `x` less than or equal to `y`?    |
+| `x is y`  | is `x` the same object as `y`?       |
+
+
+As you can see from the table, the opposite of `==` is `!=`, which you can read as 'not equal to the value of'. Here's an example of `==`:
+boolean_condition = 10 == 20
+print(boolean_condition)
+```{admonition} Exercise
+What does `not (not True)` evaluate to?
+```
+The real power of conditions comes when we start to use them in more complex examples. Some of the keywords that evaluate conditions are `if`, `else`, `and`, `or`, `in`, `not`, and `is`. Here's an example showing how some of these conditional keywords work:
+name = "Ada"
+score = 99
+
+if name == "Ada" and score > 90:
+    print("Ada, you achieved a high score.")
+
+if name == "Smith" or score > 90:
+    print("You could be called Smith or have a high score")
+
+if name != "Smith" and score > 90:
+    print("You are not called Smith and you have a high score")
+All three of these conditions evaluate as True, and so all three messages get printed. Given that `==` and `!=` test for equality and not equal, respectively, you may be wondering what the keywords `is` and `not` are for. Remember that everything in Python is an object, and that values can be assigned to objects. `==` and `!=` compare *values*, while `is` and `not` compare *objects*. For example,
+name_list = ["Ada", "Adam"]
+name_list_two = ["Ada", "Adam"]
+
+# Compare values
+print(name_list == name_list_two)
+
+# Compare objects
+print(name_list is name_list_two)
+Note that code with lots of branching if statements is not very helpful to you or to anyone else who reads your code. Some automatic code checkers will pick this up and tell you that your code is too complex. Almost all of the time, there's a way to rewrite your code without lots of branching logic that will be better and clearer than having many nested `if` statements.
+One of the most useful conditional keywords is `in`. This one must pop up ten times a day in most coders' lives because it can pick out a variable or make sure something is where it's supposed to be.
+name_list = ["Lovelace", "Smith", "Hopper", "Babbage"]
+
+print("Lovelace" in name_list)
+
+print("Bob" in name_list)
+```{admonition} Exercise
+Check if "a" is in the string "Walloping weasels" using `in`. Is "a" `in` "Anodyne"?
+```
+The opposite is `not in`.
+
+Finally, one conditional construct you're bound to use at *some* point, is the `if`...`else` structure:
+score = 98
+
+if score == 100:
+    print("Top marks!")
+elif score > 90 and score < 100:
+    print("High score!")
+elif score > 10 and score <= 90:
+    pass
+else:
+    print("Better luck next time.")
+Note that this does nothing if the score is between 11 and 90, and prints a message otherwise.
+
+```{admonition} Exercise
+Create a new `if` ... `elif` ... `else` statement that prints "well done" if a score is over 90, "good" if between 40 and 90, and "bad luck" otherwise.
+```
+
+One nice feature of Python is that you can make multiple boolean comparisons in a single line.
+a, b = 3, 6
+
+1 < a < b < 20
+## Indentation
+
+You'll have seen that certain parts of the code examples are indented. Code that is part of a function, a conditional clause, or loop is indented. This isn't a code style choice, it's actually what tells the language that some code is to be executed as part of, say, a loop and not to executed after the loop is finished.
+
+Here's a basic example of indentation as part of an `if` loop. The `print()` statement that is indented only executes if the condition evaluates to true.
+x = 10
+
+if x > 2:
+    print("x is greater than 2")
+```{tip}
+The VS Code extension *indent-rainbow* colours different levels of indentation differently for ease of reading.
+```
+
+When functions, conditional clauses, or loops are combined together, they each cause an *increase* in the level of indentation. Here's a double indent.
+if x > 2:
+    print("outer conditional cause")
+    for i in range(4):
+        print("inner loop")
+
+
+The standard practice for indentation is that each sub-statement should be indented by 4 spaces. It can be hard to keep track of these but, as usual, Visual Studio Code has you covered. Go to Settings (the cog in the bottom left-hand corner, then click Settings) and type 'Whitespace' into the search bar. Under 'Editor: Render Whitespace', select 'boundary'. This will show any whitespace that is more than one character long using faint grey dots. Each level of indentation in your Python code should now begin with four grey dots showing that it consists of four spaces.
+
+```{tip}
+Rendering whitespace using Visual Studio Code's settings makes it easier to navigate different levels of indentation.
+```
+
+```{admonition} Exercise
+Try writing a code snippet that reaches the triple level of indentation.
+```
+## Dictionaries
+
+Another built-in Python type that is enormously useful is the *dictionary*. This provides a mapping one set of variables to another (either one-to-one or many-to-one). Let's see an example of defining a dictionary and using it:
+fruit_dict = {
+    "Jazz": "Apple",
+    "Owari": "Satsuma",
+    "Seto": "Satsuma",
+    "Pink Lady": "Apple",
+}
+
+# Add an entry
+fruit_dict.update({"Cox": "Apple"})
+
+variety_list = ["Jazz", "Jazz", "Seto", "Cox"]
+
+fruit_list = [fruit_dict[x] for x in variety_list]
+print(fruit_list)
+From an input list of varieties, we get an output list of their associated fruits. Another good trick to know with dictionaries is that you can iterate through their keys and values:
+for key, value in fruit_dict.items():
+    print(key + " maps into " + value)
+```{admonition} Exercise
+Update the fruit dictionary with another two entries and then iterate through all of the entries printing each mapping using `.items()` as above.
+```
+## Loops and list comprehensions
+
+A loop is a way of executing a similar piece of code over and over in a similar way. The most useful loops are `for` loops and list comprehensions.
+
+A `for` loop does something *for* the time that the condition is satisfied. For example,
+name_list = ["Lovelace", "Smith", "Pigou", "Babbage"]
+
+for name in name_list:
+    print(name)
+prints out a name until all names have been printed out. Note the colon after the statement and before the indent.
+
+As long as your object is an iterable (ie you can iterate over it), then it can be used in this way in a for loop. The most common examples are lists and tuples, but you can also iterate over strings (in which case each character is selected in turn). One gotcha to be aware of is if you iterate over a string, say "hello", instead of iterating over a *list (or tuple) of strings*, eg `["hello"]`. In the latter case, you get:
+for entry in ["hello"]:
+    print(entry)
+    print("---end entry---")
+While in the former you get something quite different and typically not all that useful:
+for entry in "hello":
+    print(entry)
+    print("---end entry---")
+```{admonition} Exercise
+Write a for loop that prints out "coding for economists" so that each word is printed in a successive iteration.
+```
+
+A useful trick with for loops is the `enumerate` keyword, which runs through an index that keeps track of the place of items in a list:
+name_list = ["Lovelace", "Smith", "Hopper", "Babbage"]
+
+for i, name in enumerate(name_list):
+    print(f"The name in position {i} is {name}")
+Remember, Python indexes from 0 so the first entry of `i` will be zero. But, if you'd like to index from a different number, you can:
+for i, name in enumerate(name_list, start=1):
+    print(f"The name in position {i} is {name}")
+Another useful pattern when doing for loops with dictionaries is iteration over key, value pairs. As we saw earlier, what distinguishes a dictionary in Python is that it maps a key to a value, for example "apple" might map to "fruit". Let's take our example from earlier that mapped cities to temperatures. If we wanted to iterate over *both* keys and values, we can write a for loop like this:
+cities_to_temps = {"Paris": 28, "London": 22, "Seville": 36, "Wellesley": 29}
+
+for key, value in cities_to_temps.items():
+    print(f"In {key}, the temperature is {value} degrees C today.")
+Note that we added `.items()` to the end of the dictionary. And note that we didn't *have* to call the key `key`, or the value `value`: these are set by their position. But part of best practice in writing code is that *there should be no surprises*, and writing key, value makes it really clear that you're using values from a dictionary.
+
+```{admonition} Exercise
+Write a dictionary that maps four cities you know into their respective countries and print the results using the `key, value` iteration trick.
+```
+
+Another useful type of for loop is provided by the `zip()` function. You can think of the `zip()` function as being like a zipper, bringing elements from two different iterators together in turn. Here's an example:
+first_names = ["Ada", "Adam", "Grace", "Charles"]
+last_names = ["Lovelace", "Smith", "Hopper", "Babbage"]
+
+for forename, surname in zip(first_names, last_names):
+    print(f"{forename} {surname}")
+The zip function is super useful in practice.
+
+```{admonition} Exercise
+Zip together the first names from above with this jumbled list of surnames: `['Babbage', 'Hopper', 'Smith', 'Lovelace']`.
+
+(Hint: you have seen a trick to help re-arrange lists earlier on in the Chapter.)
+```
+**List (and Other) Comprehensions**
+
+There's a second way to do loops in Python and, in most but [not all](https://towardsdatascience.com/list-comprehensions-vs-for-loops-it-is-not-what-you-think-34071d4d8207) [cases](https://stackoverflow.com/questions/22108488/are-list-comprehensions-and-functional-functions-faster-than-for-loops), they run faster. More importantly, and *this* is the reason it's good practice to use them where possible, they are very readable. They are called *list comprehensions*.
+
+List comprehensions can combine what a `for` loop and (if needed) what a `condition` do in a single line of code. First, let's look at a `for` loop that adds one to each value done as a list comprehension (NB: in practice, we would use super-fast **numpy** arrays for this kind of operation):
+num_list = range(50, 60)
+[1 + num for num in num_list]
+The general pattern is a bit similar to with the `for` loop but there are some differences. There's no colon, and no indenting. The syntax is "do something with `x`" then `for x in iterable`. Finally, the expression is wrapped in a `[` and `]` to make the output a list.
+
+Note that lists are not the only wrapping you can provide to this kind of structure. A `(` and `)` to make it a generator (don't worry about what this is for now), a `{` and `}` to make it a set (an object that only contains unique values), or it's possible to create a dictionary from a comprehension too! List comprehensions are the most common, so if you only remember one kind, remember them.
+
+```{admonition} Exercise
+Create a list comprehension that multiplies numbers in the range from 1 to 10 by 5.
+
+Did you get the range right?
+```
+
+Let's now see how to include a condition within a list comprehension. Say we had a list of numbers and wanted to filter it according to whether the numbers divided by 3 or not using the modulo operator:
+number_list = range(1, 40)
+divide_list = [x for x in number_list if x % 3 == 0]
+print(divide_list)
+The syntax here is do something to `x` for `x` in something if `x` satisfies some condition.
+
+Here's another example that picks out only the names that include 'Smith' in them:
+names_list = ["Joe Bloggs", "Adam Smith", "Sandra Noone", "leonara smith"]
+smith_list = [x for x in names_list if "smith" in x.lower()]
+print(smith_list)
+Note how we used 'smith' rather than 'Smith' and then used `lower()` to ensure we matched names regardless of the case they are written in.
+
+We can even do a whole `if` ... `else` construct *inside* a list comprehension:
+names_list = ["Joe Bloggs", "Adam Smith", "Sandra Noone", "leonara smith"]
+smith_list = [x if "smith" in x.lower() else "Not Smith!" for x in names_list]
+print(smith_list)
+Many of the constructs we've seen can be combined. For instance, there is no reason why we can't have a nested or repeated list comprehension using `zip()`, and, perhaps more surprisingly, sometimes these are useful!
+first_names = ["Ada", "Adam", "Grace", "Charles"]
+last_names = ["Lovelace", "Smith", "Hopper", "Babbage"]
+names_list = [x + " " + y for x, y in zip(first_names, last_names)]
+print(names_list)
+An even more extreme use of list comprehensions can deliver nested structures:
+first_names = ["Ada", "Adam"]
+last_names = ["Lovelace", "Smith"]
+names_list = [[x + " " + y for x in first_names] for y in last_names]
+print(names_list)
+This gives a nested structure that (in this case) iterates over `first_names` first, and then `last_names`. (Note that this object is a list of lists of strings!)
+
+Let's see a dictionary comprehension now. These look a bit similar to set comprehensions because they use `{` and `}` at either end but they are different because they come with a colon separating the keys from the values:
+{key: value for key, value in zip(first_names, last_names)}
+```{admonition} Exercise
+Create a nested list comprehension that results in a list of lists of strings equal to `[['a0', 'b0', 'c0'], ['a1', 'b1', 'c1'], ['a2', 'b2', 'c2']]` (ie a combination of the first three integers and letters of the alphabet). You may find that you need to convert numbers to strings using `str(x)` to do this.
+```
+
+If you'd like to learn more about list comprehensions, check out these [short video tutorials](https://calmcode.io/comprehensions/introduction.html).
+
+## Writing Functions
+
+Declaring a function starts with a `def` keyword for 'define a function'. It then has a name, followed by brackets, `()`, which may contain *function arguments* and *function keyword arguments*. This is followed by a colon. The body of the function is then indented relative to the left-most text. Function arguments are defined in brackets following the name, with different inputs separated by commas. Any outputs are given with the `return` keyword, again with different variables separated by commas.
+
+```{admonition} Arguments and keyword arguments
+:class: tip
+
+*arguments* are the variables that functions *always* need, so `a` and `b` in `def add(a, b): return a + b`. The function won't work without them! Function arguments are sometimes referred to as *args*.
+
+*Keyword arguments* are the variables that are optional for functions, so `c` in `def add(a, b, c=5): return a + b - c`. If you do not provide a value for `c` when calling the function, it will automatically revert to `c=5`. Keyword arguments are sometimes referred to as *kwargs*.
+```
+
+Let's see a very simple example of a function with a single *argument* (or arg):
+def welcome_message(name):
+    return f"Hello {name}, and welcome!"
+
+
+# Without indentation, this code is not part of function
+name = "Ada"
+output_string = welcome_message(name)
+print(output_string)
+One powerful feature of functions is that we can define defaults for the input arguments. These are called *keyword arguments* (or kwargs). Let's see that in action by defining a default value for `name`, along with multiple outputs--a hello message and a score.
+def score_message(score, name="student"):
+    """This is a doc-string, a string describing a function.
+    Args:
+        score (float): Raw score
+        name (str): Name of student
+    Returns:
+        str: A hello message.
+        float: A normalised score.
+    """
+    norm_score = (score - 50) / 10
+    return f"Hello {name}", norm_score
+
+
+# Without indentation, this code is not part of function
+name = "Ada"
+score = 98
+# No name entered
+print(score_message(score))
+# Name entered
+print(score_message(score, name=name))
+```{admonition} Exercise
+What is the return type of a function with multiple return values separated by commas following the `return` statement?
+```
+
+In that last example, you'll notice that we added some text to the function. This is a doc-string, or documentation string. It's there to help users (and, most likely, future you) to understand what the function does. Let's see how this works in action by calling `help()` on the `score_message` function:
+help(score_message)
+```{admonition} Exercise
+Write a function that returns a high five unicode character if the input is equal to "coding for economists" and a sad face, ":-/" otherwise.
+
+Add a second argument that takes a default argument of an empty string but, if used, is added (concatenated) to the return message. Use it to create the return output, ":-/ here is my message."
+
+Write a doc-string for your function and call `help` on it.
+```
+
+To learn more about args and kwargs, check out these [short video tutorials](https://calmcode.io/args-kwargs/introduction.html).
+## Scope
+
+Scope refers to what parts of your code can see what other parts. There are three different scopes to bear in mind: local, global, and non-local.
+
+**Local**
+
+If you define a variable inside a function, the rest of your code won't be able to 'see' it or use it. For example, here's a function that creates a variable and then an example of calling that variable:
+
+```python
+def var_func():
+    str_variable = 'Hello World!'
+
+var_func()
+print(str_variable)
+```
+
+This would raise an error, because as far as your general code is concerned `str_variable` doesn't exist outside of the function. This is an example of a *local* variable, one that only exists within a function.
+
+
+If you want to create variables inside a function and have them persist, you need to explicitly pass them out using, for example `return str_variable` like this:
+def var_func():
+    str_variable = "Hello World!"
+    return str_variable
+
+
+returned_var = var_func()
+print(returned_var)
+**Global**
+
+A variable declared outside of a function is known as a global variable because it is accessible everywhere:
+y = "I'm a global variable"
+
+def print_y():
+    print("y is inside a function:", y)
+
+
+print_y()
+print("y is outside a function:", y)
+This is just a taster of what can be done using base Python with few extra packages. For more, especially if you've done other chapters in the book already and want to go a bit deeper, see the Chapter on {ref}`code-advanced`. Otherwise, head on to the next chapter!
+
+## Lecture02
+
+```{python}
+import pandas as pd
+df = pd.read_csv("seattle_pet_licenses.csv")
+df
+```
+
+Questions:How many pets are included in this dataset?
+The answer: 66042
+Questions:How many variables do we have for each pet?
+The answer: 7 variables
+```{python}
+df.info()
+df['animal_s_name'].value_counts().head(3)
+```
+Questions:What are the three most common pet names in Seattle? 
+The answer: Lucy、Bella、Charlie
+
+
+## Lecture03
+### 1
+```{python}
+import pandas as pd
+url ='https://raw.githubusercontent.com/tidyverse/datascience-box/refs/heads/main/course-materials/lab-instructions/lab-03/data/nobel.csv'
+df = pd.read_csv(url)
+print(df.head())
+df
+```
+Questions:How many observations and how many variables are in the dataset? What does each row represent?
+The answer: 935 observations, 26 variables, and one row for each person.
+```{python}
+df.info()
+print(df)
+nobel_living = df[
+    (df['country'].notna()) &  
+    (df['gender'] != 'org') &  
+    (df['died_date'].isna())  
+]
+print(nobel_living)
+```
+Questions:Where were most Nobel laureates based when they won their prizes?
+The answer: USA
+
+### 2
+```{python}
+import pandas as pd
+url ='https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv'
+df = pd.read_csv(url)
+print(df.head())
+df
+```
+```{python}
+df.info()
+from skimpy import clean_columns
+df = clean_columns(df,case="snake")
+print(df.columns)
+df.fillna("-")
+df.describe()
+sum_table = df.describe().round(2)
+sum_table
+df.dropna()
+```
+
+
+## Lectyre04
+```{python}
+import pandas as pd
+df = pd.read_csv("all-ages.csv")
+df
+result = df.groupby(["Major"]).sum().sort_values(["Unemployment_rate"])
+print(result)
+```
+```{python}
+### 按照专业分组，并把失业率从低到高升序排列
+import pandas as pd
+df = pd.read_csv('recent-grads.csv')
+df
+```
+result = df.groupby(["Major"]).sum().sort_values(["ShareWomen"],ascending=False)
+print(result)
+```{python}
+### 按照专业分组，将女生占比从高到低降序排列
+import pandas as pd
+df = pd.read_csv('recent-grads.csv')
+df
+result = df.groupby(["Major"]).sum().sort_values(["ShareWomen"],ascending=False)
+print(result)
+```
+```{python}
+### 按照专业分组，将女生占比从高到低降序排列
+import pandas as pd
+import numpy as np
+
+import matplotlib.pyplot as plt
+a=df['Median'].groupby(df['Major_category']).sum()
+a.plot.bar()
+plt.show()
+```
+Questions:What should I major in?
+
+The answer: Engineering
+
+
+## Lectyre05
+```{python}
+import pandas as pd
+from lets_plot import *
+LetsPlot.setup_html()
+```
+```{python}
+df = pd.read_csv('plastic-waste.csv')
+df_clean = df.dropna(subset=['plastic_waste_per_cap', 'continent'])
+```
+Quenstion1:Plot, using histograms, the distribution of plastic waste per capita faceted by continent. What can you say about how the continents compare to each other in terms of their plastic waste per capita?
+The answer:With the histogram, it is possible to observe differences in the per capita distribution of plastic waste across continents. For example, Africa shows a higher peak waste output and North America shows a wider distribution.
+
+
+```{python}
+# Create histograms faceted by continent
+p_histogram = ggplot(df_clean, aes(x='plastic_waste_per_cap')) + \
+    geom_histogram(bins=30, fill='blue', color='black', alpha=0.7) + \
+    facet_wrap('continent') + \
+    ggtitle('Distribution of Plastic Waste per Capita by Continent') + \
+    xlab('Plastic Waste per Capita') + \
+    ylab('Frequency')
+
+
+p_histogram.show()
+```
+Quenstion2:Convert your side-by-side box plots from the previous task to violin plots. What do the violin plots reveal that box plots do not? What features are apparent in the box plots but not in the violin plots?
+The answer:Fiddle plots show the complete distribution of the data, showing the shape of the data and multiple peaks in the graph. Box plots provide explicit statistical information that violin plots only reflect through shape.
+
+
+```{python}
+# Violin plots
+p_violin = ggplot(df, aes(x='continent', y='plastic_waste_per_cap', fill='continent')) + \
+    geom_violin(alpha=0.7) + \
+    geom_boxplot(width=0.1, fill='white', color='black') + \
+    ggtitle('Violin Plot of Plastic Waste per Capita by Continent') + \
+    xlab('Continent') + \
+    ylab('Plastic Waste per Capita')
+
+p_violin.show()
+```
+Quenstion3:Visualize the relationship between plastic waste per capita and mismanaged plastic waste per capita using a scatterplot. Describe the relationship.
+The answer:The scatter plot presents the relationship between plastic waste per capita and poorly managed waste per capita, checking if there is a positive or other relationship.
+
+```{python}
+# Scatterplot
+if 'mismanaged_plastic_waste_per_cap' in df.columns:
+    p_scatter = ggplot(df, aes(x='plastic_waste_per_cap', y='mismanaged_plastic_waste_per_cap')) + \
+        geom_point(size=3, alpha=0.6) + \
+        ggtitle('Plastic Waste vs. Mismanaged Plastic Waste per Capita') + \
+        xlab('Plastic Waste per Capita') + \
+        ylab('Mismanaged Plastic Waste per Capita')
+    
+    p_scatter.show()
+```
+Quenstion4:Colour the points in the scatterplot by continent. Does there seem to be any clear distinctions between continents with respect to how plastic waste per capita and mismanaged plastic waste per capita are associated?
+The answer:By distinguishing continents by color, it is possible to observe differences between continents. Certain continents may exhibit specific patterns or clusters, such as the gradual rise of Africa.
+
+```{python}
+# Colored scatterplot
+p_scatter_colored = ggplot(df, aes(x='plastic_waste_per_cap', y='mismanaged_plastic_waste_per_cap', color='continent')) + \
+    geom_point(size=3, alpha=0.6) + \
+    ggtitle('Plastic Waste vs. Mismanaged Plastic Waste per Capita by Continent') + \
+    xlab('Plastic Waste per Capita') + \
+    ylab('Mismanaged Plastic Waste per Capita')
+
+p_scatter_colored.show()
+```
+Quenstion5:Visualize the relationship between plastic waste per capita and total population as well as plastic waste per capita and coastal population. You will need to make two separate plots. Do either of these pairs of variables appear to be more strongly linearly associated?
+The answer:The visualization of the relationship between the two demographic variables shows the association between plastic waste per capita and total population and coastal population. Through scatterplot analysis, plastic waste per capita exhibits a stronger linear relationship with coastal population.
+
+```{python}
+# Plastic waste per capita vs Total population
+p_pop_scatter = ggplot(df, aes(x='plastic_waste_per_cap', y='total_pop', color='continent')) + \
+    geom_point(size=3, alpha=0.6) + \
+    ggtitle('Plastic Waste per Capita vs. Total Population') + \
+    xlab('Plastic Waste per Capita') + \
+    ylab('Total Population')
+
+p_pop_scatter.show()
+```
+
+```{python}
+# Plastic waste per capita vs Coastal population
+p_coastal_scatter = ggplot(df, aes(x='plastic_waste_per_cap', y='coastal_pop', color='continent')) + \
+    geom_point(size=3, alpha=0.6) + \
+    ggtitle('Plastic Waste per Capita vs. Coastal Population') + \
+    xlab('Plastic Waste per Capita') + \
+    ylab('Coastal Population')
+
+p_coastal_scatter.show()
+```
+```{python}
+p_coastal_scatter = ggplot(df, aes(x='coastal_pop', y='plastic_waste_per_cap', color='continent')) + \
+    geom_point(size=3, alpha=0.6) + \
+    ggtitle('Coastal Population vs. Plastic Waste per Capita') + \
+    xlab('coastal pop') + \
+    ylab('plastic waste per cap')
+
+p_coastal_scatter.show()
+```
+```{python}
+p_coastal_scatter.show()
+df['coastal_population_proportion'] = df['coastal_pop'] / df['total_pop']
+df_filtered = df
+df_filtered = df_filtered[(df_filtered['plastic_waste_per_cap'] <= 0.6) & 
+(df_filtered['coastal_population_proportion'] <= 1.6)]
+p_scatter = ggplot(df_filtered, aes(x='coastal_population_proportion', y='plastic_waste_per_cap', color='continent')) + \
+    geom_point(size=3, alpha=0.7) + \
+    geom_smooth(method='lm', color='black', se=True, linetype='solid', size=1) + \
+    ggtitle('Plastic Waste per Capita vs Coastal Population Proportion') + \
+    xlab('Coastal Population Proportion') + \
+    ylab('Plastic Waste per Capita')
+
+
+p_scatter.show()
+```
+
+# Practical
+
+## Practical01
+```{python}
+#%pip install pandas matplotlib numpy pathlib pingouin lets_plot
+import pandas as pd
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+from pathlib import Path
+#import pingouin as pg
+from lets_plot import *
+
+LetsPlot.setup_html(no_js=True)
+
+### You don't need to use these settings yourself,
+### they are just here to make the charts look nicer!
+# Set the plot style for prettier charts:
+plt.style.use(
+    "https://raw.githubusercontent.com/aeturrell/core_python/main/plot_style.txt"
+)
+```
+Questions:Explain in your own words what temperature ‘anomalies’ are. Why have researchers chosen this particular measure over other measures (such as absolute temperature)?
+The answer:
+(1)A temperature "anomaly" is typically defined as a temperature that falls outside the normal range or expected value, suggesting the potential for an underlying issue or change. In contrast, absolute temperature represents the average kinetic energy of molecular motion and is expressed in Kelvins (K).
+(2)Researchers select temperature "anomalies" over absolute temperatures due to their greater practicality, intuitiveness, ease of comprehension, suitability for comparison with normal conditions, and adaptability to diverse research fields and objectives.
+```{python}
+df = pd.read_csv("NH.Ts+dSST.csv", skiprows=1)
+df.head()
+```
+```{python}
+df.info()
+```
+```{python}
+df = pd.read_csv("NH.Ts+dSST.csv", skiprows=1)
+df.info()
+```
+```{python}
+print(df.head())
+```
+Questions:Try importing the data again without using the keyword argument option na_values="***" at all and see what difference it makes.
+The answer: By comparing the output of.info(), you can see the difference in importing the data without parameters. Some columns may be recognized as object instead of float64 or int64, which usually means they contain non-numeric characters.
+```{python}
+df = pd.read_csv("NH.Ts+dSST.csv", skiprows=1)
+df.head()
+```
+```{python}
+df.info()
+```
+```{python}
+df = df.set_index("Year")
+df.head()
+```
+```{python}
+df.tail()
+```
+```{python}
+fig, ax = plt.subplots()
+df["Jan"].plot(ax=ax)
+ax.set_ylabel("y label")
+ax.set_xlabel("x label")
+ax.set_title("title")
+plt.show()
+```
+```{python}
+fig, ax = plt.subplots()
+ax.plot(df.index, df["Jan"])
+ax.set_ylabel("y label")
+ax.set_xlabel("x label")
+ax.set_title("title")
+plt.show()
+```
+```{python}
+plt.show()
+plt.savefig("name-of-chart.pdf")
+month = "Jan"
+fig, ax = plt.subplots()
+ax.axhline(0, color="orange")
+ax.annotate("1951—1980 average", xy=(0.66, -0.2), xycoords=("figure fraction", "data"))
+df[month].plot(ax=ax)
+ax.set_title(
+    f"Average temperature anomaly in {month} \n in the northern hemisphere (1880—{df.index.max()})"
+)
+ax.set_ylabel("Annual temperature anomalies")
+```
+Extra practice:Extra practice: The columns labelled DJF, MAM, JJA, and SON contain seasonal averages (means). For example, the MAM column contains the average of the March, April, and May columns for each year. Plot a separate line chart for each season, using average temperature anomaly for that season on the vertical axis and time (from 1880 to the latest year available) on the horizontal axis.
+The answer:
+```{python}
+month = "Jan"
+fig, ax = plt.subplots()
+ax.axhline(0, color="red")
+ax.annotate("1951—1980 average",  xy=(1.96, -1.5),xycoords=("figure fraction", "data"))
+df[month].plot(ax=ax)
+ax.set_title(
+    f"Average temperature anomaly in {month} \n in the northern hemisphere (1880—{df.index.max()})"
+)
+ax.set_ylabel("Annual temperature anomalies")
+```
+```{python}
+month = "MAM"
+fig, ax = plt.subplots()
+ax.axhline(0, color="orange")
+ax.annotate("1951—1980 average", xy=(0.66, -0.2), xycoords=("figure fraction", "data"))
+df[month].plot(ax=ax)
+ax.set_title(
+    f"Average temperature anomaly in {month} \n in the northern hemisphere (1880—{df.index.max()})"
+)
+ax.set_ylabel("Annual temperature anomalies")
+```
+```{python}
+month = "JJA"
+fig, ax = plt.subplots()
+ax.axhline(0, color="orange")
+ax.annotate("1951—1980 average", xy=(0.66, -0.2), xycoords=("figure fraction", "data"))
+df[month].plot(ax=ax)
+ax.set_title(
+    f"Average temperature anomaly in {month} \n in the northern hemisphere (1880—{df.index.max()})"
+)
+ax.set_ylabel("Annual temperature anomalies")
+```
+Questions:What do your charts from Questions 2 to 4(a) suggest about the relationship between temperature and time?
+The answer: Temperature increases with time.
+```{python}
+month = "J-D"
+fig, ax = plt.subplots()
+ax.axhline(0, color="orange")
+ax.annotate("1951-1980 average", xy=(0.68, -0.2), xycoords=("figure fraction", "data"))
+df[month].plot(ax=ax)
+ax.set_title(
+    f"Average annual temperature anomaly in \n in the northern hemisphere (1880-{df.index.max()})"
+)
+ax.set_ylabel("Annual temperature anomalies")
+```
+Questions:Discuss the similarities and differences between the charts. (For example, are the horizontal and vertical axes variables the same, or do the lines have the same shape?)
+The answer:
+(1)Similaritie:The temperature changes with time, and the overall trend is upward.
+(2)Differences:The horizontal and vertical axis variables of the two tables are different. For example, in 2000, Figure 1.4 shows a temperature of 0.5 and Figure 1.5 shows a temperature of 0.6.
+Questions:Looking at the behaviour of temperature over time from 1000 to 1900 in Figure 1.4, are the observed patterns in your chart unusual?
+The answer:From 1000 to 1900, the temperature fluctuate up and down with time, but the maximum value did not exceed 0.0, which indicates that the temperature change during this period was relatively small compared to the significant increase in industrial temperature after 1900, which I think is normal.
+
+Questions:Based on your answers to Questions 4 and 5, do you think the government should be concerned about climate change?
+The answer:My point of view is that according to the chart data, the temperature is rising, which is a sign of global warming, so the government should pay attention to climate change.
+```{python}
+df["Period"] = pd.cut(
+    df.index,
+    bins=[1921, 1950, 1980, 2010],
+    labels=["1921—1950", "1951—1980", "1981—2010"],
+    ordered=True,
+)
+df["Period"].tail(20)
+```
+```{python}
+list_of_months = ["Jun", "Jul", "Aug"]
+df[list_of_months].stack().head()
+```
+```{python}
+fig, axes = plt.subplots(ncols=3, figsize=(9, 4), sharex=True, sharey=True)
+for ax, period in zip(axes, df["Period"].dropna().unique()):
+    df.loc[df["Period"] == period, list_of_months].stack().hist(ax=ax)
+    ax.set_title(period)
+plt.suptitle("Histogram of temperature anomalies")
+axes[1].set_xlabel("Summer temperature distribution")
+plt.tight_layout()
+```
+```{python}
+# Create a variable that has years 1951 to 1980, and months Jan to Dec (inclusive)
+temp_all_months = df.loc[(df.index >= 1951) & (df.index <= 1980), "Jan":"Dec"]
+# Put all the data in stacked format and give the new columns sensible names
+temp_all_months = (
+    temp_all_months.stack()
+    .reset_index()
+    .rename(columns={"level_1": "month", 0: "values"})
+)
+# Take a look at this data:
+temp_all_months
+```
+```{python}
+quantiles = [0.3, 0.7]
+list_of_percentiles = np.quantile(temp_all_months["values"], q=quantiles)
+
+print(f"The cold threshold of {quantiles[0]*100}% is {list_of_percentiles[0]}")
+print(f"The hot threshold of {quantiles[1]*100}% is {list_of_percentiles[1]}")
+```
+```{python}
+# Create a variable that has years 1981 to 2010, and months Jan to Dec (inclusive)
+temp_all_months = df.loc[(df.index >= 1981) & (df.index <= 2010), "Jan":"Dec"]
+# Put all the data in stacked format and give the new columns sensible names
+temp_all_months = (
+    temp_all_months.stack()
+    .reset_index()
+    .rename(columns={"level_1": "month", 0: "values"})
+)
+# Take a look at the start of this data data:
+temp_all_months.head()
+```
+```{python}
+entries_less_than_q30 = temp_all_months["values"] < list_of_percentiles[0]
+proportion_under_q30 = entries_less_than_q30.mean()
+print(
+    f"The proportion under {list_of_percentiles[0]} is {proportion_under_q30*100:.2f}%"
+)
+```
+```{python}
+proportion_over_q70 = (temp_all_months["values"] > list_of_percentiles[1]).mean()
+print(f"The proportion over {list_of_percentiles[1]} is {proportion_over_q70*100:.2f}%")
+```
+```{python}
+temp_all_months = (
+    df.loc[:, "DJF":"SON"]
+    .stack()
+    .reset_index()
+    .rename(columns={"level_1": "Season", 0: "Values"})
+)
+temp_all_months["Period"] = pd.cut(
+    temp_all_months["Year"],
+    bins=[1921, 1950, 1980, 2010],
+    labels=["1921—1950", "1951—1980", "1981—2010"],
+    ordered=True,
+)
+# Take a look at a cut of the data using `.iloc`, which provides position
+temp_all_months.iloc[-135:-125]
+```
+Questions:Calculate the mean (average) and variance separately for the following time periods: 1921–1950, 1951–1980, and 1981–2010.
+The answer:The variance of the later period is significantly higher than that of the earlier period, which indicates that the air temperature becomes more variable.
+```{python}
+seasons = {
+    "DJF": ["Dec", "Jan", "Feb"],
+    "MAM": ["Mar", "Apr", "May"],
+    "JJA": ["Jun", "Jul", "Aug"],
+    "SON": ["Sep", "Oct", "Nov"]
+}
+for season, months in seasons.items():
+    if all(month in df.columns for month in months):
+        df[season] = df[months].mean(axis=1)
+periods = {
+    "1921-1950": (1921, 1950),
+    "1951-1980": (1951, 1980),
+    "1981-2010": (1981, 2010)
+}
+results = {}
+for season in seasons.keys():
+    if season in df.columns:
+        results[season] = {}
+        for period, (start_year, end_year) in periods.items():
+            period_data = df.loc[start_year:end_year, season]
+            results[season][period] = {
+                "mean": period_data.mean(),
+                "variance": period_data.var(),
+            }
+for season, period_results in results.items():
+    print(f"Season: {season}")
+    for period, stats in period_results.items():
+        print(f"  Period: {period}")
+        print(f"    Mean: {stats['mean']:.2f}")
+        print(f"    Variance: {stats['variance']:.2f}")
+    print()
+```
+```{python}
+temp_all_months = (
+    df.loc[:, "DJF":"SON"]
+    .stack()
+    .reset_index()
+    .rename(columns={"level_1": "Season", 0: "Values"})
+)
+temp_all_months["Period"] = pd.cut(
+    temp_all_months["Year"],
+    bins=[1921, 1950, 1980, 2010],
+    labels=["1921—1950", "1951—1980", "1981—2010"],
+    ordered=True,
+)
+# Take a look at a cut of the data using `.iloc`, which provides position
+temp_all_months.iloc[-135:-125]
+```
+```{python}
+grp_mean_var = temp_all_months.groupby(["Season", "Period"])["Values"].agg(
+    [np.mean, np.var]
+)
+grp_mean_var
+```
+```{python}
+min_year = 1880
+(
+    ggplot(temp_all_months, aes(x="Year", y="Values", color="Season"))
+    + geom_abline(slope=0, color="black", size=1)
+    + geom_line(size=1)
+    + labs(
+        title=f"Average annual temperature anomaly in \n in the northern hemisphere ({min_year}—{temp_all_months['Year'].max()})",
+        y="Annual temperature anomalies",
+    )
+    + scale_x_continuous(format="d")
+    + geom_text(
+        x=min_year, y=0.1, label="1951—1980 average", hjust="left", color="black"
+    )
+)
+```
+Questions:Using the findings of the New York Times article and your answers to Questions 1 to 5, discuss whether temperature appears to be more variable over time. Would you advise the government to spend more money on mitigating the effects of extreme weather events?
+The answer:As temperatures change more over time due to global warming, heat extremes are becoming more frequent and damaging. First, I suggest that the government should spend more money to alleviate the impact of extreme weather events on people's lives, such as expanding the urban green area. Second, we will advocate low-carbon travel and life for the people.
+```{python}
+df_co2 = pd.read_csv(r"1_C02-data.csv")
+df_co2.head()
+```
+```{python}
+df_co2_june = df_co2.loc[df_co2["Month"] == 6]
+df_co2_june.head()
+```
+```{python}
+df_temp_co2 = pd.merge(df_co2_june, df, on="Year")
+df_temp_co2[["Year", "Jun", "Trend"]].head()
+```
+```{python}
+(
+    ggplot(df_temp_co2, aes(x="Jun", y="Trend"))
+    + geom_point(color="black", size=3)
+    + labs(
+        title="Scatterplot of temperature anomalies vs carbon dioxide emissions",
+        y="Carbon dioxide levels (trend, mole fraction)",
+        x="Temperature anomaly (degrees Celsius)",
+    )
+)
+```
+```{python}
+df_temp_co2[["Jun", "Trend"]].corr(method="pearson")
+```
+```{python}
+(
+    ggplot(df_temp_co2, aes(x="Year", y="Jun"))
+    + geom_line(size=1)
+    + labs(
+        title="June temperature anomalies",
+    )
+    + scale_x_continuous(format="d")
+)
+```
+```{python}
+base_plot = ggplot(df_temp_co2) + scale_x_continuous(format="d")
+plot_p = (
+    base_plot
+    + geom_line(aes(x="Year", y="Jun"), size=1)
+    + labs(title="June temperature anomalies")
+)
+plot_q = (
+    base_plot
+    + geom_line(aes(x="Year", y="Trend"), size=1)
+    + labs(title="Carbon dioxide emissions")
+)
+gggrid([plot_p, plot_q], ncol=2)
+```
+Extra practice: Choose two months and add the CO2 trend data to the temperature dataset from Part 1.1, making sure that the data corresponds to the correct year. Create a separate chart for each month. 
+The answer:
+```{python}
+df_co2_june = df_co2.loc[df_co2["Month"] == 3]
+df_co2_june.head()
+```
+```{python}
+df_temp_co2 = pd.merge(df_co2_june, df, on="Year")
+df_temp_co2[["Year", "Mar", "Trend"]].head()
+```
+```{python}
+(
+    ggplot(df_temp_co2, aes(x="Mar", y="Trend"))
+    + geom_point(color="red", size=3)
+    + labs(
+        title="Scatterplot of temperature anomalies vs carbon dioxide emissions",
+        y="Carbon dioxide levels (trend, mole fraction)",
+        x="Temperature anomaly (degrees Celsius)",
+    )
+)
+```
+```{python}
+df_co2_june = df_co2.loc[df_co2["Month"] == 9]
+df_co2_june.head()
+```
+```{python}
+df_temp_co2 = pd.merge(df_co2_june, df, on="Year")
+df_temp_co2[["Year", "Sep", "Trend"]].head()
+```
+```{python}
+(
+    ggplot(df_temp_co2, aes(x="Sep", y="Trend"))
+    + geom_point(color="blue", size=3)
+    + labs(
+        title="Scatterplot of temperature anomalies vs carbon dioxide emissions",
+        y="Carbon dioxide levels (trend, mole fraction)",
+        x="Temperature anomaly (degrees Celsius)",
+    )
+)
+```
+Questions:What do your charts and the correlation coefficients suggest about the relationship between CO2 levels and temperature anomalies?
+
+The answer:CO2 levels and temperature have strongly correlated with each other.
+Questions:Consider the example of spurious correlation described above.
+Questions:(1)In your own words, explain spurious correlation and the difference between correlation and causation.
+
+The answer:Spurious correlation: When two things seem linked but aren't really, often due to a hidden factor.Correlation vs causation: Correlation shows a link, but causation means one thing causes another.
+
+Questions:(2)Give an example of spurious correlation, similar to the one above, for either CO2 levels or temperature anomalies.
+
+The answer:
+Example: CO2 Levels and Stock Market Performance.It might seem that there's a correlation between rising CO2 levels in the atmosphere and improved stock market performance. However, this doesn't mean that CO2 levels are directly causing the stock market to rise. Instead, both could be influenced by a common factor, such as economic growth. As economies grow, they often emit more CO2 and also tend to have better stock market performance.
+
+Questions:(3)Choose an example of spurious correlation from Tyler Vigen’s website. Explain whether you think it is a coincidence, or whether this correlation could be due to one or more other variables.
+
+The answer:An example is the correlation between the number of Nicolas Cage films released in a year and the number of people who die by falling into swimming pools.Is it a coincidence?Yes, it is likely a coincidence.Could it be due to one or more other variables?It could be due to the fact that both of these events are influenced by broader societal trends or random fluctuations that are not directly related to each other. For instance, the number of Nicolas Cage films released might be influenced by the film industry's production schedule, while the number of swimming pool accidents could be influenced by factors such as weather conditions, safety regulations, and public awareness. There is no plausible mechanism through which the release of Nicolas Cage films could cause an increase in swimming pool accidents, or vice versa. Therefore, it is reasonable to conclude that this correlation is spurious and due to chance or other unobserved variables.
+
+## Practical02
+```{python}
+#%pip install openpyxl
+import pandas as pd
+data_np = pd.read_excel(
+    r"doing-economics-datafile-working-in-excel-project-2 (1).xlsx",
+    usecols="A:Q",
+    header=1,
+    index_col="Period",
+)
+data_n = data_np.iloc[:10, :].copy()
+data_p = data_np.iloc[14:24, :].copy()
+data_n.info()
+```
+```{python}
+data_n = data_n.astype("double")
+data_p = data_p.astype("double")
+```
+Quenstion:(a)Calculate the mean contribution in each period (row) separately for both experiments.
+
+(b)Plot a line chart of mean contribution on the vertical axis and time period (from 1 to 10) on the horizontal axis (with a separate line for each experiment). Make sure the lines in the legend are clearly labelled according to the experiment (with punishment or without punishment).
+
+(c)Describe any differences and similarities you see in the mean contribution over time in both experiments.
+The anwser:In the two experiments, the average contributions over time changed. The difference was that the average value without penalty gradually increased and was always higher than the average value with penalty, and the average value without penalty gradually decreased with the development of time.
+```{python}
+import numpy as np
+
+mean_n_c = data_n.mean(axis=1)
+mean_p_c = data_p.agg(np.mean, axis=1)
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots()
+mean_n_c.plot(ax=ax, label="Without punishment")
+mean_p_c.plot(ax=ax, label="With punishment")
+ax.set_title("Average contributions to the public goods game")
+ax.set_ylabel("Average contribution")
+ax.legend()
+```
+```{python}
+# Create new dataframe with bars in
+compare_grps = pd.DataFrame(
+    [mean_n_c.loc[[1, 10]], mean_p_c.loc[[1, 10]]],
+    index=["Without punishment", "With punishment"],
+)
+# Rename columns to have 'round' in them
+compare_grps.columns = ["Round " + str(i) for i in compare_grps.columns]
+# Swap the column and index variables around with the transpose function, ready for plotting (.T is transpose)
+compare_grps = compare_grps.T
+# Make a bar chart
+compare_grps.plot.bar(rot=0)
+```
+```{python}
+n_c = data_n.agg(["std", "var", "mean"], 1)
+n_c
+```
+```{python}
+p_c = data_p.agg(["std", "var", "mean"], 1)
+fig, ax = plt.subplots()
+n_c["mean"].plot(ax=ax, label="mean")
+
+(n_c["mean"] + 2 * n_c["std"]).plot(ax=ax, ylim=(0, None), color="red", label="±2 s.d.")
+
+(n_c["mean"] - 2 * n_c["std"]).plot(ax=ax, ylim=(0, None), color="red", label="")
+for i in range(len(data_n.columns)):
+    ax.scatter(x=data_n.index, y=data_n.iloc[:, i], color="k", alpha=0.3)
+ax.legend()
+ax.set_ylabel("Average contribution")
+ax.set_title("Contribution to public goods game without punishment")
+plt.show()
+```
+```{python}
+fig, ax = plt.subplots()
+p_c["mean"].plot(ax=ax, label="mean")
+# mean + 2 sd
+(p_c["mean"] + 2 * p_c["std"]).plot(ax=ax, ylim=(0, None), color="red", label="±2 s.d.")
+# mean - 2 sd
+(p_c["mean"] - 2 * p_c["std"]).plot(ax=ax, ylim=(0, None), color="red", label="")
+for i in range(len(data_p.columns)):
+    ax.scatter(x=data_p.index, y=data_p.iloc[:, i], color="k", alpha=0.3)
+ax.legend()
+ax.set_ylabel("Average contribution")
+ax.set_title("Contribution to public goods game with punishment")
+plt.show()
+```
+```{python}
+data_p.apply(lambda x: x.max() - x.min(), axis=1)
+```
+```{python}
+# A lambda function accepting three inputs, a, b, and c, and calculating the sum of the squares
+test_function = lambda a, b, c: a**2 + b**2 + c**2
+
+
+# Now we apply the function by handing over (in parenthesis) the following inputs: a=3, b=4 and c=5
+test_function(3, 4, 5)
+```
+```{python}
+range_function = lambda x: x.max() - x.min()
+range_p = data_p.apply(range_function, axis=1)
+range_n = data_n.apply(range_function, axis=1)
+fig, ax = plt.subplots()
+range_p.plot(ax=ax, label="With punishment")
+range_n.plot(ax=ax, label="Without punishment")
+ax.set_ylim(0, None)
+ax.legend()
+ax.set_title("Range of contributions to the public goods game")
+plt.show()
+```
+```{python}
+funcs_to_apply = [range_function, "max", "min", "std", "mean"]
+summ_p = data_p.apply(funcs_to_apply, axis=1).rename(columns={"<lambda>": "range"})
+summ_n = data_n.apply(funcs_to_apply, axis=1).rename(columns={"<lambda>": "range"})
+summ_n.loc[[1, 10], :].round(2)
+```
+```{python}
+summ_p.loc[[1, 10], :].round(2)
+```
+```{python}
+import pingouin as pg
+
+pg.ttest(x=data_n.iloc[0, :], y=data_p.iloc[0, :])
+```
+```{python}
+pg.ttest(x=data_n.iloc[0, :], y=data_p.iloc[0, :], paired=True)
+```
+
+## Practical03
+
+### Practical03-01
+```{python}
+import matplotlib.pyplot as plt
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+import textwrap
+pd.read_csv(
+    "https://vincentarelbundock.github.io/Rdatasets/csv/dplyr/storms.csv", nrows=10
+)
+```
+```{python}
+url = "http://aeturrell.com/research"
+page = requests.get(url)
+page.text[:300]
+```
+```{python}
+soup = BeautifulSoup(page.text, "html.parser")
+print(soup.prettify()[60000:60500])
+```
+```{python}
+# Get all paragraphs
+all_paras = soup.find_all("p")
+# Just show one of the paras
+all_paras[1]
+```
+```{python}
+all_paras[1].text
+```
+```{python}
+projects = soup.find_all("div", class_="project-content listing-pub-info")
+projects = [x.text.strip() for x in projects]
+projects[:4]
+```
+```{python}
+df_list = pd.read_html(
+    "https://simple.wikipedia.org/wiki/FIFA_World_Cup", match="Sweden"
+)
+# Retrieve first and only entry from list of dataframes
+df = df_list[0]
+df.head()
+```
+
+### Practical03-02
+```{python}
+#pip install requests
+#pip install html5lib
+#pip install bs4
+#pip install pandas
+from bs4 import BeautifulSoup
+import requests
+import re
+import pandas as pd
+# Downloading imdb top 250 movie's data
+url = 'http://www.imdb.com/chart/top'
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+movies = soup.select('td.titleColumn')
+crew = [a.attrs.get('title') for a in soup.select('td.titleColumn a')]
+ratings = [b.attrs.get('data-value')
+		for b in soup.select('td.posterColumn span[name=ir]')]
+# create a empty list for storing
+# movie information
+list = []
+
+# Iterating over movies to extract
+# each movie's details
+for index in range(0, len(movies)):
+	
+	# Separating movie into: 'place',
+	# 'title', 'year'
+	movie_string = movies[index].get_text()
+	movie = (' '.join(movie_string.split()).replace('.', ''))
+	movie_title = movie[len(str(index))+1:-7]
+	year = re.search('\((.*?)\)', movie_string).group(1)
+	place = movie[:len(str(index))-(len(movie))]
+	data = {"place": place,
+			"movie_title": movie_title,
+			"rating": ratings[index],
+			"year": year,
+			"star_cast": crew[index],
+			}
+	list.append(data)
+for movie in list:
+	print(movie['place'], '-', movie['movie_title'], '('+movie['year'] +
+		') -', 'Starring:', movie['star_cast'], movie['rating'])
+#saving the list as dataframe
+#then converting into .csv file
+df = pd.DataFrame(list)
+df.to_csv('imdb_top_250_movies.csv',index=False)
+from bs4 import BeautifulSoup
+import requests
+import re
+import pandas as pd
+
+
+# Downloading imdb top 250 movie's data
+url = 'http://www.imdb.com/chart/top'
+response = requests.get(url)
+soup = BeautifulSoup(response.text, "html.parser")
+movies = soup.select('td.titleColumn')
+crew = [a.attrs.get('title') for a in soup.select('td.titleColumn a')]
+ratings = [b.attrs.get('data-value')
+		for b in soup.select('td.posterColumn span[name=ir]')]
+
+
+
+
+# create a empty list for storing
+# movie information
+list = []
+
+# Iterating over movies to extract
+# each movie's details
+for index in range(0, len(movies)):
+	
+	# Separating movie into: 'place',
+	# 'title', 'year'
+	movie_string = movies[index].get_text()
+	movie = (' '.join(movie_string.split()).replace('.', ''))
+	movie_title = movie[len(str(index))+1:-7]
+	year = re.search('\((.*?)\)', movie_string).group(1)
+	place = movie[:len(str(index))-(len(movie))]
+	data = {"place": place,
+			"movie_title": movie_title,
+			"rating": ratings[index],
+			"year": year,
+			"star_cast": crew[index],
+			}
+	list.append(data)
+
+# printing movie details with its rating.
+for movie in list:
+	print(movie['place'], '-', movie['movie_title'], '('+movie['year'] +
+		') -', 'Starring:', movie['star_cast'], movie['rating'])
+
+
+##.......##
+df = pd.DataFrame(list)
+df.to_csv('imdb_top_250_movies.csv',index=False)
+```
+
+### Practical03-03
+```{python}
+import requests
+from bs4 import BeautifulSoup
+import csv
+ 
+# 定义请求的 URL 和 headers
+url = "https://movie.douban.com/top250"
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+}
+ 
+# 发送 GET 请求
+response = requests.get(url, headers=headers)
+response.encoding = 'utf-8'  # 设置编码方式
+html_content = response.text  # 获取网页的 HTML 内容
+ 
+# 使用 Beautiful Soup 解析 HTML
+soup = BeautifulSoup(html_content, 'html.parser')
+ 
+# 提取电影名称、描述、评分和评价人数
+movies = []
+for item in soup.find_all('div', class_='item'):
+    title = item.find('span', class_='title').get_text()  # 电影名称
+    description = item.find('span', class_='inq')  # 电影描述
+    rating = item.find('span', class_='rating_num').get_text()  # 评分
+    votes = item.find('div', class_='star').find_all('span')[3].get_text()  # 评价人数
+    
+    # 如果没有描述，将其置为空字符串
+    if description:
+        description = description.get_text()
+    else:
+        description = ''
+    
+    movie = {
+        "title": title,
+        "description": description,
+        "rating": rating,
+        "votes": votes.replace('人评价', '').strip()
+    }
+    movies.append(movie)
+ 
+# 将数据保存到 CSV 文件
+with open('douban_top250.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    fieldnames = ['title', 'description', 'rating', 'votes']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+ 
+    writer.writeheader()  # 写入表头
+    for movie in movies:
+        writer.writerow(movie)  # 写入每一行数据
+ 
+print("save success douban_top250.csv")
+```
+
+## Practical04
+```{python}
+from bs4 import BeautifulSoup
+import re  
+import urllib.request, urllib.error  # certain URL
+import xlwt  # excel operation
+ 
+ 
+def main():
+    baseurl = "https://movie.douban.com/top250?start="
+    datalist = getdata(baseurl)
+    savepath = ".\\douban_top250.csv"
+    savedata(datalist, savepath)
+ 
+ 
+# compile返回的是匹配到的模式对象
+findLink = re.compile(r'<a href="(.*?)">')  # detail
+findImgSrc = re.compile(r'<img.*src="(.*?)"', re.S)  # re.S  message of picture
+findTitle = re.compile(r'<span class="title">(.*)</span>')  # name 
+findRating = re.compile(r'<span class="rating_num" property="v:average">(.*)</span>')  # score
+findJudge = re.compile(r'<span>(\d*)人评价</span>')  # number
+findInq = re.compile(r'<span class="inq">(.*)</span>')  # about
+findBd = re.compile(r'<p class="">(.*?)</p>', re.S)  # actor..
+ 
+ 
+##获取网页数据
+def getdata(baseurl):
+    datalist = []
+    for i in range(0, 10):
+        url = baseurl + str(i * 25)  ##move on next page
+        html = geturl(url)
+        soup = BeautifulSoup(html, "html.parser")  #  BeautifulSoup soup，html
+        for item in soup.find_all("div", class_='item'):  ##find_all 
+            data = []  # save HTML 
+            item = str(item)  ##trans
+            link = re.findall(findLink, item)[0]  
+            data.append(link)
+ 
+            imgSrc = re.findall(findImgSrc, item)[0]
+            data.append(imgSrc)
+ 
+            titles = re.findall(findTitle, item)  ##en zh transla
+            if (len(titles) == 2):
+                onetitle = titles[0]
+                data.append(onetitle)
+                twotitle = titles[1].replace("/", "")  # can
+                data.append(twotitle)
+            else:
+                data.append(titles)
+                data.append(" ")  ##value
+ 
+            rating = re.findall(findRating, item)[0]  # add score
+            data.append(rating)
+ 
+            judgeNum = re.findall(findJudge, item)[0]  # add number
+            data.append(judgeNum)
+ 
+            inq = re.findall(findInq, item)  # add abut
+            if len(inq) != 0:
+                inq = inq[0].replace("。", "")
+                data.append(inq)
+            else:
+                data.append(" ")
+ 
+            bd = re.findall(findBd, item)[0]
+            bd = re.sub('<br(\s+)?/>(\s+)?', " ", bd)
+            bd = re.sub('/', " ", bd)
+            data.append(bd.strip())  # cancel
+            datalist.append(data)
+    return datalist
+ 
+ 
+##保存数据
+def savedata(datalist, savepath):
+    workbook = xlwt.Workbook(encoding="utf-8", style_compression=0)  ##style_compression=0
+    worksheet = workbook.add_sheet("douban_top250", cell_overwrite_ok=True)  # cell_overwrite_ok=True
+    column = ("电影详情链接", "图片链接", "影片中文名", "影片外国名", "评分", "评价数", "概况", "相关信息")  ##execl
+    for i in range(0, 8):
+        worksheet.write(0, i, column[i])  # 将column[i] save [0]
+    for i in range(0, 250):
+        data = datalist[i]
+        for j in range(0, 8):
+            worksheet.write(i + 1, j, data[j])
+    workbook.save(savepath)
+ 
+ 
+##爬取网页
+def geturl(url):
+    head = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
+    }
+    req = urllib.request.Request(url, headers=head)
+    try:  ## check error
+        response = urllib.request.urlopen(req)
+        html = response.read().decode("utf-8")
+    except urllib.error.URLError as e:
+        if hasattr(e, "code"):  
+            print(e.code)
+        if hasattr(e, "reason"):
+            print(e.reason)
+    return html
+ 
+ 
+if __name__ == '__main__':
+    main()
+    print("爬取成功！！！")
+from bs4 import BeautifulSoup
+import re
+import urllib.request, urllib.error  # for URL requests
+import csv  # for saving as CSV
+
+
+def main():
+    baseurl = "https://movie.douban.com/top250?start="
+    datalist = getdata(baseurl)
+    savepath = "./douban_top250.csv"
+    savedata(datalist, savepath)
+
+
+# Regular expressions to extract information
+findLink = re.compile(r'<a href="(.*?)">')  # detail link
+findImgSrc = re.compile(r'<img.*src="(.*?)"', re.S)  # image link
+findTitle = re.compile(r'<span class="title">(.*)</span>')  # movie title
+findRating = re.compile(r'<span class="rating_num" property="v:average">(.*)</span>')  # rating
+findJudge = re.compile(r'<span>(\d*)人评价</span>')  # number of reviews
+findInq = re.compile(r'<span class="inq">(.*)</span>')  # summary
+findBd = re.compile(r'<p class="">(.*?)</p>', re.S)  # additional info
+
+
+# Function to get data from the website
+def getdata(baseurl):
+    datalist = []
+    for i in range(0, 10):
+        url = baseurl + str(i * 25)  # Go to the next page
+        html = geturl(url)
+        soup = BeautifulSoup(html, "html.parser")
+        for item in soup.find_all("div", class_='item'):  # Extract movie items
+            data = []  # Save movie data
+            item = str(item)  # Convert to string for regex
+            link = re.findall(findLink, item)[0]  # Detail link
+            data.append(link)
+
+            imgSrc = re.findall(findImgSrc, item)[0]  # Image link
+            data.append(imgSrc)
+
+            titles = re.findall(findTitle, item)  # Titles (CN and foreign)
+            if len(titles) == 2:
+                data.append(titles[0])  # Chinese title
+                data.append(titles[1].replace("/", "").strip())  # Foreign title
+            else:
+                data.append(titles[0])  # Only Chinese title
+                data.append(" ")  # Empty for foreign title
+
+            rating = re.findall(findRating, item)[0]  # Rating
+            data.append(rating)
+
+            judgeNum = re.findall(findJudge, item)[0]  # Number of reviews
+            data.append(judgeNum)
+
+            inq = re.findall(findInq, item)  # Summary
+            if len(inq) != 0:
+                data.append(inq[0].replace("。", ""))
+            else:
+                data.append(" ")
+
+            bd = re.findall(findBd, item)[0]  # Additional info
+            bd = re.sub('<br(\s+)?/>(\s+)?', " ", bd)  # Replace line breaks
+            bd = re.sub('/', " ", bd)  # Replace slashes
+            data.append(bd.strip())
+
+            datalist.append(data)
+    return datalist
+
+
+# Function to save data to a CSV file
+def savedata(datalist, savepath):
+    headers = ["电影详情链接", "图片链接", "影片中文名", "影片外国名", "评分", "评价数", "概况", "相关信息"]
+    with open(savepath, mode='w', encoding='utf-8', newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow(headers)  # Write headers
+        for data in datalist:
+            writer.writerow(data)  # Write each movie's data
+
+
+# Function to get HTML content from a URL
+def geturl(url):
+    head = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36"
+    }
+    req = urllib.request.Request(url, headers=head)
+    try:
+        response = urllib.request.urlopen(req)
+        html = response.read().decode("utf-8")
+    except urllib.error.URLError as e:
+        if hasattr(e, "code"):
+            print(e.code)
+        if hasattr(e, "reason"):
+            print(e.reason)
+        return ""
+    return html
+
+
+if __name__ == '__main__':
+    main()
+    print("爬取成功并保存为CSV文件！")
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Load datasets
+douban_file_path = 'douban_top250.csv'  
+imdb_file_path = 'IMDB_Top250.csv'      
+
+douban_data = pd.read_csv(douban_file_path, encoding='utf-8', on_bad_lines='skip')
+imdb_data = pd.read_csv(imdb_file_path, encoding='utf-8', on_bad_lines='skip')
+
+# Renaming columns for clarity and merging compatibility
+douban_data.rename(columns={
+    '影片中文名': 'Title',
+    '评分': 'Douban_Score',
+    '评价数': 'Douban_Reviews',
+    '相关信息': 'Douban_Info'
+}, inplace=True)
+
+imdb_data.rename(columns={
+    'Name': 'Title',
+    'Year': 'Release_Year',
+    'IMDB Ranking': 'IMDB_Score',
+    'Genre': 'IMDB_Genre',
+    'Director': 'IMDB_Director'
+}, inplace=True)
+
+# Calculate average scores for both platforms
+douban_avg_score = douban_data['Douban_Score'].mean()
+imdb_avg_score = imdb_data['IMDB_Score'].mean()
+
+# Find overlapping movies by title
+overlap_movies = pd.merge(douban_data, imdb_data, on='Title')
+
+# Visualize average scores
+plt.figure(figsize=(8, 5))
+plt.bar(['Douban', 'IMDb'], [douban_avg_score, imdb_avg_score], alpha=0.7)
+plt.title('Average Scores: Douban vs IMDb')
+plt.ylabel('Average Score')
+plt.show()
+
+# Analyze release year distribution
+plt.figure(figsize=(10, 5))
+douban_data['Douban_Info'] = douban_data['Douban_Info'].astype(str)
+douban_years = douban_data['Douban_Info'].str.extract(r'(\d{4})').dropna()
+douban_years = douban_years[0].astype(int).value_counts().sort_index()
+
+imdb_years = imdb_data['Release_Year'].value_counts().sort_index()
+
+douban_years.plot(kind='bar', alpha=0.7, label='Douban', figsize=(10, 5))
+imdb_years.plot(kind='bar', alpha=0.7, label='IMDb', color='orange')
+plt.title('Release Year Distribution')
+plt.xlabel('Year')
+plt.ylabel('Number of Movies')
+plt.legend()
+plt.show()
+
+# Analyze genre distribution
+imdb_genres = imdb_data['IMDB_Genre'].str.split(',').explode().str.strip().value_counts()
+plt.figure(figsize=(10, 5))
+imdb_genres.head(10).plot(kind='bar', alpha=0.7, color='orange')
+plt.title('Top 10 IMDb Genres')
+plt.xlabel('Genre')
+plt.ylabel('Count')
+plt.show()
+
+# Top directors by movie count
+douban_directors = douban_data['Douban_Info'].str.extract(r'导演: (.+?) ').dropna()
+douban_top_directors = douban_directors[0].value_counts().head(10)
+
+imdb_top_directors = imdb_data['IMDB_Director'].value_counts().head(10)
+
+plt.figure(figsize=(10, 5))
+douban_top_directors.plot(kind='bar', alpha=0.7, label='Douban', color='blue')
+plt.title('Top 10 Douban Directors')
+plt.xlabel('Director')
+plt.ylabel('Movie Count')
+plt.show()
+
+plt.figure(figsize=(10, 5))
+imdb_top_directors.plot(kind='bar', alpha=0.7, label='IMDb', color='orange')
+plt.title('Top 10 IMDb Directors')
+plt.xlabel('Director')
+plt.ylabel('Movie Count')
+plt.show()
+
+# Save overlapping movies to a CSV file
+overlap_movies.to_csv('overlap_movies.csv', index=False)
+
+# Print results
+print(f"豆瓣平均评分: {douban_avg_score}")
+print(f"IMDb平均评分: {imdb_avg_score}")
+print(f"重叠电影数量: {len(overlap_movies)}")
+
+```

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>data-exploratory-analysis – wujindi</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-824d431591f74d30f01d4428391ea1d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">wujindi</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./Index.html"> 
+<span class="menu-text">Index</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./abouteme.html"> 
+<span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./homework.html"> 
+<span class="menu-text">HomeWork</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./labs.html"> 
+<span class="menu-text">Labs</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<p>(data-exploratory-analysis)= # Exploratory Data Analysis</p>
+<p>Exploratory data analysis (EDA) involves taking a first look at a dataset and summarising its salient characteristics using tables and graphics. It is (or should be) the stage before testing hypotheses and can be useful in informing hypotheses. In this chapter, we’ll look at a few options for EDA using code.</p>
+<p>To show how to do EDA using code, we will need a dataset to explore. We’ll use the Grinell housing dataset, which covers houses sold between 2005 and 2015 in Grinnell, Iowa. It was assembled by a local estate agent, Matt Karjalahti.</p>
+<p>First, let’s import a couple of essential packages:</p>
+<div id="cell-1" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rich <span class="im">import</span> <span class="bu">print</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<pre class="{note}"><code>You may not have the **rich** package installed already. It provides pretty printing of text to screen (and much more besides). You can install it by running `pip install skimpy` or `conda install rich` on the command line.</code></pre>
+<section id="preliminaries-extracting-typing-and-initial-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="preliminaries-extracting-typing-and-initial-cleaning">Preliminaries: extracting, typing, and initial cleaning</h2>
+<p>Let’s grab some data to do exploratory data analysis on.</p>
+<div id="cell-5" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/Stat2Data/GrinnellHouses.csv"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    index_col<span class="op">=</span><span class="dv">0</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>There are some things we should do even before an exploratory data analysis; we should make sure we’ve cast the columns to the right types and converted any that need converting. Even a quick look at the data provided by <code>.head()</code> shows that the <code>Date</code> column is in a weird format. It also <em>seems</em> like the number of <code>Baths</code> column has some data issues because it is a floating point number rather than an integer. However, this a North American quirk: realtors refer to bathrooms with only a toilet and sink as a “half bath” (and sometimes those with a shower but no bathtub as a “three-quarter bath,” which also shows up in the data). So this is okay, and we mainly need concern ourselves with the Date column.</p>
+<p>Fortunately, there is guidance attached to the dataset as to what the Date column really means: it’s just a counter of days that encodes the date of sale that begins with 1st Jan 2005=16436. The documents also tell us that the final year is 2015. We’d really like to have a more usable datetime column than this so let’s sort this out first. Ideally, we’d like to <em>map</em> the <code>Date</code> column into a new <code>datetime</code> column that turns 16436 into 1st Jan 2005, 16437 into 2nd Jan 2005, and so on, until we have a mapping for every date between the first date in the dataset and the last.</p>
+<p>Our solution will be to create a function that maps the code for Date into a genuine datetime using the <code>pd.DateOffset</code> function and apply it to the <code>Date</code> column using <code>apply()</code>:</p>
+<div id="cell-7" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> convert_date_code_to_datetime(date):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    start_code <span class="op">=</span> <span class="dv">16436</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> pd.to_datetime(<span class="st">"01-01-2005"</span>) <span class="op">+</span> pd.DateOffset(days<span class="op">=</span>date <span class="op">-</span> start_code)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"datetime"</span>] <span class="op">=</span> df[<span class="st">"Date"</span>].<span class="bu">apply</span>(convert_date_code_to_datetime)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the 'biggest' rows by datetime</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>df.nlargest(<span class="dv">5</span>, columns<span class="op">=</span>[<span class="st">"datetime"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>An extra column containing datetime has been added and, looking at the max rows, we can see that it does indeed run all the way to 2015 as expected from the documentation of the dataset.</p>
+<p>Okay, now we want to sort out the data type issues we saw earlier. But let’s just check they’re as bad as we think using <code>df.info()</code></p>
+<div id="cell-9" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>pandas</strong> read most of them in sensibly, but not <em>all</em> of them, so let’s adjust the ones we need to:</p>
+<div id="cell-11" class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.assign(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    Address<span class="op">=</span>df[<span class="st">"Address"</span>].astype(<span class="st">"string"</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    Bedrooms<span class="op">=</span>df[<span class="st">"Bedrooms"</span>].astype(<span class="st">"category"</span>),</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    OrigPrice<span class="op">=</span>df[<span class="st">"OrigPrice"</span>].astype(<span class="bu">float</span>),</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    ListPrice<span class="op">=</span>df[<span class="st">"ListPrice"</span>].astype(<span class="bu">float</span>),</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    SalePrice<span class="op">=</span>df[<span class="st">"SalePrice"</span>].astype(<span class="bu">float</span>),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Having to do some initial variable type cleaning is a <em>normal</em> and <em>unavoidable</em> part of data analysis, especially when reading in from a format like CSV (which does not preserve data type but has great interoperability across systems). It’s important and what we’ve seen here is a typical pattern.</p>
+<p>There’s just one more step before starting the EDA proper. If you haven’t reached the Chapter on best practice, which talks about naming conventions, you won’t know this yet but the usual naming convention for variables and columns in Python is so-called snake case (appropriately enough). An example of a word <em>not</em> in snake case would be ‘ThisIsAColName’; actually that’s in Camel Case. Rendered in snake case, it would be ‘this_is_a_col_name’, which is longer but slightly easier to read. So we should really change the column names to be in snake case. Fortunately, the <a href="https://aeturrell.github.io/skimpy/"><strong>skimpy</strong></a> package (drawing on functions from a package called <strong>dataprep</strong>) has us covered here; it provides methods to translate between pretty much every naming convention that exists. Let’s change our columns to snake case, which is the default setting of <code>clean_columns()</code>.</p>
+<pre class="{note}"><code>**skimpy** is likely to be a new package to you, and one that you haven't installed. You can install it by running `pip install skimpy` on the command line.</code></pre>
+<div id="cell-13" class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimpy <span class="im">import</span> clean_columns</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> clean_columns(df, case<span class="op">=</span><span class="st">"snake"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can start the exploratory data analysis!</p>
+</section>
+<section id="eda-using-pandas-built-in-methods" class="level2">
+<h2 class="anchored" data-anchor-id="eda-using-pandas-built-in-methods">EDA using <strong>pandas</strong> built-in methods</h2>
+<p><strong>pandas</strong> has some great options for built-in EDA; in fact we’ve already seen one of them, <code>df.info()</code> which, as well as reporting datatypes and memory usage, also tells us how many observations in each column are ‘truthy’ rather than ‘falsy’, ie how many have non-null values.</p>
+<section id="exploratory-tables-and-descriptive-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-tables-and-descriptive-statistics">Exploratory tables and descriptive statistics</h3>
+<p>A small step beyond <code>df.info()</code> to get tables is to use <code>df.describe()</code> which, if you have mixed datatypes that include floats, will report some basic summary statistics:</p>
+<div id="cell-16" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Although helpful, that sure is hard to read! We can improve this by using the <code>round()</code> method too:</p>
+<div id="cell-18" class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sum_table <span class="op">=</span> df.describe().<span class="bu">round</span>(<span class="dv">1</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>sum_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Published summary statistics tables often list one variable per row, and if your dataframe has many variables, <code>describe()</code> can quickly get too wide to read easily. You can transpose it using the <code>T</code> property (or the <code>transpose()</code> method):</p>
+<div id="cell-20" class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sum_table <span class="op">=</span> sum_table.T</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sum_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now, although this is very basic, let’s say you wanted to include it as a table of summary statistics in a paper. This is just a dataframe so you can export it just like you can <em>any</em> pandas dataframe. This includes options like <code>.to_excel()</code>. For inclusion in a paper or report, you’re most likely to want to export it as one of a few common types, all of which can be achieved using the <code>to_formatname()</code> syntax (for example <code>to_string()</code> for plain text). Just to demonstrate these different output types, let’s print them to screen (even though in practice we’d be writing them to a file). First, as text:</p>
+<div id="cell-22" class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sum_table.to_string())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>as Markdown:</p>
+<div id="cell-24" class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sum_table.to_markdown())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>as HTML:</p>
+<div id="cell-26" class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sum_table.head(<span class="dv">3</span>).to_html())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>or as latex:</p>
+<div id="cell-28" class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sum_table.style.to_latex(caption<span class="op">=</span><span class="st">"Summary stats from EDA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And remember, with all of these, you can write them to file using a variation on the following structure:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">open</span>(<span class="st">'sum_stats_table.tex'</span>, <span class="st">'w'</span>).write(sum_table.style.to_latex(caption<span class="op">=</span><span class="st">'Summary stats from EDA'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Of course, the stats provided in this pre-built table are not very customised. So what do we do to get the table that we actually want? Well, the answer is to draw on the contents of the previous data chapters, particularly the introduction to data analysis. Groupbys, merges, aggregations: use all of them to produce the EDA table that you want.</p>
+<p>If you’re exploring data, you might also want to be able to read everything clearly and see any deviations from what you’d expect quickly. <strong>pandas</strong> has some built-in functionality that styles dataframes to help you. These styles persist when you export the dataframe to, say, Excel, too.</p>
+<pre class="{note}"><code>For some styling features, for example `style.format()`, you will need an up to date version of **pandas**. You can run `pip install -U pandas` on the command line to update a pip-installed **pandas** package, or `conda update pandas` for conda.</code></pre>
+<p>Here’s an example that highlights some ways of styling dataframes, making use of several features such as: unstacking into a wider format (<code>unstack()</code>), changing the units (<code>lambda</code> function; note that <code>1e3</code> is shorthand for <code>1000</code> on computers), fill NaNs with unobtrusive strings (<code>.fillna('-')</code>), removing numbers after the decimal place (<code>.style.format(precision=0)</code>), and adding a caption (<code>.style.set_caption</code>).</p>
+<div id="cell-30" class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    df.groupby([<span class="st">"year_sold"</span>, <span class="st">"bedrooms"</span>])</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"sale_price"</span>]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    .unstack()</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">1e3</span>)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    .fillna(<span class="st">"-"</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    .style.<span class="bu">format</span>(precision<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    .set_caption(<span class="st">"Sale price (thousands)"</span>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>(Another way to achieve the <code>groupby()</code>, <code>mean()</code>, and <code>unstack()</code> steps in one step is using <code>df.pivot_table(index="YearSold", columns="Bedrooms", values="SalePrice", aggfunc=np.mean</code>.)</p>
+<p>Although a neater one than we’ve seen, this is still a drab table of numbers. The eye is not immediately drawn to it!</p>
+<p>To remedy that, let’s take a look at another styling technique: the use of colour. Let’s say we wanted to make a table that showed a cross-tabulation between year and number of bathrooms; that is the counts of objects appearing in both of these fields according to the categories, eg in 2015, there were <em>5</em> houses with 2 bathrooms. This is different to what we did before, which was the mean price based on groups of houses by number of bathrooms and year.</p>
+<p>To perform a cross-tabulation, we’ll use the built-in <code>pd.crosstab()</code> but we’ll ask that the values that appear in the table (counts) be lit up with a heatmap using <code>style.background_gradient()</code> too:</p>
+<div id="cell-32" class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(df[<span class="st">"bedrooms"</span>], df[<span class="st">"year_sold"</span>]).style.background_gradient(cmap<span class="op">=</span><span class="st">"plasma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>By default, <code>background_gradient()</code> highlights each number relative to the others in its column; you can highlight by row using <code>axis=1</code> or relative to all table values using <code>axis=0</code>. And of course <code>plasma</code> is just one of <a href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">many available colormaps</a>!</p>
+<p><code>ulgopngtbmcx Exercise Do a new cross-tabulation using a different colourmap.</code></p>
+<p>Here are a couple of other styling tips for dataframes.</p>
+<p>First, use bars to show ordering:</p>
+<div id="cell-34" class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    df.iloc[:<span class="dv">10</span>, <span class="op">-</span><span class="dv">6</span>:<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    .style.<span class="bu">format</span>(precision<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    .bar(subset<span class="op">=</span>[<span class="st">"cost_per_sq_ft"</span>, <span class="st">"sale_price"</span>], color<span class="op">=</span><span class="st">"#d65f5f"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Second, use <code>format()</code> to add informative suffixes and round numbers appropriately:</p>
+<div id="cell-36" class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df.groupby([<span class="st">"bedrooms"</span>])[[<span class="st">"splp_pct"</span>]].mean().style.<span class="bu">format</span>(<span class="st">"</span><span class="sc">{:.0f}</span><span class="st">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Third, use <code>.hightlight_max()</code>, and similar commands, to show important entries:</p>
+<div id="cell-38" class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df.iloc[:<span class="dv">10</span>, <span class="op">-</span><span class="dv">6</span>:<span class="op">-</span><span class="dv">1</span>].style.highlight_max().<span class="bu">format</span>(<span class="st">"</span><span class="sc">{:.0f}</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can find a full set of styling commands <a href="https://pandas.pydata.org/pandas-docs/stable/user_guide/style.html">here</a>.</p>
+</section>
+<section id="exploratory-plotting" class="level3">
+<h3 class="anchored" data-anchor-id="exploratory-plotting">Exploratory plotting</h3>
+<p><strong>pandas</strong> has some built-in plotting options to help you look at data quickly. These can be accessed via <code>.plot.*</code> or <code>.plot()</code>, depending on the context. Let’s make a quick <code>.plot()</code> of the mean quarterly nominal Sale Price over time (with extra options passed via keyword arguments):</p>
+<div id="cell-41" class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    df.set_index(<span class="st">"datetime"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    .groupby(pd.Grouper(freq<span class="op">=</span><span class="st">"3M"</span>))[<span class="st">"sale_price"</span>]</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">1e3</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    .plot(</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">"House sales in Grinnell, Iowa"</span>,</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">""</span>,</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="st">"Mean nominal sale price (000s USD)"</span>,</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Again, if you can get the data in the right shape, you can plot it. The same function works with multiple lines</p>
+<div id="cell-43" class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    df.set_index(<span class="st">"datetime"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    .groupby(pd.Grouper(freq<span class="op">=</span><span class="st">"3M"</span>))[[<span class="st">"orig_price"</span>, <span class="st">"list_price"</span>, <span class="st">"sale_price"</span>]]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    .mean()</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    .<span class="bu">apply</span>(<span class="kw">lambda</span> x: x <span class="op">/</span> <span class="fl">1e3</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    .plot(style<span class="op">=</span>[<span class="st">"-"</span>, <span class="st">":"</span>, <span class="st">"-."</span>])</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s see some of the other quick <code>.plot.*()</code> options.</p>
+<p>Here’s a kernel density estimation (KDE) plot. Just to show what’s possible, we’ll use the <code>df.columnname</code> syntax, an alternative to <code>df['columnname']</code>, and set limits via keyword arguments.</p>
+<div id="cell-45" class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df.square_feet.plot.kde(ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="va">None</span>), xlim<span class="op">=</span>(<span class="dv">0</span>, <span class="va">None</span>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A bar chart (use <code>barh()</code> for horizontal orientation; <code>rot</code> sets rotation of labels):</p>
+<div id="cell-47" class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df.value_counts(<span class="st">"bedrooms"</span>).sort_index().plot.bar(title<span class="op">=</span><span class="st">"Counts"</span>, rot<span class="op">=</span><span class="dv">0</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This chart shows why EDA is so important: if we are modelling residential housing, and we find that there are observations that don’t have <em>any</em> bedrooms, perhaps they should be excluded from the downstream analysis.</p>
+<p>This next one, using <code>.plot.hist()</code>, provides another instructive example of how EDA can reveal interesting issues with datasets. First, there are many more houses built in 1900 than seem plausible and, checking the documentation for the dataset, it does say that when a construction date is not known, it is entered as 1900-which explains what’s going on here. Second, some of the construction years are in the future! Is this plausible? It could be. Some houses are sold before the construction of an estate is completed; this could be the case here.</p>
+<div id="cell-49" class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"year_built"</span>].plot.hist(bins<span class="op">=</span><span class="dv">30</span>, title<span class="op">=</span><span class="st">"Year of construction"</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Boxplot:</p>
+<div id="cell-51" class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>(df[[<span class="st">"orig_price"</span>, <span class="st">"list_price"</span>, <span class="st">"sale_price"</span>]].plot.box())<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-52" class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"class_ln_price"</span>] <span class="op">=</span> pd.cut(np.log(df[<span class="st">"orig_price"</span>]), bins<span class="op">=</span><span class="dv">4</span>, precision<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    df.set_index(<span class="st">"datetime"</span>)</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    .groupby([pd.Grouper(freq<span class="op">=</span><span class="st">"A"</span>), <span class="st">"class_ln_price"</span>])[<span class="st">"class_ln_price"</span>]</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    .count()</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    .unstack()</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    .plot.area(ylabel<span class="op">=</span><span class="st">"Count"</span>)</span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Scatter plot:</p>
+<div id="cell-54" class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df.plot.scatter(x<span class="op">=</span><span class="st">"square_feet"</span>, y<span class="op">=</span><span class="st">"sale_price"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, ylim<span class="op">=</span>(<span class="dv">0</span>, <span class="va">None</span>))<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Hexbin:</p>
+<div id="cell-56" class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df.plot.hexbin(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"list_price"</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"splp_pct"</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    gridsize<span class="op">=</span><span class="dv">10</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"inferno_r"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    C<span class="op">=</span><span class="st">"cost_per_sq_ft"</span>,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    sharex<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="skimpy-for-summary-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="skimpy-for-summary-statistics"><strong>skimpy</strong> for summary statistics</h2>
+<p>The <strong>skimpy</strong> package is a light weight tool that provides summary statistics about variables in data frames in the console (rather than in a big HTML report, which is what the other EDA packages in the rest of this chapter too). Sometimes <code>df.summary()</code> isn’t enough but a HTML report is too much, and <strong>skimpy</strong> fills this gap. Let’s see it in action.</p>
+<div id="cell-58" class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimpy <span class="im">import</span> skim</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>skim(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>```ulgopngtbmcx Exercise Apply exploratory data analysis to the ‘titanic’ dataset, which can be loaded from <a href="https://github.com/datasciencedojo/datasets/raw/master/titanic.csv">this link</a>.</p>
+<p>First run <strong>skimpy</strong>’s <code>skim()</code> function. Then see what analysis you can do using <strong>pandas</strong> built-in exploratory methods.</p>
+<pre><code>
+## The **ydata-profiling** package
+
+
+```{warning}
+The live example in this section is not currently working due to **ydata-profiling**'s dependency on an older version of **numpy**. If you need to use something from this section, you probably still can: *coding for economists* has a huge number of dependencies, much more than a normal project, and this particular problem may not affect you. If you want to help, you can show your support for a resolution on [this GitHub issue](https://github.com/ydataai/ydata-profiling/issues/1456)—though please do bear in mind that most open source libraries are run by volunteers, and you should always be constructive in your interactions. The second is to contribute to the library yourself by creating a pull request that fixes the problem.</code></pre>
+<p>The EDA we did using the built-in <strong>pandas</strong> functions was a bit limited and user-input heavy. The <a href="https://docs.profiling.ydata.ai/"><strong>ydata-profiling</strong></a> library aims to automate the legwork of EDA for you. It generates ‘profile’ reports from a pandas DataFrame. For each column, many statistics are computed and then relayed in an interactive HTML report.</p>
+<p>Let’s generate a report on our dataset using the <code>minimal=True</code> setting (the default settings produce a lot of computationally expensive extras):</p>
+<div id="cell-61" class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># from ydata_profiling import ProfileReport</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># profile = ProfileReport(</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#     df, minimal=True, title="Profiling Report: Grinnell House Sales"</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co"># profile.to_notebook_iframe()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This is a full on report about everything in our dataset! We can see, for instance, that we have 17 numerical variables, 0 boolean, and 4 categorical (which includes string), and 1 datetime. The overview also tells us the number of observations, that we have 1.2% of values missing across all columns, and we have zero duplicates.</p>
+<p>The warnings page shows where <strong>pandas-profiling</strong> really shines. It flags <em>potential</em> issues with the data that should be taken into account in any subsequent analysis. For example, although not relevant here, the report will say if there are very unbalanced classes in a low cardinality categorical variable.</p>
+<p>Let’s explore a couple of the warnings that have been raised. <code>Address</code> has high cardinality; but that’s okay, we expect most addresses to be different because the turn-over of houses is not that frequent. We also see that there are a lot of missing values for <code>LotSize</code>.</p>
+<p>Now let’s dig down into a specific variable, <code>SalePrice</code>. You can view more about it using the ‘Toggle details’ button. We get four extra pages of detail about this variable, in addition to the headline statistics: a comprehensive page of descriptive statistics, a page with a histogram of the variable, a page with a table of common values, and a page of extreme values.</p>
+<p><code>ulgopngtbmcx Exercise Run **ydata-profiling** on the 'titanic' dataset.</code></p>
+</section>
+<section id="the-dataprep-package" class="level2">
+<h2 class="anchored" data-anchor-id="the-dataprep-package">The <strong>dataprep</strong> package</h2>
+<p>The <a href="https://dataprep.ai/"><strong>dataprep</strong></a> package offers very similar functionality to <strong>ydata-profiling</strong>; it produces an in-depth report on the input data. There isn’t much difference between them in general apart from it seems like <strong>dataprep</strong> has slightly better support for string column types and is a little bit richer on visualisations (it has interactive plots that you can change the axes of). It’s well worth checking out as an alternative to <strong>ydata-profiling</strong>.</p>
+</section>
+<section id="review" class="level2">
+<h2 class="anchored" data-anchor-id="review">Review</h2>
+<p>That’s it for this very brief tour of exploratory data analysis with code. You should know now how to do simple analysis of <strong>pandas</strong> dataframes using techniques from other chapters to create summary statistics, using styling of tables of summary statistics, using the quick visualisation options that are built-in to <strong>pandas</strong>, and using the <strong>skimpy</strong> package. You should also know where to go for more in-depth, heavy duty exploratory data analysis reports, namely <strong>ydata-profiling</strong> and <strong>dataprep</strong>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,0 +1,14 @@
+project:
+  type: website
+
+website:
+  title: "wujindi"
+  navbar:
+    background: primary
+    search: true
+    left:
+      - href: Index.qmd
+        text: Index
+      - abouteme.qmd
+      - homework.qmd
+      - labs.qmd
