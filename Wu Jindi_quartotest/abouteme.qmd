@@ -2,20 +2,8 @@
 title: "About me"
 ---
 
-# Hi,I'm 进子
-```{python}
-import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
-
-# read picture
-image_path = 'mypicture.jpeg'  # path
-img = mpimg.imread(image_path)
-
-# show
-plt.imshow(img)
-plt.axis('off') 
-plt.show()
-```
+# Hi,I'm Wu jindi
+![mypicture](./mypicture.jpeg)
 
 ### My Background
 

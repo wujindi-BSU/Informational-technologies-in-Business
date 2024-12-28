@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>HomeWork – wujindi</title>
+<title>HomeWork – Wu Jindi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-824d431591f74d30f01d4428391ea1d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-13d520a3010e21f7ec35e0baf3d0283a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -118,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">wujindi</span>
+    <span class="navbar-title">Wu Jindi</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./Index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Index</span></a>
   </li>  
   <li class="nav-item">
@@ -181,14 +181,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Lecture</h1>
 <section id="lecture01" class="level2">
 <h2 class="anchored" data-anchor-id="lecture01">Lecture01</h2>
+<section id="workflow-basics" class="level3">
+<h3 class="anchored" data-anchor-id="workflow-basics">Workflow Basics</h3>
+<p>This chapter will take you through some of the essential parts of a Python workflow.</p>
+<p>Prerequisites You’ll need an installation of Python and Visual Studio Code with the Python extensions to get to grips with this chapter. If you haven’t installed those yet, head back to {ref}code-preliminaries and follow the instructions there.</p>
+<p>Working with Python scripts and the interactive window As a reminder, the figure below shows the typical layout of Visual Studio Code.</p>
+<p>A typical user view in Visual Studio Code</p>
+<p>When you create a new script (File-&gt;New File-&gt;Save as ’your_script_name.py), it will appear in the part of the screen labelled as 3.</p>
+<p>To run a script, select the code you want to run, right click, and select “Run Selection/Line in Interactive Window”. You can also hit shift + enter if you set this shortcut up; if you haven’t it’s well worth doing and you can find the instructions in {ref}code-preliminaries.</p>
+<p>Using the “Run Selection/Line in Interactive Window” option or using the shortcut will cause panel 5 in the above diagram (the interactive window) to appear, where you will see the code run and the outputs of your script appear.</p>
+<p>{tip} If you have an issue getting the code to run in the interactive window, first check the instructions in {ref}<code>code-preliminaries</code>. If you’re still having issues, it may be that Visual Studio Code isn’t sure which Python to run, or where Python is on your system. To fix the latter problem, hit the “Select kernel” button in the top right-hand side of the interactive window. When you are first writing a script, it’s useful to be able to move back and forth between the script and the interactive window. You might execute a line of code (put the cursor on the relevant line and hit shift and enter) in the interactive window, then manually write out some code in the interactive window’s execution box (seen at the bottom of panel 5 saying “Type code here…”), and then explore some of the variables you’ve created with the variable explorer (using the button “Variables”) at the top of the interactive window.</p>
+<p>But, once you’ve honed the code in your script, it’s good to make the script a complete analytical process that you are happy running end-to-end and that—for production or ‘final’ work—you would use the “Run Current File in Interactive Window” option to run all the way through. This is good practice because what is in your script is reproducible but what you’ve entered manually in the interactive window is not. And you want the outputs from your code to be reproducible and understandable by others (including future you!), but this is hard if there are undocumented extra lines of code that you only did on the fly via the interactive window’s execution box.</p>
+<p>Using installed packages and modules We already saw how to install packages in {ref}code-preliminaries. If you forgot, look back at how to do this now. In short, packages are installed using the command line or, on Windows, the Anaconda prompt. With either of these open, type conda install packagename and hit enter to both search for and install the package you need.</p>
+<p>What about using a package that you’ve installed? That’s what we’ll look at now.</p>
+<p>Let’s see an example of using the powerful numerical library numpy. There are different ways to import packages to use within a script or notebook; you can import the entire package in one go or just import the functions you need (if you know their names). When an entire package is imported, you can give it any name you like and the convention for numpy is to import it as the shortened ‘np’. All of the functions and methods of the package can be accessed by typing np followed by . and then typing the function name. This convention of importing packages with a given name makes your code easier to read, because you know exactly which package is doing what, and avoids any conflicts when functions from different packages have the same name.</p>
+<p>As well as demonstrating importing the whole package for numpy, the example below shows importing just one specific function from numpy, inv, which does matrix inversion. Note that because inv was imported separately it can be used without an np prefix.</p>
+<p>import numpy as np from numpy.linalg import inv</p>
+<p>matrix = np.array([[4.0, 2.0, 4.0], [4.0, 5.0, 6.0], [7.0, 8.0, 9.0]])</p>
+<p>print(“Matrix:”) print(matrix)</p>
+<p>inv_mat = inv(matrix) print(“Inverse:”) print(inv_mat) We could have imported all of numpy and it used it without extension using from numpy import * but this is considered bad practice as it fills our ‘namespace’ with function names that might clash with other packages and it’s less easy to read because you don’t know which function came from which package (one of Python’s mantras is “explicit is better than implict”). However, some packages are designed to be used like this, so, for example, you will see from lets_plot import * in this book.</p>
+<p>{note} If you want to check what packages you have installed in your Python environment, run <code>conda list</code> on your computer’s command line (aka the <em>terminal</em> or <em>command prompt</em>). Sometimes you might forget what a function you have imported does! Or at least, you might not be sure what all of the optional arguments are. In Visual Studio Code, you can just hover your cursor over the name of the function and a box will come up that tells you everything you need to know about it. This box is auto-generated by doc-strings; information that is written in text just under a function’s definition (def statement).</p>
+<p>An alternative way to see what a function does is to use a wonderful package called rich that does many things including providing an inspect() function. You will need to use pip to install rich by running pip install rich on the command line. Here’s an example of using rich’s inpsect method on the inv() function we imported above (methods=True reports all of the functionality of inv()):</p>
+<p>from rich import inspect</p>
+<p>inspect(inv, help=True) {admonition} Write a code block that imports the <strong>numpy</strong> function <code>numpy.linalg.det()</code> as <code>det()</code>. Run <code>inspect()</code> on it. Find the determinant of <code>[[4, 3], [1, 7]]</code>. Modules Sometimes, you will want to call in some code from a different script that you wrote (rather than from a package provided by someone else). Imagine you have several scripts with code in, a, b, and c, all of which need to use the same underlying function that you have written. What do you do? (Note that “script with code in” is just a text file that has a .py extension and contains code.)</p>
+<p>A central tenet of good coding is that you do not repeat yourself. Therefore, a bad solution to this problem would be to copy and paste the same code into all three of the scripts. A good solution is to write the code that’s need just once in a separate ‘utility’ script and have the other scripts import that one function. This also adheres to another important programming principle: that of writing modular code.</p>
+<p>This schematic shows the kind of situation we’re talking about:</p>
+<p>import networkx as nx import matplotlib.pyplot as plt import matplotlib_inline.backend_inline</p>
+</section>
+<section id="plot-settings" class="level3">
+<h3 class="anchored" data-anchor-id="plot-settings">Plot settings</h3>
+<p>plt.style.use( “https://github.com/aeturrell/coding-for-economists/raw/main/plot_style.txt” ) matplotlib_inline.backend_inline.set_matplotlib_formats(“svg”)</p>
+<p>graph = nx.DiGraph() graph.add_edges_from( [ (“Utility script”, “code file a”), (“Utility script”, “code file b”), (“code file a”, “code file c”), (“code file b”, “code file c”), (“Utility script”, “code file c”), ] ) colour_node = “#AFCBFF” fixed_pos = nx.spring_layout(graph, seed=100) nx.draw(graph, pos=fixed_pos, with_labels=True, node_size=6000, node_color=colour_node) extent = 1.4 plt.xlim(-extent, extent) plt.ylim(-extent, extent) plt.show(); How can we give code files a, b, and c access to the functions etc in the “Utility script”? We would define a file ‘utilities.py’ that had the following function in that we would like to use in the other code files:</p>
+</section>
+<section id="contents-of-utilities.py-file" class="level3">
+<h3 class="anchored" data-anchor-id="contents-of-utilities.py-file">Contents of utilities.py file</h3>
+<p>def really_useful_func(number): return number*10 Then, in ‘code_script_a.py’, we would write:</p>
+<p>import utilities as utils</p>
+<p>print(utils.really_useful_func(20)) An alternative is to just import the function we want, with the name we want:</p>
+<p>from utilities import really_useful_func as ru_fn</p>
+<p>print(ru_fn(30)) Another important example is the case where you want to run ‘utilities.py’ as a standalone script, but still want to borrow functions from it to run in other scripts. There’s a way to do this. Let’s change utilities.py to</p>
+</section>
+<section id="contents-of-utilities.py-file-1" class="level3">
+<h3 class="anchored" data-anchor-id="contents-of-utilities.py-file-1">Contents of utilities.py file</h3>
+<p>def really_useful_func(number): return number*10</p>
+<p>def default_func(): print(‘Script has run’)</p>
+<p>if <strong>name</strong> == ‘<strong>main</strong>’: default_func() What this says is that if we call ‘utilities.py’ from the command line, eg</p>
+<p>python utilities.py It will return Script has run because, by executing the script alone, we are asking for anything in the main block defined at the end of the file to be run. But we can still import anything from utilities into other scripts as before–and in that case it is not the main script, but an import, and so the main block will not be executed by default.</p>
+<p>You can important several functions at once from a module (aka another script file) like this:</p>
+<p>from utilities import really_useful_func, default_func {admonition} Write your own <code>utilities.py</code> that has a <code>super_useful_func</code> that accepts a number and returns the number divided by 10. In another script, <code>main.py</code>, try a) importing all of utilities and running <code>super_useful_func</code> on a number and, b), importing just <code>super_useful_func</code> from utilities and running it on a number. Reading and writing files Although most applications in economics will use the pandas package to read and write tabular data, it’s sometimes useful to know how to read and write arbitrary files using the built-in Python libraries too. To open a file</p>
+<p>open(‘filename’, mode) where mode could be r for read, a for append, w for write, and x to create a file. Create a file called text_example.txt and write a single line in it, ‘hello world’. To open the file and print the text, use:</p>
+<p>with open(‘text_example.txt’) as f: text_in = f.read()</p>
+<p>print(text_in) ‘hello world!’ is the new line character. Now let’s try adding a line to the file:</p>
+<p>with open(‘text_example.txt’, ‘a’) as f: f.write(‘this is another line’) Writing and reading files using the with command is a quick and convenient shorthand for the less concise open, action, close pattern. For example, the above example can also be written as:</p>
+<p>f = open(‘text_example.txt’, ‘a’) f.write(‘this is another line’) f.close() Although this short example shows opening and writing a text file, this approach can be used to edit a wide range of file extensions including .json, .xml, .csv, .tsv, and many more, including binary files in addition to plain text files.</p>
+</section>
 </section>
 <section id="lecture02" class="level2">
 <h2 class="anchored" data-anchor-id="lecture02">Lecture02</h2>
-<div id="5ac72ed4" class="cell" data-execution_count="1">
+<div id="10bf6050" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"seattle_pet_licenses.csv"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="86">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <div>
 
 
@@ -324,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Questions:How many pets are included in this dataset? The answer: 66042 Questions:How many variables do we have for each pet? The answer: 7 variables</p>
-<div id="741178c0" class="cell" data-execution_count="2">
+<div id="e43919d8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df.info()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'animal_s_name'</span>].value_counts().head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -343,7 +397,7 @@ Data columns (total 7 columns):
 dtypes: float64(1), object(6)
 memory usage: 3.5+ MB</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="87">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>animal_s_name
 Lucy       566
 Bella      451
@@ -357,7 +411,7 @@ Name: count, dtype: int64</code></pre>
 <h2 class="anchored" data-anchor-id="lecture03">Lecture03</h2>
 <section id="section" class="level3">
 <h3 class="anchored" data-anchor-id="section">1</h3>
-<div id="a94710ca" class="cell" data-execution_count="3">
+<div id="14a02fcf" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span><span class="st">'https://raw.githubusercontent.com/tidyverse/datascience-box/refs/heads/main/course-materials/lab-instructions/lab-03/data/nobel.csv'</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
@@ -408,7 +462,7 @@ Name: count, dtype: int64</code></pre>
 
 [5 rows x 26 columns]</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="88">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -712,7 +766,7 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 <p>Questions:How many observations and how many variables are in the dataset? What does each row represent? The answer: 935 observations, 26 variables, and one row for each person.</p>
-<div id="78ad53a2" class="cell" data-execution_count="4">
+<div id="df38ea4d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df.info()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>nobel_living <span class="op">=</span> df[</span>
@@ -958,7 +1012,7 @@ memory usage: 190.1+ KB
 </section>
 <section id="section-1" class="level3">
 <h3 class="anchored" data-anchor-id="section-1">2</h3>
-<div id="777135af" class="cell" data-execution_count="5">
+<div id="3086c97d" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span><span class="st">'https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv'</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
@@ -986,7 +1040,7 @@ memory usage: 190.1+ KB
 3      0            113803  53.1000  C123        S  
 4      0            373450   8.0500   NaN        S  </code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="90">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -1181,7 +1235,7 @@ memory usage: 190.1+ KB
 </div>
 </div>
 </div>
-<div id="75bd375a" class="cell" data-execution_count="6">
+<div id="d7348814" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df.info()</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> skimpy <span class="im">import</span> clean_columns</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> clean_columns(df,case<span class="op">=</span><span class="st">"snake"</span>)</span>
@@ -1215,7 +1269,7 @@ Index(['passenger_id', 'survived', 'pclass', 'name', 'sex', 'age', 'sib_sp',
        'parch', 'ticket', 'fare', 'cabin', 'embarked'],
       dtype='object')</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="91">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -1412,9 +1466,9 @@ Index(['passenger_id', 'survived', 'pclass', 'name', 'sex', 'age', 'sib_sp',
 </div>
 </section>
 </section>
-<section id="lectyre04" class="level2">
-<h2 class="anchored" data-anchor-id="lectyre04">Lectyre04</h2>
-<div id="09b82ad1" class="cell" data-execution_count="7">
+<section id="lecture04" class="level2">
+<h2 class="anchored" data-anchor-id="lecture04">Lecture04</h2>
+<div id="8e955983" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"all-ages.csv"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>df</span>
@@ -1508,12 +1562,12 @@ MISCELLANEOUS FINE ARTS                      45000  30000   60000.0
 [173 rows x 10 columns]</code></pre>
 </div>
 </div>
-<div id="8334d8ed" class="cell" data-execution_count="8">
+<div id="a4aabea8" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 按照专业分组，并把失业率从低到高升序排列</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'recent-grads.csv'</span>)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="93">
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -1817,7 +1871,7 @@ MISCELLANEOUS FINE ARTS                      45000  30000   60000.0
 </div>
 </div>
 <p>result = df.groupby([“Major”]).sum().sort_values([“ShareWomen”],ascending=False) print(result)</p>
-<div id="a9d8c576" class="cell" data-execution_count="9">
+<div id="c5b8a932" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 按照专业分组，将女生占比从高到低降序排列</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'recent-grads.csv'</span>)</span>
@@ -1968,7 +2022,7 @@ MILITARY TECHNOLOGIES                                      0
 [173 rows x 20 columns]</code></pre>
 </div>
 </div>
-<div id="d3967b49" class="cell" data-execution_count="10">
+<div id="421c7fff" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">### 按照专业分组，将女生占比从高到低降序排列</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1980,7 +2034,7 @@ MILITARY TECHNOLOGIES                                      0
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="homework_files/figure-html/cell-11-output-1.png" width="570" height="671" class="figure-img"></p>
+<p><img src="homework_files/figure-html/cell-11-output-1.png" width="571" height="671" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -1988,15 +2042,15 @@ MILITARY TECHNOLOGIES                                      0
 <p>Questions:What should I major in?</p>
 <p>The answer: Engineering</p>
 </section>
-<section id="lectyre05" class="level2">
-<h2 class="anchored" data-anchor-id="lectyre05">Lectyre05</h2>
-<div id="d1979249" class="cell" data-execution_count="11">
+<section id="lecture05" class="level2">
+<h2 class="anchored" data-anchor-id="lecture05">Lecture05</h2>
+<div id="355cc855" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
-            <div id="QHGxaT"></div>
+            <div id="Z51duB"></div>
             <script type="text/javascript" data-lets-plot-script="library">
                 if(!window.letsPlotCallQueue) {
                     window.letsPlotCallQueue = [];
@@ -2020,21 +2074,21 @@ MILITARY TECHNOLOGIES                                      0
                         var div = document.createElement("div");
                         div.style.color = 'darkred';
                         div.textContent = 'Error loading Lets-Plot JS';
-                        document.getElementById("QHGxaT").appendChild(div);
+                        document.getElementById("Z51duB").appendChild(div);
                     };
-                    var e = document.getElementById("QHGxaT");
+                    var e = document.getElementById("Z51duB");
                     e.appendChild(script);
                 })()
             </script>
             
 </div>
 </div>
-<div id="34b1d537" class="cell" data-execution_count="12">
+<div id="fc9a2ee2" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'plastic-waste.csv'</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">'plastic_waste_per_cap'</span>, <span class="st">'continent'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Quenstion1:Plot, using histograms, the distribution of plastic waste per capita faceted by continent. What can you say about how the continents compare to each other in terms of their plastic waste per capita? The answer:With the histogram, it is possible to observe differences in the per capita distribution of plastic waste across continents. For example, Africa shows a higher peak waste output and North America shows a wider distribution.</p>
-<div id="bf749250" class="cell" data-execution_count="13">
+<div id="49125b06" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create histograms faceted by continent</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>p_histogram <span class="op">=</span> ggplot(df_clean, aes(x<span class="op">=</span><span class="st">'plastic_waste_per_cap'</span>)) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    geom_histogram(bins<span class="op">=</span><span class="dv">30</span>, fill<span class="op">=</span><span class="st">'blue'</span>, color<span class="op">=</span><span class="st">'black'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>) <span class="op">+</span> <span class="op">\</span></span>
@@ -2046,13 +2100,13 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>p_histogram.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-   <div id="DhVqdo"></div>
+   <div id="VMIvZc"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("DhVqdo");
+   var containerDiv = document.getElementById("VMIvZc");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -2140,7 +2194,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"17"
+"spec_id":"1"
 };
                window.letsPlotCall(function() {
        
@@ -2174,7 +2228,7 @@ MILITARY TECHNOLOGIES                                      0
 </div>
 </div>
 <p>Quenstion2:Convert your side-by-side box plots from the previous task to violin plots. What do the violin plots reveal that box plots do not? What features are apparent in the box plots but not in the violin plots? The answer:Fiddle plots show the complete distribution of the data, showing the shape of the data and multiple peaks in the graph. Box plots provide explicit statistical information that violin plots only reflect through shape.</p>
-<div id="2fd8476e" class="cell" data-execution_count="14">
+<div id="c5dc1563" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Violin plots</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>p_violin <span class="op">=</span> ggplot(df, aes(x<span class="op">=</span><span class="st">'continent'</span>, y<span class="op">=</span><span class="st">'plastic_waste_per_cap'</span>, fill<span class="op">=</span><span class="st">'continent'</span>)) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    geom_violin(alpha<span class="op">=</span><span class="fl">0.7</span>) <span class="op">+</span> <span class="op">\</span></span>
@@ -2185,13 +2239,13 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>p_violin.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-   <div id="euCLIM"></div>
+   <div id="g9fXaI"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("euCLIM");
+   var containerDiv = document.getElementById("g9fXaI");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -2308,7 +2362,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"18"
+"spec_id":"2"
 };
                window.letsPlotCall(function() {
        
@@ -2342,7 +2396,7 @@ MILITARY TECHNOLOGIES                                      0
 </div>
 </div>
 <p>Quenstion3:Visualize the relationship between plastic waste per capita and mismanaged plastic waste per capita using a scatterplot. Describe the relationship. The answer:The scatter plot presents the relationship between plastic waste per capita and poorly managed waste per capita, checking if there is a positive or other relationship.</p>
-<div id="dd25ace2" class="cell" data-execution_count="15">
+<div id="6bcb013a" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'mismanaged_plastic_waste_per_cap'</span> <span class="kw">in</span> df.columns:</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    p_scatter <span class="op">=</span> ggplot(df, aes(x<span class="op">=</span><span class="st">'plastic_waste_per_cap'</span>, y<span class="op">=</span><span class="st">'mismanaged_plastic_waste_per_cap'</span>)) <span class="op">+</span> <span class="op">\</span></span>
@@ -2353,13 +2407,13 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    p_scatter.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-   <div id="EoTeuy"></div>
+   <div id="XNApS9"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("EoTeuy");
+   var containerDiv = document.getElementById("XNApS9");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -2438,7 +2492,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"19"
+"spec_id":"3"
 };
                window.letsPlotCall(function() {
        
@@ -2472,7 +2526,7 @@ MILITARY TECHNOLOGIES                                      0
 </div>
 </div>
 <p>Quenstion4:Colour the points in the scatterplot by continent. Does there seem to be any clear distinctions between continents with respect to how plastic waste per capita and mismanaged plastic waste per capita are associated? The answer:By distinguishing continents by color, it is possible to observe differences between continents. Certain continents may exhibit specific patterns or clusters, such as the gradual rise of Africa.</p>
-<div id="5691be4d" class="cell" data-execution_count="16">
+<div id="a28339b3" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Colored scatterplot</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>p_scatter_colored <span class="op">=</span> ggplot(df, aes(x<span class="op">=</span><span class="st">'plastic_waste_per_cap'</span>, y<span class="op">=</span><span class="st">'mismanaged_plastic_waste_per_cap'</span>, color<span class="op">=</span><span class="st">'continent'</span>)) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    geom_point(size<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.6</span>) <span class="op">+</span> <span class="op">\</span></span>
@@ -2482,13 +2536,13 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>p_scatter_colored.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-   <div id="Kieaps"></div>
+   <div id="i4RJMD"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("Kieaps");
+   var containerDiv = document.getElementById("i4RJMD");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -2569,7 +2623,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"20"
+"spec_id":"4"
 };
                window.letsPlotCall(function() {
        
@@ -2603,7 +2657,7 @@ MILITARY TECHNOLOGIES                                      0
 </div>
 </div>
 <p>Quenstion5:Visualize the relationship between plastic waste per capita and total population as well as plastic waste per capita and coastal population. You will need to make two separate plots. Do either of these pairs of variables appear to be more strongly linearly associated? The answer:The visualization of the relationship between the two demographic variables shows the association between plastic waste per capita and total population and coastal population. Through scatterplot analysis, plastic waste per capita exhibits a stronger linear relationship with coastal population.</p>
-<div id="0d5df394" class="cell" data-execution_count="17">
+<div id="cf6270c3" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plastic waste per capita vs Total population</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>p_pop_scatter <span class="op">=</span> ggplot(df, aes(x<span class="op">=</span><span class="st">'plastic_waste_per_cap'</span>, y<span class="op">=</span><span class="st">'total_pop'</span>, color<span class="op">=</span><span class="st">'continent'</span>)) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    geom_point(size<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.6</span>) <span class="op">+</span> <span class="op">\</span></span>
@@ -2613,13 +2667,13 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>p_pop_scatter.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-   <div id="BQTQNV"></div>
+   <div id="of5dUt"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("BQTQNV");
+   var containerDiv = document.getElementById("of5dUt");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -2700,7 +2754,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"21"
+"spec_id":"5"
 };
                window.letsPlotCall(function() {
        
@@ -2733,7 +2787,7 @@ MILITARY TECHNOLOGIES                                      0
    </script>
 </div>
 </div>
-<div id="37eaa4db" class="cell" data-execution_count="18">
+<div id="dda690eb" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plastic waste per capita vs Coastal population</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>p_coastal_scatter <span class="op">=</span> ggplot(df, aes(x<span class="op">=</span><span class="st">'plastic_waste_per_cap'</span>, y<span class="op">=</span><span class="st">'coastal_pop'</span>, color<span class="op">=</span><span class="st">'continent'</span>)) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    geom_point(size<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.6</span>) <span class="op">+</span> <span class="op">\</span></span>
@@ -2743,13 +2797,13 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>p_coastal_scatter.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-   <div id="GpFYr2"></div>
+   <div id="QOaNkc"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("GpFYr2");
+   var containerDiv = document.getElementById("QOaNkc");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -2830,7 +2884,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"22"
+"spec_id":"6"
 };
                window.letsPlotCall(function() {
        
@@ -2863,7 +2917,7 @@ MILITARY TECHNOLOGIES                                      0
    </script>
 </div>
 </div>
-<div id="9ba74ee7" class="cell" data-execution_count="19">
+<div id="0c887495" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>p_coastal_scatter <span class="op">=</span> ggplot(df, aes(x<span class="op">=</span><span class="st">'coastal_pop'</span>, y<span class="op">=</span><span class="st">'plastic_waste_per_cap'</span>, color<span class="op">=</span><span class="st">'continent'</span>)) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    geom_point(size<span class="op">=</span><span class="dv">3</span>, alpha<span class="op">=</span><span class="fl">0.6</span>) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    ggtitle(<span class="st">'Coastal Population vs. Plastic Waste per Capita'</span>) <span class="op">+</span> <span class="op">\</span></span>
@@ -2872,13 +2926,13 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>p_coastal_scatter.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-   <div id="5e3UWO"></div>
+   <div id="NpfbNB"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("5e3UWO");
+   var containerDiv = document.getElementById("NpfbNB");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -2959,7 +3013,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"23"
+"spec_id":"7"
 };
                window.letsPlotCall(function() {
        
@@ -2992,7 +3046,7 @@ MILITARY TECHNOLOGIES                                      0
    </script>
 </div>
 </div>
-<div id="cda66678" class="cell" data-execution_count="20">
+<div id="dff76dae" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>p_coastal_scatter.show()</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'coastal_population_proportion'</span>] <span class="op">=</span> df[<span class="st">'coastal_pop'</span>] <span class="op">/</span> df[<span class="st">'total_pop'</span>]</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>df_filtered <span class="op">=</span> df</span>
@@ -3008,13 +3062,13 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>p_scatter.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-   <div id="YZKI5h"></div>
+   <div id="aMo9LQ"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("YZKI5h");
+   var containerDiv = document.getElementById("aMo9LQ");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -3095,7 +3149,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"24"
+"spec_id":"8"
 };
                window.letsPlotCall(function() {
        
@@ -3128,13 +3182,13 @@ MILITARY TECHNOLOGIES                                      0
    </script>
 </div>
 <div class="cell-output cell-output-display">
-   <div id="q6Wr2p"></div>
+   <div id="FcrqE3"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
    // ----------
    
-   var containerDiv = document.getElementById("q6Wr2p");
+   var containerDiv = document.getElementById("FcrqE3");
    var observer = new ResizeObserver(function(entries) {
        for (let entry of entries) {
            var width = containerDiv.clientWidth
@@ -3235,7 +3289,7 @@ MILITARY TECHNOLOGIES                                      0
 }
 }],
 "metainfo_list":[],
-"spec_id":"25"
+"spec_id":"9"
 };
                window.letsPlotCall(function() {
        
@@ -3274,7 +3328,7 @@ MILITARY TECHNOLOGIES                                      0
 <h1>Practical</h1>
 <section id="practical01" class="level2">
 <h2 class="anchored" data-anchor-id="practical01">Practical01</h2>
-<div id="a0eff940" class="cell" data-execution_count="21">
+<div id="595fc4b8" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%pip install pandas matplotlib numpy pathlib pingouin lets_plot</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib <span class="im">as</span> mpl</span>
@@ -3294,10 +3348,10 @@ MILITARY TECHNOLOGIES                                      0
 <span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Questions:Explain in your own words what temperature ‘anomalies’ are. Why have researchers chosen this particular measure over other measures (such as absolute temperature)? The answer: (1)A temperature “anomaly” is typically defined as a temperature that falls outside the normal range or expected value, suggesting the potential for an underlying issue or change. In contrast, absolute temperature represents the average kinetic energy of molecular motion and is expressed in Kelvins (K). (2)Researchers select temperature “anomalies” over absolute temperatures due to their greater practicality, intuitiveness, ease of comprehension, suitability for comparison with normal conditions, and adaptability to diverse research fields and objectives.</p>
-<div id="30496861" class="cell" data-execution_count="22">
+<div id="db16d37d" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"NH.Ts+dSST.csv"</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="107">
+<div class="cell-output cell-output-display" data-execution_count="22">
 <div>
 
 
@@ -3443,7 +3497,7 @@ MILITARY TECHNOLOGIES                                      0
 </div>
 </div>
 </div>
-<div id="ae12d614" class="cell" data-execution_count="23">
+<div id="09025a1d" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -3474,7 +3528,7 @@ dtypes: float64(18), int64(1)
 memory usage: 21.7 KB</code></pre>
 </div>
 </div>
-<div id="46b05fa9" class="cell" data-execution_count="24">
+<div id="0d435886" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"NH.Ts+dSST.csv"</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -3506,7 +3560,7 @@ dtypes: float64(18), int64(1)
 memory usage: 21.7 KB</code></pre>
 </div>
 </div>
-<div id="cd983f31" class="cell" data-execution_count="25">
+<div id="faad4f19" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Year   Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov  \
@@ -3525,10 +3579,10 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 <p>Questions:Try importing the data again without using the keyword argument option na_values=“***” at all and see what difference it makes. The answer: By comparing the output of.info(), you can see the difference in importing the data without parameters. Some columns may be recognized as object instead of float64 or int64, which usually means they contain non-numeric characters.</p>
-<div id="33dede7e" class="cell" data-execution_count="26">
+<div id="2a755612" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"NH.Ts+dSST.csv"</span>, skiprows<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="111">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
 
@@ -3674,7 +3728,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="b676770f" class="cell" data-execution_count="27">
+<div id="cc1aa29c" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -3705,10 +3759,10 @@ dtypes: float64(18), int64(1)
 memory usage: 21.7 KB</code></pre>
 </div>
 </div>
-<div id="f6fbcf3c" class="cell" data-execution_count="28">
+<div id="51c7338c" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.set_index(<span class="st">"Year"</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="113">
+<div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
 
@@ -3869,9 +3923,9 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="f26ad719" class="cell" data-execution_count="29">
+<div id="cf5fdc9a" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>df.tail()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="114">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <div>
 
 
@@ -4032,7 +4086,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="607e8fe1" class="cell" data-execution_count="30">
+<div id="9cbf8a89" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Jan"</span>].plot(ax<span class="op">=</span>ax)</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"y label"</span>)</span>
@@ -4047,7 +4101,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="6b188fbe" class="cell" data-execution_count="31">
+<div id="f6dfcebd" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>ax.plot(df.index, df[<span class="st">"Jan"</span>])</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"y label"</span>)</span>
@@ -4062,7 +4116,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="ecd1727f" class="cell" data-execution_count="32">
+<div id="13c5074a" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"name-of-chart.pdf"</span>)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> <span class="st">"Jan"</span></span>
@@ -4074,7 +4128,7 @@ memory usage: 21.7 KB</code></pre>
 <span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Average temperature anomaly in </span><span class="sc">{</span>month<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> in the northern hemisphere (1880—</span><span class="sc">{</span>df<span class="sc">.</span>index<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">)"</span></span>
 <span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Annual temperature anomalies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="117">
+<div class="cell-output cell-output-display" data-execution_count="32">
 <pre><code>Text(0, 0.5, 'Annual temperature anomalies')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -4089,7 +4143,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 <p>Extra practice:Extra practice: The columns labelled DJF, MAM, JJA, and SON contain seasonal averages (means). For example, the MAM column contains the average of the March, April, and May columns for each year. Plot a separate line chart for each season, using average temperature anomaly for that season on the vertical axis and time (from 1880 to the latest year available) on the horizontal axis. The answer:</p>
-<div id="b94fd2ae" class="cell" data-execution_count="33">
+<div id="28fb33a6" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> <span class="st">"Jan"</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"red"</span>)</span>
@@ -4099,7 +4153,7 @@ memory usage: 21.7 KB</code></pre>
 <span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Average temperature anomaly in </span><span class="sc">{</span>month<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> in the northern hemisphere (1880—</span><span class="sc">{</span>df<span class="sc">.</span>index<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">)"</span></span>
 <span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Annual temperature anomalies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="118">
+<div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>Text(0, 0.5, 'Annual temperature anomalies')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -4110,7 +4164,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="3f7cda93" class="cell" data-execution_count="34">
+<div id="69d3b163" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> <span class="st">"MAM"</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"orange"</span>)</span>
@@ -4120,7 +4174,7 @@ memory usage: 21.7 KB</code></pre>
 <span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Average temperature anomaly in </span><span class="sc">{</span>month<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> in the northern hemisphere (1880—</span><span class="sc">{</span>df<span class="sc">.</span>index<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">)"</span></span>
 <span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Annual temperature anomalies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="119">
+<div class="cell-output cell-output-display" data-execution_count="34">
 <pre><code>Text(0, 0.5, 'Annual temperature anomalies')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -4131,7 +4185,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 </div>
-<div id="ca936b57" class="cell" data-execution_count="35">
+<div id="a67e434e" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> <span class="st">"JJA"</span></span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"orange"</span>)</span>
@@ -4141,7 +4195,7 @@ memory usage: 21.7 KB</code></pre>
 <span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Average temperature anomaly in </span><span class="sc">{</span>month<span class="sc">}</span><span class="ss"> </span><span class="ch">\n</span><span class="ss"> in the northern hemisphere (1880—</span><span class="sc">{</span>df<span class="sc">.</span>index<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">)"</span></span>
 <span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Annual temperature anomalies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="120">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>Text(0, 0.5, 'Annual temperature anomalies')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -4153,7 +4207,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 </div>
 <p>Questions:What do your charts from Questions 2 to 4(a) suggest about the relationship between temperature and time? The answer: Temperature increases with time.</p>
-<div id="622f1c1b" class="cell" data-execution_count="36">
+<div id="6a957bfc" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> <span class="st">"J-D"</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>ax.axhline(<span class="dv">0</span>, color<span class="op">=</span><span class="st">"orange"</span>)</span>
@@ -4163,7 +4217,7 @@ memory usage: 21.7 KB</code></pre>
 <span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="ss">f"Average annual temperature anomaly in </span><span class="ch">\n</span><span class="ss"> in the northern hemisphere (1880-</span><span class="sc">{</span>df<span class="sc">.</span>index<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">)"</span></span>
 <span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Annual temperature anomalies"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="121">
+<div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>Text(0, 0.5, 'Annual temperature anomalies')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -4176,7 +4230,7 @@ memory usage: 21.7 KB</code></pre>
 </div>
 <p>Questions:Discuss the similarities and differences between the charts. (For example, are the horizontal and vertical axes variables the same, or do the lines have the same shape?) The answer: (1)Similaritie:The temperature changes with time, and the overall trend is upward. (2)Differences:The horizontal and vertical axis variables of the two tables are different. For example, in 2000, Figure 1.4 shows a temperature of 0.5 and Figure 1.5 shows a temperature of 0.6. Questions:Looking at the behaviour of temperature over time from 1000 to 1900 in Figure 1.4, are the observed patterns in your chart unusual? The answer:From 1000 to 1900, the temperature fluctuate up and down with time, but the maximum value did not exceed 0.0, which indicates that the temperature change during this period was relatively small compared to the significant increase in industrial temperature after 1900, which I think is normal.</p>
 <p>Questions:Based on your answers to Questions 4 and 5, do you think the government should be concerned about climate change? The answer:My point of view is that according to the chart data, the temperature is rising, which is a sign of global warming, so the government should pay attention to climate change.</p>
-<div id="0a67209f" class="cell" data-execution_count="37">
+<div id="eb5a167e" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Period"</span>] <span class="op">=</span> pd.cut(</span>
 <span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>    df.index,</span>
 <span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>    bins<span class="op">=</span>[<span class="dv">1921</span>, <span class="dv">1950</span>, <span class="dv">1980</span>, <span class="dv">2010</span>],</span>
@@ -4184,7 +4238,7 @@ memory usage: 21.7 KB</code></pre>
 <span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a>    ordered<span class="op">=</span><span class="va">True</span>,</span>
 <span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb55-7"><a href="#cb55-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Period"</span>].tail(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="122">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Year
 2005    1981—2010
 2006    1981—2010
@@ -4210,10 +4264,10 @@ Name: Period, dtype: category
 Categories (3, object): ['1921—1950' &lt; '1951—1980' &lt; '1981—2010']</code></pre>
 </div>
 </div>
-<div id="c50ec1b2" class="cell" data-execution_count="38">
+<div id="4064d6d2" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>list_of_months <span class="op">=</span> [<span class="st">"Jun"</span>, <span class="st">"Jul"</span>, <span class="st">"Aug"</span>]</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>df[list_of_months].stack().head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="123">
+<div class="cell-output cell-output-display" data-execution_count="38">
 <pre><code>Year     
 1880  Jun   -0.18
       Jul   -0.22
@@ -4223,7 +4277,7 @@ Categories (3, object): ['1921—1950' &lt; '1951—1980' &lt; '1981—2010']</c
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="8eb014a9" class="cell" data-execution_count="39">
+<div id="35f29385" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(ncols<span class="op">=</span><span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, period <span class="kw">in</span> <span class="bu">zip</span>(axes, df[<span class="st">"Period"</span>].dropna().unique()):</span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    df.loc[df[<span class="st">"Period"</span>] <span class="op">==</span> period, list_of_months].stack().hist(ax<span class="op">=</span>ax)</span>
@@ -4239,7 +4293,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="751c6121" class="cell" data-execution_count="40">
+<div id="7a618014" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable that has years 1951 to 1980, and months Jan to Dec (inclusive)</span></span>
 <span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>temp_all_months <span class="op">=</span> df.loc[(df.index <span class="op">&gt;=</span> <span class="dv">1951</span>) <span class="op">&amp;</span> (df.index <span class="op">&lt;=</span> <span class="dv">1980</span>), <span class="st">"Jan"</span>:<span class="st">"Dec"</span>]</span>
 <span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Put all the data in stacked format and give the new columns sensible names</span></span>
@@ -4250,7 +4304,7 @@ dtype: float64</code></pre>
 <span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at this data:</span></span>
 <span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a>temp_all_months</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="125">
+<div class="cell-output cell-output-display" data-execution_count="40">
 <div>
 
 
@@ -4337,7 +4391,7 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="c4a28fae" class="cell" data-execution_count="41">
+<div id="c919f20c" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>quantiles <span class="op">=</span> [<span class="fl">0.3</span>, <span class="fl">0.7</span>]</span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>list_of_percentiles <span class="op">=</span> np.quantile(temp_all_months[<span class="st">"values"</span>], q<span class="op">=</span>quantiles)</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4348,7 +4402,7 @@ dtype: float64</code></pre>
 The hot threshold of 70.0% is 0.1</code></pre>
 </div>
 </div>
-<div id="243dc28e" class="cell" data-execution_count="42">
+<div id="96f7068c" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a variable that has years 1981 to 2010, and months Jan to Dec (inclusive)</span></span>
 <span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>temp_all_months <span class="op">=</span> df.loc[(df.index <span class="op">&gt;=</span> <span class="dv">1981</span>) <span class="op">&amp;</span> (df.index <span class="op">&lt;=</span> <span class="dv">2010</span>), <span class="st">"Jan"</span>:<span class="st">"Dec"</span>]</span>
 <span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Put all the data in stacked format and give the new columns sensible names</span></span>
@@ -4359,7 +4413,7 @@ The hot threshold of 70.0% is 0.1</code></pre>
 <span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at the start of this data data:</span></span>
 <span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a>temp_all_months.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="127">
+<div class="cell-output cell-output-display" data-execution_count="42">
 <div>
 
 
@@ -4409,7 +4463,7 @@ The hot threshold of 70.0% is 0.1</code></pre>
 </div>
 </div>
 </div>
-<div id="087fec65" class="cell" data-execution_count="43">
+<div id="3473564d" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>entries_less_than_q30 <span class="op">=</span> temp_all_months[<span class="st">"values"</span>] <span class="op">&lt;</span> list_of_percentiles[<span class="dv">0</span>]</span>
 <span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>proportion_under_q30 <span class="op">=</span> entries_less_than_q30.mean()</span>
 <span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(</span>
@@ -4419,14 +4473,14 @@ The hot threshold of 70.0% is 0.1</code></pre>
 <pre><code>The proportion under -0.1 is 1.94%</code></pre>
 </div>
 </div>
-<div id="1e116a85" class="cell" data-execution_count="44">
+<div id="76123eee" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>proportion_over_q70 <span class="op">=</span> (temp_all_months[<span class="st">"values"</span>] <span class="op">&gt;</span> list_of_percentiles[<span class="dv">1</span>]).mean()</span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The proportion over </span><span class="sc">{</span>list_of_percentiles[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>proportion_over_q70<span class="op">*</span><span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The proportion over 0.1 is 84.72%</code></pre>
 </div>
 </div>
-<div id="fca67733" class="cell" data-execution_count="45">
+<div id="33e0f329" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>temp_all_months <span class="op">=</span> (</span>
 <span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>    df.loc[:, <span class="st">"DJF"</span>:<span class="st">"SON"</span>]</span>
 <span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>    .stack()</span>
@@ -4441,7 +4495,7 @@ The hot threshold of 70.0% is 0.1</code></pre>
 <span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb68-13"><a href="#cb68-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at a cut of the data using `.iloc`, which provides position</span></span>
 <span id="cb68-14"><a href="#cb68-14" aria-hidden="true" tabindex="-1"></a>temp_all_months.iloc[<span class="op">-</span><span class="dv">135</span>:<span class="op">-</span><span class="dv">125</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="130">
+<div class="cell-output cell-output-display" data-execution_count="45">
 <div>
 
 
@@ -4533,7 +4587,7 @@ The hot threshold of 70.0% is 0.1</code></pre>
 </div>
 </div>
 <p>Questions:Calculate the mean (average) and variance separately for the following time periods: 1921–1950, 1951–1980, and 1981–2010. The answer:The variance of the later period is significantly higher than that of the earlier period, which indicates that the air temperature becomes more variable.</p>
-<div id="872fdc4c" class="cell" data-execution_count="46">
+<div id="a2f9e593" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>seasons <span class="op">=</span> {</span>
 <span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DJF"</span>: [<span class="st">"Dec"</span>, <span class="st">"Jan"</span>, <span class="st">"Feb"</span>],</span>
 <span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MAM"</span>: [<span class="st">"Mar"</span>, <span class="st">"Apr"</span>, <span class="st">"May"</span>],</span>
@@ -4612,7 +4666,7 @@ Season: SON
 </code></pre>
 </div>
 </div>
-<div id="aaef731c" class="cell" data-execution_count="47">
+<div id="4fef54f0" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>temp_all_months <span class="op">=</span> (</span>
 <span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>    df.loc[:, <span class="st">"DJF"</span>:<span class="st">"SON"</span>]</span>
 <span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>    .stack()</span>
@@ -4627,7 +4681,7 @@ Season: SON
 <span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Take a look at a cut of the data using `.iloc`, which provides position</span></span>
 <span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a>temp_all_months.iloc[<span class="op">-</span><span class="dv">135</span>:<span class="op">-</span><span class="dv">125</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="132">
+<div class="cell-output cell-output-display" data-execution_count="47">
 <div>
 
 
@@ -4718,20 +4772,20 @@ Season: SON
 </div>
 </div>
 </div>
-<div id="83e548eb" class="cell" data-execution_count="48">
+<div id="3bbc1563" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>grp_mean_var <span class="op">=</span> temp_all_months.groupby([<span class="st">"Season"</span>, <span class="st">"Period"</span>])[<span class="st">"Values"</span>].agg(</span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>    [np.mean, np.var]</span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>grp_mean_var</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\45202\AppData\Local\Temp\ipykernel_26448\1563140002.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+<pre><code>C:\Users\45202\AppData\Local\Temp\ipykernel_31480\1563140002.py:1: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
   grp_mean_var = temp_all_months.groupby(["Season", "Period"])["Values"].agg(
-C:\Users\45202\AppData\Local\Temp\ipykernel_26448\1563140002.py:1: FutureWarning: The provided callable &lt;function mean at 0x00000206E02C7D80&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+C:\Users\45202\AppData\Local\Temp\ipykernel_31480\1563140002.py:1: FutureWarning: The provided callable &lt;function mean at 0x000001F3E3577E20&gt; is currently using SeriesGroupBy.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
   grp_mean_var = temp_all_months.groupby(["Season", "Period"])["Values"].agg(
-C:\Users\45202\AppData\Local\Temp\ipykernel_26448\1563140002.py:1: FutureWarning: The provided callable &lt;function var at 0x00000206E02D0040&gt; is currently using SeriesGroupBy.var. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "var" instead.
+C:\Users\45202\AppData\Local\Temp\ipykernel_31480\1563140002.py:1: FutureWarning: The provided callable &lt;function var at 0x000001F3E35800E0&gt; is currently using SeriesGroupBy.var. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "var" instead.
   grp_mean_var = temp_all_months.groupby(["Season", "Period"])["Values"].agg(</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="133">
+<div class="cell-output cell-output-display" data-execution_count="48">
 <div>
 
 
@@ -4821,7 +4875,7 @@ C:\Users\45202\AppData\Local\Temp\ipykernel_26448\1563140002.py:1: FutureWarning
 </div>
 </div>
 </div>
-<div id="b3a6b8bd" class="cell" data-execution_count="49">
+<div id="9dc4a9dc" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>min_year <span class="op">=</span> <span class="dv">1880</span></span>
 <span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>    ggplot(temp_all_months, aes(x<span class="op">=</span><span class="st">"Year"</span>, y<span class="op">=</span><span class="st">"Values"</span>, color<span class="op">=</span><span class="st">"Season"</span>))</span>
@@ -4836,7 +4890,7 @@ C:\Users\45202\AppData\Local\Temp\ipykernel_26448\1563140002.py:1: FutureWarning
 <span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>min_year, y<span class="op">=</span><span class="fl">0.1</span>, label<span class="op">=</span><span class="st">"1951—1980 average"</span>, hjust<span class="op">=</span><span class="st">"left"</span>, color<span class="op">=</span><span class="st">"black"</span></span>
 <span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="134">
+<div class="cell-output cell-output-display" data-execution_count="49">
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
   <style type="text/css">
   .plt-container {
@@ -4849,117 +4903,117 @@ C:\Users\45202\AppData\Local\Temp\ipykernel_26448\1563140002.py:1: FutureWarning
 text {
    text-rendering: optimizeLegibility;
 }
-#prHVNQQ .plot-title {
+#pPHl8gC .plot-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 16.0px;
 
 }
-#prHVNQQ .plot-subtitle {
+#pPHl8gC .plot-subtitle {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#prHVNQQ .plot-caption {
+#pPHl8gC .plot-caption {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#prHVNQQ .hyperlink-element {
+#pPHl8gC .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
    font-style: normal;
 }
-#prHVNQQ .legend-title {
+#pPHl8gC .legend-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#prHVNQQ .legend-item {
+#pPHl8gC .legend-item {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#prHVNQQ .axis-title-x {
+#pPHl8gC .axis-title-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#prHVNQQ .axis-text-x {
+#pPHl8gC .axis-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dXMkfj3 .axis-tooltip-text-x {
+#dogik2a .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#prHVNQQ .axis-title-y {
+#pPHl8gC .axis-title-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#prHVNQQ .axis-text-y {
+#pPHl8gC .axis-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dXMkfj3 .axis-tooltip-text-y {
+#dogik2a .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#prHVNQQ .facet-strip-text-x {
+#pPHl8gC .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#prHVNQQ .facet-strip-text-y {
+#pPHl8gC .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dXMkfj3 .tooltip-text {
+#dogik2a .tooltip-text {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dXMkfj3 .tooltip-title {
+#dogik2a .tooltip-title {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dXMkfj3 .tooltip-label {
+#dogik2a .tooltip-label {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
@@ -4968,7 +5022,7 @@ font-size: 13.0px;
 }
 
   </style>
-  <g id="prHVNQQ">
+  <g id="pPHl8gC">
     <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z">
     </path>
     <g transform="translate(29.5 42.5 ) ">
@@ -5010,7 +5064,7 @@ font-size: 13.0px;
           </g>
         </g>
       </g>
-      <g clip-path="url(#cRUOuaC)" clip-bounds-jfx="[rect (35.01530667574961, 0.0), (446.4352643435323, 305.0)]">
+      <g clip-path="url(#czklPE1)" clip-bounds-jfx="[rect (35.01530667574961, 0.0), (446.4352643435323, 305.0)]">
         <g transform="translate(35.01530667574961 0.0 ) ">
           <g>
             <g>
@@ -5047,19 +5101,19 @@ font-size: 13.0px;
           </g>
         </g>
         <defs>
-          <clippath id="cDsQ9Rw">
+          <clippath id="c6z6BHi">
             <rect x="35.01530667574961" y="0.0" width="446.4352643435323" height="305.0">
             </rect>
           </clippath>
         </defs>
         <defs>
-          <clippath id="cXqliW8">
+          <clippath id="cHqkpjn">
             <rect x="35.01530667574961" y="0.0" width="446.4352643435323" height="305.0">
             </rect>
           </clippath>
         </defs>
         <defs>
-          <clippath id="cRUOuaC">
+          <clippath id="czklPE1">
             <rect x="35.01530667574961" y="0.0" width="446.4352643435323" height="305.0">
             </rect>
           </clippath>
@@ -5282,16 +5336,16 @@ font-size: 13.0px;
     <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z" pointer-events="none">
     </path>
   </g>
-  <g id="dXMkfj3">
+  <g id="dogik2a">
   </g>
 </svg>
 </div>
 </div>
 <p>Questions:Using the findings of the New York Times article and your answers to Questions 1 to 5, discuss whether temperature appears to be more variable over time. Would you advise the government to spend more money on mitigating the effects of extreme weather events? The answer:As temperatures change more over time due to global warming, heat extremes are becoming more frequent and damaging. First, I suggest that the government should spend more money to alleviate the impact of extreme weather events on people’s lives, such as expanding the urban green area. Second, we will advocate low-carbon travel and life for the people.</p>
-<div id="ae865a99" class="cell" data-execution_count="50">
+<div id="2c1774b2" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>df_co2 <span class="op">=</span> pd.read_csv(<span class="vs">r"1_C02-data.csv"</span>)</span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>df_co2.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="135">
+<div class="cell-output cell-output-display" data-execution_count="50">
 <div>
 
 
@@ -5353,10 +5407,10 @@ font-size: 13.0px;
 </div>
 </div>
 </div>
-<div id="776493fe" class="cell" data-execution_count="51">
+<div id="5770bc93" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>df_co2_june <span class="op">=</span> df_co2.loc[df_co2[<span class="st">"Month"</span>] <span class="op">==</span> <span class="dv">6</span>]</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>df_co2_june.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="136">
+<div class="cell-output cell-output-display" data-execution_count="51">
 <div>
 
 
@@ -5418,10 +5472,10 @@ font-size: 13.0px;
 </div>
 </div>
 </div>
-<div id="7a659a78" class="cell" data-execution_count="52">
+<div id="f86f9a88" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>df_temp_co2 <span class="op">=</span> pd.merge(df_co2_june, df, on<span class="op">=</span><span class="st">"Year"</span>)</span>
 <span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>df_temp_co2[[<span class="st">"Year"</span>, <span class="st">"Jun"</span>, <span class="st">"Trend"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="137">
+<div class="cell-output cell-output-display" data-execution_count="52">
 <div>
 
 
@@ -5471,7 +5525,7 @@ font-size: 13.0px;
 </div>
 </div>
 </div>
-<div id="701be26b" class="cell" data-execution_count="53">
+<div id="ff11e5cf" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df_temp_co2, aes(x<span class="op">=</span><span class="st">"Jun"</span>, y<span class="op">=</span><span class="st">"Trend"</span>))</span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(color<span class="op">=</span><span class="st">"black"</span>, size<span class="op">=</span><span class="dv">3</span>)</span>
@@ -5481,7 +5535,7 @@ font-size: 13.0px;
 <span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Temperature anomaly (degrees Celsius)"</span>,</span>
 <span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="138">
+<div class="cell-output cell-output-display" data-execution_count="53">
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
   <style type="text/css">
   .plt-container {
@@ -5494,117 +5548,117 @@ font-size: 13.0px;
 text {
    text-rendering: optimizeLegibility;
 }
-#pL3qNtt .plot-title {
+#pxqRxkt .plot-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 16.0px;
 
 }
-#pL3qNtt .plot-subtitle {
+#pxqRxkt .plot-subtitle {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pL3qNtt .plot-caption {
+#pxqRxkt .plot-caption {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pL3qNtt .hyperlink-element {
+#pxqRxkt .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
    font-style: normal;
 }
-#pL3qNtt .legend-title {
+#pxqRxkt .legend-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pL3qNtt .legend-item {
+#pxqRxkt .legend-item {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pL3qNtt .axis-title-x {
+#pxqRxkt .axis-title-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pL3qNtt .axis-text-x {
+#pxqRxkt .axis-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dByPINQ .axis-tooltip-text-x {
+#dU7N1KJ .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pL3qNtt .axis-title-y {
+#pxqRxkt .axis-title-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pL3qNtt .axis-text-y {
+#pxqRxkt .axis-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dByPINQ .axis-tooltip-text-y {
+#dU7N1KJ .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pL3qNtt .facet-strip-text-x {
+#pxqRxkt .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pL3qNtt .facet-strip-text-y {
+#pxqRxkt .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dByPINQ .tooltip-text {
+#dU7N1KJ .tooltip-text {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dByPINQ .tooltip-title {
+#dU7N1KJ .tooltip-title {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dByPINQ .tooltip-label {
+#dU7N1KJ .tooltip-label {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
@@ -5613,7 +5667,7 @@ font-size: 13.0px;
 }
 
   </style>
-  <g id="pL3qNtt">
+  <g id="pxqRxkt">
     <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z">
     </path>
     <g transform="translate(29.5 26.5 ) ">
@@ -5651,7 +5705,7 @@ font-size: 13.0px;
           </g>
         </g>
       </g>
-      <g clip-path="url(#cBOW9kT)" clip-bounds-jfx="[rect (29.941816366404606, 0.0), (534.0581836335954, 321.0)]">
+      <g clip-path="url(#cYj8MyF)" clip-bounds-jfx="[rect (29.941816366404606, 0.0), (534.0581836335954, 321.0)]">
         <g transform="translate(29.941816366404606 0.0 ) ">
           <g>
             <g>
@@ -5723,7 +5777,7 @@ font-size: 13.0px;
           </g>
         </g>
         <defs>
-          <clippath id="cBOW9kT">
+          <clippath id="cYj8MyF">
             <rect x="29.941816366404606" y="0.0" width="534.0581836335954" height="321.0">
             </rect>
           </clippath>
@@ -5854,14 +5908,14 @@ font-size: 13.0px;
     <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z" pointer-events="none">
     </path>
   </g>
-  <g id="dByPINQ">
+  <g id="dU7N1KJ">
   </g>
 </svg>
 </div>
 </div>
-<div id="fe578671" class="cell" data-execution_count="54">
+<div id="5a97f2bd" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>df_temp_co2[[<span class="st">"Jun"</span>, <span class="st">"Trend"</span>]].corr(method<span class="op">=</span><span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="139">
+<div class="cell-output cell-output-display" data-execution_count="54">
 <div>
 
 
@@ -5890,7 +5944,7 @@ font-size: 13.0px;
 </div>
 </div>
 </div>
-<div id="9aab23ea" class="cell" data-execution_count="55">
+<div id="6998bb6b" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df_temp_co2, aes(x<span class="op">=</span><span class="st">"Year"</span>, y<span class="op">=</span><span class="st">"Jun"</span>))</span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_line(size<span class="op">=</span><span class="dv">1</span>)</span>
@@ -5899,7 +5953,7 @@ font-size: 13.0px;
 <span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> scale_x_continuous(<span class="bu">format</span><span class="op">=</span><span class="st">"d"</span>)</span>
 <span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="140">
+<div class="cell-output cell-output-display" data-execution_count="55">
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
   <style type="text/css">
   .plt-container {
@@ -5912,117 +5966,117 @@ font-size: 13.0px;
 text {
    text-rendering: optimizeLegibility;
 }
-#pOLQQkz .plot-title {
+#pSAmGUw .plot-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 16.0px;
 
 }
-#pOLQQkz .plot-subtitle {
+#pSAmGUw .plot-subtitle {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pOLQQkz .plot-caption {
+#pSAmGUw .plot-caption {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pOLQQkz .hyperlink-element {
+#pSAmGUw .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
    font-style: normal;
 }
-#pOLQQkz .legend-title {
+#pSAmGUw .legend-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pOLQQkz .legend-item {
+#pSAmGUw .legend-item {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pOLQQkz .axis-title-x {
+#pSAmGUw .axis-title-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pOLQQkz .axis-text-x {
+#pSAmGUw .axis-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dlifV3u .axis-tooltip-text-x {
+#dqToa4Y .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pOLQQkz .axis-title-y {
+#pSAmGUw .axis-title-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pOLQQkz .axis-text-y {
+#pSAmGUw .axis-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dlifV3u .axis-tooltip-text-y {
+#dqToa4Y .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pOLQQkz .facet-strip-text-x {
+#pSAmGUw .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pOLQQkz .facet-strip-text-y {
+#pSAmGUw .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dlifV3u .tooltip-text {
+#dqToa4Y .tooltip-text {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dlifV3u .tooltip-title {
+#dqToa4Y .tooltip-title {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dlifV3u .tooltip-label {
+#dqToa4Y .tooltip-label {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
@@ -6031,7 +6085,7 @@ font-size: 13.0px;
 }
 
   </style>
-  <g id="pOLQQkz">
+  <g id="pSAmGUw">
     <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z">
     </path>
     <g transform="translate(29.5 26.5 ) ">
@@ -6071,7 +6125,7 @@ font-size: 13.0px;
           </g>
         </g>
       </g>
-      <g clip-path="url(#ceeB0GT)" clip-bounds-jfx="[rect (35.01530667574961, 0.0), (528.9846933242504, 321.0)]">
+      <g clip-path="url(#cBhPMsL)" clip-bounds-jfx="[rect (35.01530667574961, 0.0), (528.9846933242504, 321.0)]">
         <g transform="translate(35.01530667574961 0.0 ) ">
           <g>
             <g>
@@ -6083,7 +6137,7 @@ font-size: 13.0px;
           </g>
         </g>
         <defs>
-          <clippath id="ceeB0GT">
+          <clippath id="cBhPMsL">
             <rect x="35.01530667574961" y="0.0" width="528.9846933242504" height="321.0">
             </rect>
           </clippath>
@@ -6219,12 +6273,12 @@ font-size: 13.0px;
     <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z" pointer-events="none">
     </path>
   </g>
-  <g id="dlifV3u">
+  <g id="dqToa4Y">
   </g>
 </svg>
 </div>
 </div>
-<div id="0e810d38" class="cell" data-execution_count="56">
+<div id="c923daa2" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>base_plot <span class="op">=</span> ggplot(df_temp_co2) <span class="op">+</span> scale_x_continuous(<span class="bu">format</span><span class="op">=</span><span class="st">"d"</span>)</span>
 <span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>plot_p <span class="op">=</span> (</span>
 <span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    base_plot</span>
@@ -6237,9 +6291,9 @@ font-size: 13.0px;
 <span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> labs(title<span class="op">=</span><span class="st">"Carbon dioxide emissions"</span>)</span>
 <span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a>gggrid([plot_p, plot_q], ncol<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="141">
+<div class="cell-output cell-output-display" data-execution_count="56">
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="900.0" height="400.0">
-  <g id="pQaPRBi">
+  <g id="psSnfj9">
     <rect x="0.0" y="0.0" height="400.0" width="900.0" fill="rgb(255,255,255)" fill-opacity="1.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0">
     </rect>
   </g>
@@ -6255,117 +6309,117 @@ font-size: 13.0px;
 text {
    text-rendering: optimizeLegibility;
 }
-#pom7NVN .plot-title {
+#p7TOdpb .plot-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 16.0px;
 
 }
-#pom7NVN .plot-subtitle {
+#p7TOdpb .plot-subtitle {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pom7NVN .plot-caption {
+#p7TOdpb .plot-caption {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pom7NVN .hyperlink-element {
+#p7TOdpb .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
    font-style: normal;
 }
-#pom7NVN .legend-title {
+#p7TOdpb .legend-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pom7NVN .legend-item {
+#p7TOdpb .legend-item {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pom7NVN .axis-title-x {
+#p7TOdpb .axis-title-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pom7NVN .axis-text-x {
+#p7TOdpb .axis-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dVogcNk .axis-tooltip-text-x {
+#daZ48uT .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pom7NVN .axis-title-y {
+#p7TOdpb .axis-title-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pom7NVN .axis-text-y {
+#p7TOdpb .axis-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dVogcNk .axis-tooltip-text-y {
+#daZ48uT .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pom7NVN .facet-strip-text-x {
+#p7TOdpb .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pom7NVN .facet-strip-text-y {
+#p7TOdpb .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dVogcNk .tooltip-text {
+#daZ48uT .tooltip-text {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dVogcNk .tooltip-title {
+#daZ48uT .tooltip-title {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dVogcNk .tooltip-label {
+#daZ48uT .tooltip-label {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
@@ -6374,7 +6428,7 @@ font-size: 13.0px;
 }
 
     </style>
-    <g id="pom7NVN">
+    <g id="p7TOdpb">
       <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L448.0 400.0 L448.0 0.0 Z">
       </path>
       <g transform="translate(29.5 26.5 ) ">
@@ -6414,7 +6468,7 @@ font-size: 13.0px;
             </g>
           </g>
         </g>
-        <g clip-path="url(#cacHEfX)" clip-bounds-jfx="[rect (35.01530667574961, 0.0), (376.9846933242504, 321.0)]">
+        <g clip-path="url(#chp7Iti)" clip-bounds-jfx="[rect (35.01530667574961, 0.0), (376.9846933242504, 321.0)]">
           <g transform="translate(35.01530667574961 0.0 ) ">
             <g>
               <g>
@@ -6426,7 +6480,7 @@ font-size: 13.0px;
             </g>
           </g>
           <defs>
-            <clippath id="cacHEfX">
+            <clippath id="chp7Iti">
               <rect x="35.01530667574961" y="0.0" width="376.9846933242504" height="321.0">
               </rect>
             </clippath>
@@ -6562,7 +6616,7 @@ font-size: 13.0px;
       <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L448.0 400.0 L448.0 0.0 Z" pointer-events="none">
       </path>
     </g>
-    <g id="dVogcNk">
+    <g id="daZ48uT">
     </g>
   </svg>
   <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="448.0" height="400.0" x="452.0" y="0.0">
@@ -6577,117 +6631,117 @@ font-size: 13.0px;
 text {
    text-rendering: optimizeLegibility;
 }
-#ppJsXm4 .plot-title {
+#pK3VDbd .plot-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 16.0px;
 
 }
-#ppJsXm4 .plot-subtitle {
+#pK3VDbd .plot-subtitle {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#ppJsXm4 .plot-caption {
+#pK3VDbd .plot-caption {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#ppJsXm4 .hyperlink-element {
+#pK3VDbd .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
    font-style: normal;
 }
-#ppJsXm4 .legend-title {
+#pK3VDbd .legend-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#ppJsXm4 .legend-item {
+#pK3VDbd .legend-item {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#ppJsXm4 .axis-title-x {
+#pK3VDbd .axis-title-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#ppJsXm4 .axis-text-x {
+#pK3VDbd .axis-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dGVEkOv .axis-tooltip-text-x {
+#dOKo0xk .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#ppJsXm4 .axis-title-y {
+#pK3VDbd .axis-title-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#ppJsXm4 .axis-text-y {
+#pK3VDbd .axis-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dGVEkOv .axis-tooltip-text-y {
+#dOKo0xk .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#ppJsXm4 .facet-strip-text-x {
+#pK3VDbd .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#ppJsXm4 .facet-strip-text-y {
+#pK3VDbd .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dGVEkOv .tooltip-text {
+#dOKo0xk .tooltip-text {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dGVEkOv .tooltip-title {
+#dOKo0xk .tooltip-title {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dGVEkOv .tooltip-label {
+#dOKo0xk .tooltip-label {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
@@ -6696,7 +6750,7 @@ font-size: 13.0px;
 }
 
     </style>
-    <g id="ppJsXm4">
+    <g id="pK3VDbd">
       <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L448.0 400.0 L448.0 0.0 Z">
       </path>
       <g transform="translate(29.5 26.5 ) ">
@@ -6732,7 +6786,7 @@ font-size: 13.0px;
             </g>
           </g>
         </g>
-        <g clip-path="url(#cUEFC3s)" clip-bounds-jfx="[rect (29.941816366404606, 0.0), (382.0581836335954, 321.0)]">
+        <g clip-path="url(#chyCspt)" clip-bounds-jfx="[rect (29.941816366404606, 0.0), (382.0581836335954, 321.0)]">
           <g transform="translate(29.941816366404606 0.0 ) ">
             <g>
               <g>
@@ -6744,7 +6798,7 @@ font-size: 13.0px;
             </g>
           </g>
           <defs>
-            <clippath id="cUEFC3s">
+            <clippath id="chyCspt">
               <rect x="29.941816366404606" y="0.0" width="382.0581836335954" height="321.0">
               </rect>
             </clippath>
@@ -6866,17 +6920,17 @@ font-size: 13.0px;
       <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L448.0 400.0 L448.0 0.0 Z" pointer-events="none">
       </path>
     </g>
-    <g id="dGVEkOv">
+    <g id="dOKo0xk">
     </g>
   </svg>
 </svg>
 </div>
 </div>
 <p>Extra practice: Choose two months and add the CO2 trend data to the temperature dataset from Part 1.1, making sure that the data corresponds to the correct year. Create a separate chart for each month. The answer:</p>
-<div id="23656b9b" class="cell" data-execution_count="57">
+<div id="5ed5944e" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>df_co2_june <span class="op">=</span> df_co2.loc[df_co2[<span class="st">"Month"</span>] <span class="op">==</span> <span class="dv">3</span>]</span>
 <span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>df_co2_june.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="142">
+<div class="cell-output cell-output-display" data-execution_count="57">
 <div>
 
 
@@ -6938,10 +6992,10 @@ font-size: 13.0px;
 </div>
 </div>
 </div>
-<div id="e6b34fb3" class="cell" data-execution_count="58">
+<div id="be817b92" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>df_temp_co2 <span class="op">=</span> pd.merge(df_co2_june, df, on<span class="op">=</span><span class="st">"Year"</span>)</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>df_temp_co2[[<span class="st">"Year"</span>, <span class="st">"Mar"</span>, <span class="st">"Trend"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="143">
+<div class="cell-output cell-output-display" data-execution_count="58">
 <div>
 
 
@@ -6991,7 +7045,7 @@ font-size: 13.0px;
 </div>
 </div>
 </div>
-<div id="356fc3a4" class="cell" data-execution_count="59">
+<div id="05489f4d" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df_temp_co2, aes(x<span class="op">=</span><span class="st">"Mar"</span>, y<span class="op">=</span><span class="st">"Trend"</span>))</span>
 <span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(color<span class="op">=</span><span class="st">"red"</span>, size<span class="op">=</span><span class="dv">3</span>)</span>
@@ -7001,7 +7055,7 @@ font-size: 13.0px;
 <span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Temperature anomaly (degrees Celsius)"</span>,</span>
 <span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="144">
+<div class="cell-output cell-output-display" data-execution_count="59">
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
   <style type="text/css">
   .plt-container {
@@ -7014,117 +7068,117 @@ font-size: 13.0px;
 text {
    text-rendering: optimizeLegibility;
 }
-#pdqUIVC .plot-title {
+#pp5QM9S .plot-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 16.0px;
 
 }
-#pdqUIVC .plot-subtitle {
+#pp5QM9S .plot-subtitle {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pdqUIVC .plot-caption {
+#pp5QM9S .plot-caption {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pdqUIVC .hyperlink-element {
+#pp5QM9S .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
    font-style: normal;
 }
-#pdqUIVC .legend-title {
+#pp5QM9S .legend-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pdqUIVC .legend-item {
+#pp5QM9S .legend-item {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pdqUIVC .axis-title-x {
+#pp5QM9S .axis-title-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pdqUIVC .axis-text-x {
+#pp5QM9S .axis-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dYFLKWB .axis-tooltip-text-x {
+#dRc42NY .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pdqUIVC .axis-title-y {
+#pp5QM9S .axis-title-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pdqUIVC .axis-text-y {
+#pp5QM9S .axis-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dYFLKWB .axis-tooltip-text-y {
+#dRc42NY .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pdqUIVC .facet-strip-text-x {
+#pp5QM9S .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pdqUIVC .facet-strip-text-y {
+#pp5QM9S .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dYFLKWB .tooltip-text {
+#dRc42NY .tooltip-text {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dYFLKWB .tooltip-title {
+#dRc42NY .tooltip-title {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dYFLKWB .tooltip-label {
+#dRc42NY .tooltip-label {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
@@ -7133,7 +7187,7 @@ font-size: 13.0px;
 }
 
   </style>
-  <g id="pdqUIVC">
+  <g id="pp5QM9S">
     <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z">
     </path>
     <g transform="translate(29.5 26.5 ) ">
@@ -7169,7 +7223,7 @@ font-size: 13.0px;
           </g>
         </g>
       </g>
-      <g clip-path="url(#cVTxmfT)" clip-bounds-jfx="[rect (29.941816366404606, 0.0), (534.0581836335954, 321.0)]">
+      <g clip-path="url(#cPlOGda)" clip-bounds-jfx="[rect (29.941816366404606, 0.0), (534.0581836335954, 321.0)]">
         <g transform="translate(29.941816366404606 0.0 ) ">
           <g>
             <g>
@@ -7241,7 +7295,7 @@ font-size: 13.0px;
           </g>
         </g>
         <defs>
-          <clippath id="cVTxmfT">
+          <clippath id="cPlOGda">
             <rect x="29.941816366404606" y="0.0" width="534.0581836335954" height="321.0">
             </rect>
           </clippath>
@@ -7363,15 +7417,15 @@ font-size: 13.0px;
     <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z" pointer-events="none">
     </path>
   </g>
-  <g id="dYFLKWB">
+  <g id="dRc42NY">
   </g>
 </svg>
 </div>
 </div>
-<div id="dc8c137c" class="cell" data-execution_count="60">
+<div id="8788a999" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>df_co2_june <span class="op">=</span> df_co2.loc[df_co2[<span class="st">"Month"</span>] <span class="op">==</span> <span class="dv">9</span>]</span>
 <span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a>df_co2_june.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="145">
+<div class="cell-output cell-output-display" data-execution_count="60">
 <div>
 
 
@@ -7433,10 +7487,10 @@ font-size: 13.0px;
 </div>
 </div>
 </div>
-<div id="f5189541" class="cell" data-execution_count="61">
+<div id="cbc2f03d" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>df_temp_co2 <span class="op">=</span> pd.merge(df_co2_june, df, on<span class="op">=</span><span class="st">"Year"</span>)</span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>df_temp_co2[[<span class="st">"Year"</span>, <span class="st">"Sep"</span>, <span class="st">"Trend"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="146">
+<div class="cell-output cell-output-display" data-execution_count="61">
 <div>
 
 
@@ -7486,7 +7540,7 @@ font-size: 13.0px;
 </div>
 </div>
 </div>
-<div id="e552b40b" class="cell" data-execution_count="62">
+<div id="308de4d3" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>    ggplot(df_temp_co2, aes(x<span class="op">=</span><span class="st">"Sep"</span>, y<span class="op">=</span><span class="st">"Trend"</span>))</span>
 <span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point(color<span class="op">=</span><span class="st">"blue"</span>, size<span class="op">=</span><span class="dv">3</span>)</span>
@@ -7496,7 +7550,7 @@ font-size: 13.0px;
 <span id="cb87-7"><a href="#cb87-7" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">"Temperature anomaly (degrees Celsius)"</span>,</span>
 <span id="cb87-8"><a href="#cb87-8" aria-hidden="true" tabindex="-1"></a>    )</span>
 <span id="cb87-9"><a href="#cb87-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="147">
+<div class="cell-output cell-output-display" data-execution_count="62">
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" display="block" class="plt-container" width="600.0" height="400.0">
   <style type="text/css">
   .plt-container {
@@ -7509,117 +7563,117 @@ font-size: 13.0px;
 text {
    text-rendering: optimizeLegibility;
 }
-#pDXr002 .plot-title {
+#pnikFij .plot-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 16.0px;
 
 }
-#pDXr002 .plot-subtitle {
+#pnikFij .plot-subtitle {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pDXr002 .plot-caption {
+#pnikFij .plot-caption {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pDXr002 .hyperlink-element {
+#pnikFij .hyperlink-element {
 fill: #118ed8;
 font-weight: normal;
    font-style: normal;
 }
-#pDXr002 .legend-title {
+#pnikFij .legend-title {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pDXr002 .legend-item {
+#pnikFij .legend-item {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pDXr002 .axis-title-x {
+#pnikFij .axis-title-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pDXr002 .axis-text-x {
+#pnikFij .axis-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dcbrumn .axis-tooltip-text-x {
+#dHq3jyY .axis-tooltip-text-x {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pDXr002 .axis-title-y {
+#pnikFij .axis-title-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 15.0px;
 
 }
-#pDXr002 .axis-text-y {
+#pnikFij .axis-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dcbrumn .axis-tooltip-text-y {
+#dHq3jyY .axis-tooltip-text-y {
 fill: #ffffff;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pDXr002 .facet-strip-text-x {
+#pnikFij .facet-strip-text-x {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#pDXr002 .facet-strip-text-y {
+#pnikFij .facet-strip-text-y {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dcbrumn .tooltip-text {
+#dHq3jyY .tooltip-text {
 fill: #474747;
 font-weight: normal;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dcbrumn .tooltip-title {
+#dHq3jyY .tooltip-title {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
 font-size: 13.0px;
 
 }
-#dcbrumn .tooltip-label {
+#dHq3jyY .tooltip-label {
 fill: #474747;
 font-weight: bold;
    font-style: normal;font-family: Lucida Grande, sans-serif;
@@ -7628,7 +7682,7 @@ font-size: 13.0px;
 }
 
   </style>
-  <g id="pDXr002">
+  <g id="pnikFij">
     <path fill-rule="evenodd" fill="rgb(255,255,255)" fill-opacity="1.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z">
     </path>
     <g transform="translate(29.5 26.5 ) ">
@@ -7676,7 +7730,7 @@ font-size: 13.0px;
           </g>
         </g>
       </g>
-      <g clip-path="url(#cb5Uft2)" clip-bounds-jfx="[rect (29.941816366404606, 0.0), (534.0581836335954, 321.0)]">
+      <g clip-path="url(#cmwSO2s)" clip-bounds-jfx="[rect (29.941816366404606, 0.0), (534.0581836335954, 321.0)]">
         <g transform="translate(29.941816366404606 0.0 ) ">
           <g>
             <g>
@@ -7747,7 +7801,7 @@ font-size: 13.0px;
           </g>
         </g>
         <defs>
-          <clippath id="cb5Uft2">
+          <clippath id="cmwSO2s">
             <rect x="29.941816366404606" y="0.0" width="534.0581836335954" height="321.0">
             </rect>
           </clippath>
@@ -7915,7 +7969,7 @@ font-size: 13.0px;
     <path fill="rgb(0,0,0)" fill-opacity="0.0" stroke="rgb(71,71,71)" stroke-opacity="1.0" stroke-width="0.0" d="M0.0 0.0 L0.0 400.0 L600.0 400.0 L600.0 0.0 Z" pointer-events="none">
     </path>
   </g>
-  <g id="dcbrumn">
+  <g id="dHq3jyY">
   </g>
 </svg>
 </div>
@@ -7930,7 +7984,7 @@ font-size: 13.0px;
 </section>
 <section id="practical02" class="level2">
 <h2 class="anchored" data-anchor-id="practical02">Practical02</h2>
-<div id="4e5e9258" class="cell" data-execution_count="63">
+<div id="ab56afb3" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#%pip install openpyxl</span></span>
 <span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>data_np <span class="op">=</span> pd.read_excel(</span>
@@ -7972,14 +8026,14 @@ memory usage: 1.3+ KB</code></pre>
   warn(msg)</code></pre>
 </div>
 </div>
-<div id="f65e4882" class="cell" data-execution_count="64">
+<div id="2cf8b06a" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>data_n <span class="op">=</span> data_n.astype(<span class="st">"double"</span>)</span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>data_p <span class="op">=</span> data_p.astype(<span class="st">"double"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Quenstion:(a)Calculate the mean contribution in each period (row) separately for both experiments.</p>
 <p>(b)Plot a line chart of mean contribution on the vertical axis and time period (from 1 to 10) on the horizontal axis (with a separate line for each experiment). Make sure the lines in the legend are clearly labelled according to the experiment (with punishment or without punishment).</p>
 <p>(c)Describe any differences and similarities you see in the mean contribution over time in both experiments. The anwser:In the two experiments, the average contributions over time changed. The difference was that the average value without penalty gradually increased and was always higher than the average value with penalty, and the average value without penalty gradually decreased with the development of time.</p>
-<div id="605de15d" class="cell" data-execution_count="65">
+<div id="6edb6eae" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>mean_n_c <span class="op">=</span> data_n.mean(axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -7994,7 +8048,7 @@ memory usage: 1.3+ KB</code></pre>
 <span id="cb92-12"><a href="#cb92-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Average contribution"</span>)</span>
 <span id="cb92-13"><a href="#cb92-13" aria-hidden="true" tabindex="-1"></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\45202\AppData\Local\Temp\ipykernel_26448\1486267859.py:4: FutureWarning: The provided callable &lt;function mean at 0x00000206E02C7D80&gt; is currently using DataFrame.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
+<pre><code>C:\Users\45202\AppData\Local\Temp\ipykernel_31480\1486267859.py:4: FutureWarning: The provided callable &lt;function mean at 0x000001F3E3577E20&gt; is currently using DataFrame.mean. In a future version of pandas, the provided callable will be used directly. To keep current behavior pass the string "mean" instead.
   mean_p_c = data_p.agg(np.mean, axis=1)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -8005,7 +8059,7 @@ memory usage: 1.3+ KB</code></pre>
 </div>
 </div>
 </div>
-<div id="215af100" class="cell" data-execution_count="66">
+<div id="14f97e40" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new dataframe with bars in</span></span>
 <span id="cb94-2"><a href="#cb94-2" aria-hidden="true" tabindex="-1"></a>compare_grps <span class="op">=</span> pd.DataFrame(</span>
 <span id="cb94-3"><a href="#cb94-3" aria-hidden="true" tabindex="-1"></a>    [mean_n_c.loc[[<span class="dv">1</span>, <span class="dv">10</span>]], mean_p_c.loc[[<span class="dv">1</span>, <span class="dv">10</span>]]],</span>
@@ -8025,10 +8079,10 @@ memory usage: 1.3+ KB</code></pre>
 </div>
 </div>
 </div>
-<div id="45602794" class="cell" data-execution_count="67">
+<div id="1777c8cc" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>n_c <span class="op">=</span> data_n.agg([<span class="st">"std"</span>, <span class="st">"var"</span>, <span class="st">"mean"</span>], <span class="dv">1</span>)</span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a>n_c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="152">
+<div class="cell-output cell-output-display" data-execution_count="67">
 <div>
 
 
@@ -8114,7 +8168,7 @@ memory usage: 1.3+ KB</code></pre>
 </div>
 </div>
 </div>
-<div id="42b3d1fd" class="cell" data-execution_count="68">
+<div id="28360c35" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>p_c <span class="op">=</span> data_p.agg([<span class="st">"std"</span>, <span class="st">"var"</span>, <span class="st">"mean"</span>], <span class="dv">1</span>)</span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a>n_c[<span class="st">"mean"</span>].plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"mean"</span>)</span>
@@ -8136,7 +8190,7 @@ memory usage: 1.3+ KB</code></pre>
 </div>
 </div>
 </div>
-<div id="1294d33f" class="cell" data-execution_count="69">
+<div id="88fc465f" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>p_c[<span class="st">"mean"</span>].plot(ax<span class="op">=</span>ax, label<span class="op">=</span><span class="st">"mean"</span>)</span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="co"># mean + 2 sd</span></span>
@@ -8157,9 +8211,9 @@ memory usage: 1.3+ KB</code></pre>
 </div>
 </div>
 </div>
-<div id="8e22ade2" class="cell" data-execution_count="70">
+<div id="ab4ee33e" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a>data_p.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>(), axis<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="155">
+<div class="cell-output cell-output-display" data-execution_count="70">
 <pre><code>Period
 1     10.199675
 2     12.185065
@@ -8174,18 +8228,18 @@ memory usage: 1.3+ KB</code></pre>
 dtype: float64</code></pre>
 </div>
 </div>
-<div id="b3a6dc99" class="cell" data-execution_count="71">
+<div id="3e9c2cc2" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A lambda function accepting three inputs, a, b, and c, and calculating the sum of the squares</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>test_function <span class="op">=</span> <span class="kw">lambda</span> a, b, c: a<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> c<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we apply the function by handing over (in parenthesis) the following inputs: a=3, b=4 and c=5</span></span>
 <span id="cb100-6"><a href="#cb100-6" aria-hidden="true" tabindex="-1"></a>test_function(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="156">
+<div class="cell-output cell-output-display" data-execution_count="71">
 <pre><code>50</code></pre>
 </div>
 </div>
-<div id="a65aea34" class="cell" data-execution_count="72">
+<div id="ec292128" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>range_function <span class="op">=</span> <span class="kw">lambda</span> x: x.<span class="bu">max</span>() <span class="op">-</span> x.<span class="bu">min</span>()</span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>range_p <span class="op">=</span> data_p.<span class="bu">apply</span>(range_function, axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a>range_n <span class="op">=</span> data_n.<span class="bu">apply</span>(range_function, axis<span class="op">=</span><span class="dv">1</span>)</span>
@@ -8204,12 +8258,12 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="dc275046" class="cell" data-execution_count="73">
+<div id="ee1fa3cf" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>funcs_to_apply <span class="op">=</span> [range_function, <span class="st">"max"</span>, <span class="st">"min"</span>, <span class="st">"std"</span>, <span class="st">"mean"</span>]</span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>summ_p <span class="op">=</span> data_p.<span class="bu">apply</span>(funcs_to_apply, axis<span class="op">=</span><span class="dv">1</span>).rename(columns<span class="op">=</span>{<span class="st">"&lt;lambda&gt;"</span>: <span class="st">"range"</span>})</span>
 <span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a>summ_n <span class="op">=</span> data_n.<span class="bu">apply</span>(funcs_to_apply, axis<span class="op">=</span><span class="dv">1</span>).rename(columns<span class="op">=</span>{<span class="st">"&lt;lambda&gt;"</span>: <span class="st">"range"</span>})</span>
 <span id="cb103-4"><a href="#cb103-4" aria-hidden="true" tabindex="-1"></a>summ_n.loc[[<span class="dv">1</span>, <span class="dv">10</span>], :].<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="158">
+<div class="cell-output cell-output-display" data-execution_count="73">
 <div>
 
 
@@ -8255,9 +8309,9 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="661ac265" class="cell" data-execution_count="74">
+<div id="3cba398b" class="cell" data-execution_count="74">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>summ_p.loc[[<span class="dv">1</span>, <span class="dv">10</span>], :].<span class="bu">round</span>(<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="159">
+<div class="cell-output cell-output-display" data-execution_count="74">
 <div>
 
 
@@ -8303,11 +8357,11 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="813cc75e" class="cell" data-execution_count="75">
+<div id="bd0445a3" class="cell" data-execution_count="75">
 <div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pingouin <span class="im">as</span> pg</span>
 <span id="cb105-2"><a href="#cb105-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb105-3"><a href="#cb105-3" aria-hidden="true" tabindex="-1"></a>pg.ttest(x<span class="op">=</span>data_n.iloc[<span class="dv">0</span>, :], y<span class="op">=</span>data_p.iloc[<span class="dv">0</span>, :])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="160">
+<div class="cell-output cell-output-display" data-execution_count="75">
 <div>
 
 
@@ -8343,9 +8397,9 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="ddf24955" class="cell" data-execution_count="76">
+<div id="1fe374fb" class="cell" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>pg.ttest(x<span class="op">=</span>data_n.iloc[<span class="dv">0</span>, :], y<span class="op">=</span>data_p.iloc[<span class="dv">0</span>, :], paired<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="161">
+<div class="cell-output cell-output-display" data-execution_count="76">
 <div>
 
 
@@ -8386,7 +8440,7 @@ dtype: float64</code></pre>
 <h2 class="anchored" data-anchor-id="practical03">Practical03</h2>
 <section id="practical03-01" class="level3">
 <h3 class="anchored" data-anchor-id="practical03-01">Practical03-01</h3>
-<div id="38bb2ea5" class="cell" data-execution_count="77">
+<div id="25c666bf" class="cell" data-execution_count="77">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
@@ -8395,7 +8449,7 @@ dtype: float64</code></pre>
 <span id="cb107-6"><a href="#cb107-6" aria-hidden="true" tabindex="-1"></a>pd.read_csv(</span>
 <span id="cb107-7"><a href="#cb107-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://vincentarelbundock.github.io/Rdatasets/csv/dplyr/storms.csv"</span>, nrows<span class="op">=</span><span class="dv">10</span></span>
 <span id="cb107-8"><a href="#cb107-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="162">
+<div class="cell-output cell-output-display" data-execution_count="77">
 <div>
 
 
@@ -8596,15 +8650,15 @@ dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="360f5000" class="cell" data-execution_count="78">
+<div id="3d155820" class="cell" data-execution_count="78">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"http://aeturrell.com/research"</span></span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>page <span class="op">=</span> requests.get(url)</span>
 <span id="cb108-3"><a href="#cb108-3" aria-hidden="true" tabindex="-1"></a>page.text[:<span class="dv">300</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="163">
+<div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>'&lt;!DOCTYPE html&gt;\n&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"&gt;&lt;head&gt;\n\n&lt;meta charset="utf-8"&gt;\n&lt;meta name="generator" content="quarto-1.6.39"&gt;\n\n&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes"&gt;\n\n&lt;meta name="author" content="Arthur Turrell"&gt;\n'</code></pre>
 </div>
 </div>
-<div id="cff139cf" class="cell" data-execution_count="79">
+<div id="39df489c" class="cell" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb110"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1" aria-hidden="true" tabindex="-1"></a>soup <span class="op">=</span> BeautifulSoup(page.text, <span class="st">"html.parser"</span>)</span>
 <span id="cb110-2"><a href="#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soup.prettify()[<span class="dv">60000</span>:<span class="dv">60500</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -8616,40 +8670,40 @@ dtype: float64</code></pre>
             Univers</code></pre>
 </div>
 </div>
-<div id="916ae341" class="cell" data-execution_count="80">
+<div id="7ba31440" class="cell" data-execution_count="80">
 <div class="sourceCode cell-code" id="cb112"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get all paragraphs</span></span>
 <span id="cb112-2"><a href="#cb112-2" aria-hidden="true" tabindex="-1"></a>all_paras <span class="op">=</span> soup.find_all(<span class="st">"p"</span>)</span>
 <span id="cb112-3"><a href="#cb112-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Just show one of the paras</span></span>
 <span id="cb112-4"><a href="#cb112-4" aria-hidden="true" tabindex="-1"></a>all_paras[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="165">
+<div class="cell-output cell-output-display" data-execution_count="80">
 <pre><code>&lt;p&gt;Blundell, Jack, Emma Duchini, Stefania Simion, and Arthur Turrell. "Pay transparency and gender equality." &lt;i&gt;American Economic Journal: Economic Policy&lt;/i&gt; (2024). doi: &lt;a href="https://www.aeaweb.org/articles?id=10.1257/pol.20220766&amp;amp;from=f"&gt;&lt;code&gt;10.1257/pol.20220766&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;</code></pre>
 </div>
 </div>
-<div id="4be0beb4" class="cell" data-execution_count="81">
+<div id="df83911c" class="cell" data-execution_count="81">
 <div class="sourceCode cell-code" id="cb114"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb114-1"><a href="#cb114-1" aria-hidden="true" tabindex="-1"></a>all_paras[<span class="dv">1</span>].text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="166">
+<div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>'Blundell, Jack, Emma Duchini, Stefania Simion, and Arthur Turrell. "Pay transparency and gender equality." American Economic Journal: Economic Policy (2024). doi: 10.1257/pol.20220766'</code></pre>
 </div>
 </div>
-<div id="21704341" class="cell" data-execution_count="82">
+<div id="55b01cfe" class="cell" data-execution_count="82">
 <div class="sourceCode cell-code" id="cb116"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb116-1"><a href="#cb116-1" aria-hidden="true" tabindex="-1"></a>projects <span class="op">=</span> soup.find_all(<span class="st">"div"</span>, class_<span class="op">=</span><span class="st">"project-content listing-pub-info"</span>)</span>
 <span id="cb116-2"><a href="#cb116-2" aria-hidden="true" tabindex="-1"></a>projects <span class="op">=</span> [x.text.strip() <span class="cf">for</span> x <span class="kw">in</span> projects]</span>
 <span id="cb116-3"><a href="#cb116-3" aria-hidden="true" tabindex="-1"></a>projects[:<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="167">
+<div class="cell-output cell-output-display" data-execution_count="82">
 <pre><code>['Blundell, Jack, Emma Duchini, Stefania Simion, and Arthur Turrell. "Pay transparency and gender equality." American Economic Journal: Economic Policy (2024). doi: 10.1257/pol.20220766',
  'Botta, Federico, Robin Lovelace, Laura Gilbert, and Arthur Turrell. "Packaging code and data for reproducible research: A case study of journey time statistics." Environment and Planning B: Urban Analytics and City Science (2024): 23998083241267331. doi: 10.1177/23998083241267331',
  'Kalamara, Eleni, Arthur Turrell, Chris Redl, George Kapetanios, and Sujit Kapadia. "Making text count: economic forecasting using newspaper text." Journal of Applied Econometrics 37, no. 5 (2022): 896-919. doi: 10.1002/jae.2907',
  'Turrell, A., Speigner, B., Copple, D., Djumalieva, J. and Thurgood, J., 2021. Is the UK’s productivity puzzle mostly driven by occupational mismatch? An analysis using big data on job vacancies. Labour Economics, 71, p.102013. doi: 10.1016/j.labeco.2021.102013']</code></pre>
 </div>
 </div>
-<div id="df01f716" class="cell" data-execution_count="83">
+<div id="86b3e0cd" class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb118"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb118-1"><a href="#cb118-1" aria-hidden="true" tabindex="-1"></a>df_list <span class="op">=</span> pd.read_html(</span>
 <span id="cb118-2"><a href="#cb118-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"https://simple.wikipedia.org/wiki/FIFA_World_Cup"</span>, match<span class="op">=</span><span class="st">"Sweden"</span></span>
 <span id="cb118-3"><a href="#cb118-3" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb118-4"><a href="#cb118-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve first and only entry from list of dataframes</span></span>
 <span id="cb118-5"><a href="#cb118-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df_list[<span class="dv">0</span>]</span>
 <span id="cb118-6"><a href="#cb118-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="168">
+<div class="cell-output cell-output-display" data-execution_count="83">
 <div>
 
 
@@ -8732,7 +8786,7 @@ dtype: float64</code></pre>
 </section>
 <section id="practical03-02" class="level3">
 <h3 class="anchored" data-anchor-id="practical03-02">Practical03-02</h3>
-<div id="73239513" class="cell" data-execution_count="84">
+<div id="2525c716" class="cell" data-execution_count="84">
 <div class="sourceCode cell-code" id="cb119"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb119-1"><a href="#cb119-1" aria-hidden="true" tabindex="-1"></a><span class="co">#pip install requests</span></span>
 <span id="cb119-2"><a href="#cb119-2" aria-hidden="true" tabindex="-1"></a><span class="co">#pip install html5lib</span></span>
 <span id="cb119-3"><a href="#cb119-3" aria-hidden="true" tabindex="-1"></a><span class="co">#pip install bs4</span></span>
@@ -8832,7 +8886,7 @@ dtype: float64</code></pre>
 </section>
 <section id="practical03-03" class="level3">
 <h3 class="anchored" data-anchor-id="practical03-03">Practical03-03</h3>
-<div id="6aaf4f87" class="cell" data-execution_count="85">
+<div id="a74b2bc1" class="cell" data-execution_count="85">
 <div class="sourceCode cell-code" id="cb120"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb120-1"><a href="#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
 <span id="cb120-2"><a href="#cb120-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bs4 <span class="im">import</span> BeautifulSoup</span>
 <span id="cb120-3"><a href="#cb120-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
@@ -8891,7 +8945,7 @@ dtype: float64</code></pre>
 </section>
 <section id="practical04" class="level2">
 <h2 class="anchored" data-anchor-id="practical04">Practical04</h2>
-<p>```rwqsdpqg echo=False from bs4 import BeautifulSoup import re<br>
+<p>```vdvhuyta echo=False from bs4 import BeautifulSoup import re<br>
 import urllib.request, urllib.error # certain URL import xlwt # excel operation</p>
 <p>def main(): baseurl = “https://movie.douban.com/top250?start=” datalist = getdata(baseurl) savepath = “douban_top250.csv” savedata(datalist, savepath)</p>
 </section>
@@ -9042,7 +9096,7 @@ def geturl(url):
 if __name__ == '__main__':
     main()
     print("爬取成功并保存为CSV文件！")</code></pre>
-<p>```rwqsdpqg echo=False import pandas as pd import matplotlib.pyplot as plt</p>
+<p>```vdvhuyta echo=False import pandas as pd import matplotlib.pyplot as plt</p>
 </a></section><a href="(.*?)">
 <section id="load-datasets" class="level1">
 <h1>Load datasets</h1>

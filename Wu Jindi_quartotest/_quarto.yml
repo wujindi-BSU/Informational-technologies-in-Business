@@ -2,12 +2,11 @@ project:
   type: website
 
 website:
-  title: "wujindi"
+  title: "Wu Jindi"
   navbar:
-    background: primary
-    search: true
+    background: "#5B00AE"
     left:
-      - href: Index.qmd
+      - href: index.qmd
         text: Index
       - abouteme.qmd
       - homework.qmd
