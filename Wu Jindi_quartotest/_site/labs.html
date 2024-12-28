@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Labs – wujindi</title>
+<title>Labs – Wu Jindi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,7 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-824d431591f74d30f01d4428391ea1d1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-13d520a3010e21f7ec35e0baf3d0283a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -102,7 +102,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
 
 
 </head>
@@ -115,7 +118,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">wujindi</span>
+    <span class="navbar-title">Wu Jindi</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -188,19 +191,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-3.-use-the-tsv-file-and-assign-it-to-a-dataframe-called-food" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-use-the-tsv-file-and-assign-it-to-a-dataframe-called-food">Step 3. Use the tsv file and assign it to a dataframe called food</h4>
-<div id="c6b41d8b" class="cell" data-execution_count="1">
+<div id="1a0dd7e5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>food <span class="op">=</span> pd.read_csv(<span class="st">'en.openfoodfacts.org.products.tsv'</span>,sep<span class="op">=</span><span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\45202\AppData\Local\Temp\ipykernel_24396\1762735028.py:3: DtypeWarning: Columns (0,3,5,19,20,24,25,26,27,28,36,37,38,39,48) have mixed types. Specify dtype option on import or set low_memory=False.
+<pre><code>C:\Users\45202\AppData\Local\Temp\ipykernel_8216\1762735028.py:3: DtypeWarning: Columns (0,3,5,19,20,24,25,26,27,28,36,37,38,39,48) have mixed types. Specify dtype option on import or set low_memory=False.
   food = pd.read_csv('en.openfoodfacts.org.products.tsv',sep='\t')</code></pre>
 </div>
 </div>
 </section>
 <section id="step-4.-see-the-first-5-entries" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-see-the-first-5-entries">Step 4. See the first 5 entries</h4>
-<div id="edf3d517" class="cell" data-execution_count="2">
+<div id="23734030" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>food.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
@@ -364,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-5.-what-is-the-number-of-observations-in-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-what-is-the-number-of-observations-in-the-dataset">Step 5. What is the number of observations in the dataset?</h4>
-<div id="7b9b567b" class="cell" data-execution_count="3">
+<div id="1faa7286" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>food.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>356027</code></pre>
@@ -373,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-6.-what-is-the-number-of-columns-in-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-what-is-the-number-of-columns-in-the-dataset">Step 6. What is the number of columns in the dataset?</h4>
-<div id="cc3ff87d" class="cell" data-execution_count="4">
+<div id="3a6076e1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>food.shape[<span class="dv">1</span>]</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>food.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -387,7 +390,7 @@ memory usage: 442.8+ MB</code></pre>
 </section>
 <section id="step-7.-print-the-name-of-all-the-columns." class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-print-the-name-of-all-the-columns.">Step 7. Print the name of all the columns.</h4>
-<div id="3dfaeddb" class="cell" data-execution_count="5">
+<div id="30b1f0cf" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>food.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>Index(['code', 'url', 'creator', 'created_t', 'created_datetime',
@@ -405,7 +408,7 @@ memory usage: 442.8+ MB</code></pre>
 </section>
 <section id="step-8.-what-is-the-name-of-105th-column" class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-what-is-the-name-of-105th-column">Step 8. What is the name of 105th column?</h4>
-<div id="aa426a33" class="cell" data-execution_count="6">
+<div id="93f8053e" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>food.columns[<span class="dv">104</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>'-glucose_100g'</code></pre>
@@ -414,7 +417,7 @@ memory usage: 442.8+ MB</code></pre>
 </section>
 <section id="step-9.-what-is-the-type-of-the-observations-of-the-105th-column" class="level4">
 <h4 class="anchored" data-anchor-id="step-9.-what-is-the-type-of-the-observations-of-the-105th-column">Step 9. What is the type of the observations of the 105th column?</h4>
-<div id="05e0dd52" class="cell" data-execution_count="7">
+<div id="39a73077" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>food.dtypes[food.columns[<span class="dv">104</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>dtype('float64')</code></pre>
@@ -423,7 +426,7 @@ memory usage: 442.8+ MB</code></pre>
 </section>
 <section id="step-10.-how-is-the-dataset-indexed" class="level4">
 <h4 class="anchored" data-anchor-id="step-10.-how-is-the-dataset-indexed">Step 10. How is the dataset indexed?</h4>
-<div id="d31e496a" class="cell" data-execution_count="8">
+<div id="83065189" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>food.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>RangeIndex(start=0, stop=356027, step=1)</code></pre>
@@ -432,7 +435,7 @@ memory usage: 442.8+ MB</code></pre>
 </section>
 <section id="step-11.-what-is-the-product-name-of-the-19th-observation" class="level4">
 <h4 class="anchored" data-anchor-id="step-11.-what-is-the-product-name-of-the-19th-observation">Step 11. What is the product name of the 19th observation?</h4>
-<div id="9bc47632" class="cell" data-execution_count="9">
+<div id="73995a54" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>food.values[<span class="dv">18</span>][<span class="dv">7</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>'Lotus Organic Brown Jasmine Rice'</code></pre>
@@ -448,7 +451,7 @@ memory usage: 442.8+ MB</code></pre>
 <p>This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.</p>
 <section id="step-1.-import-the-necessary-libraries" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-import-the-necessary-libraries">Step 1. Import the necessary libraries</h4>
-<div id="39efe61f" class="cell" data-execution_count="10">
+<div id="bdd23d73" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -458,13 +461,13 @@ memory usage: 442.8+ MB</code></pre>
 </section>
 <section id="step-3.-assign-it-to-a-variable-called-chipo." class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-assign-it-to-a-variable-called-chipo.">Step 3. Assign it to a variable called chipo.</h4>
-<div id="ba496b95" class="cell" data-execution_count="11">
+<div id="3a99d5aa" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>chipo <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'</span>, sep<span class="op">=</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-4.-see-the-first-10-entries" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-see-the-first-10-entries">Step 4. See the first 10 entries</h4>
-<div id="a93fbc3c" class="cell" data-execution_count="12">
+<div id="807fba52" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>chipo.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
@@ -571,7 +574,7 @@ memory usage: 442.8+ MB</code></pre>
 </section>
 <section id="step-5.-what-is-the-number-of-observations-in-the-dataset-1" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-what-is-the-number-of-observations-in-the-dataset-1">Step 5. What is the number of observations in the dataset?</h4>
-<div id="3c92abd8" class="cell" data-execution_count="13">
+<div id="fdb156da" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solution 1</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>chipo.info()</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -599,7 +602,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-6.-what-is-the-number-of-columns-in-the-dataset-1" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-what-is-the-number-of-columns-in-the-dataset-1">Step 6. What is the number of columns in the dataset?</h4>
-<div id="ff9df5ce" class="cell" data-execution_count="14">
+<div id="1077debe" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>chipo.shape[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>5</code></pre>
@@ -608,7 +611,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-7.-print-the-name-of-all-the-columns.-1" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-print-the-name-of-all-the-columns.-1">Step 7. Print the name of all the columns.</h4>
-<div id="84c09faa" class="cell" data-execution_count="15">
+<div id="751f5265" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>chipo.head(<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <div>
@@ -635,7 +638,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-8.-how-is-the-dataset-indexed" class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-how-is-the-dataset-indexed">Step 8. How is the dataset indexed?</h4>
-<div id="36b25581" class="cell" data-execution_count="16">
+<div id="3e1ac867" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>chipo.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>RangeIndex(start=0, stop=4622, step=1)</code></pre>
@@ -644,7 +647,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-9.-which-was-the-most-ordered-item" class="level4">
 <h4 class="anchored" data-anchor-id="step-9.-which-was-the-most-ordered-item">Step 9. Which was the most-ordered item?</h4>
-<div id="b022b956" class="cell" data-execution_count="17">
+<div id="57881d6e" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>chipo.groupby(by<span class="op">=</span><span class="st">"item_name"</span>).<span class="bu">sum</span>().sort_values(<span class="st">'quantity'</span>,ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
@@ -684,7 +687,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-10.-for-the-most-ordered-item-how-many-items-were-ordered" class="level4">
 <h4 class="anchored" data-anchor-id="step-10.-for-the-most-ordered-item-how-many-items-were-ordered">Step 10. For the most-ordered item, how many items were ordered?</h4>
-<div id="d6ce277f" class="cell" data-execution_count="18">
+<div id="ea564aa2" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>chipo.groupby(by<span class="op">=</span><span class="st">"item_name"</span>).<span class="bu">sum</span>().sort_values(<span class="st">'quantity'</span>,ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <div>
@@ -725,7 +728,7 @@ memory usage: 180.7+ KB</code></pre>
 <section id="step-11.-what-was-the-most-ordered-item-in-the-choice_description-column" class="level4">
 <h4 class="anchored" data-anchor-id="step-11.-what-was-the-most-ordered-item-in-the-choice_description-column">Step 11. What was the most ordered item in the choice_description column?</h4>
 <p>chipo.groupby(by=“choice_description”).sum().sort_values(‘quantity’,ascending=False).head(1) #### Step 12. How many items were orderd in total?</p>
-<div id="97d87238" class="cell" data-execution_count="19">
+<div id="9eeba63b" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>chipo.item_name.count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>np.int64(4622)</code></pre>
@@ -734,7 +737,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-13.-turn-the-item-price-into-a-float" class="level4">
 <h4 class="anchored" data-anchor-id="step-13.-turn-the-item-price-into-a-float">Step 13. Turn the item price into a float</h4>
-<div id="b07e6733" class="cell" data-execution_count="20">
+<div id="48bdb2ce" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### Step 13.a. Check the item price type</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>chipo.item_price.dtype</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#### Step 13.b. Create a lambda function and change the type of item price</span></span>
@@ -749,7 +752,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-14.-how-much-was-the-revenue-for-the-period-in-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="step-14.-how-much-was-the-revenue-for-the-period-in-the-dataset">Step 14. How much was the revenue for the period in the dataset?</h4>
-<div id="60e49371" class="cell" data-execution_count="21">
+<div id="fde663c9" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>revenue <span class="op">=</span>  (chipo.item_price <span class="op">*</span> chipo.quantity).<span class="bu">sum</span>()</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Revenue is : $ '</span><span class="op">+</span> <span class="bu">str</span>(revenue))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -759,7 +762,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-15.-how-many-orders-were-made-in-the-period" class="level4">
 <h4 class="anchored" data-anchor-id="step-15.-how-many-orders-were-made-in-the-period">Step 15. How many orders were made in the period?</h4>
-<div id="46ee9fda" class="cell" data-execution_count="22">
+<div id="2fdeaa2a" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>chipo.order_id.value_counts().count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>np.int64(1834)</code></pre>
@@ -768,7 +771,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-16.-what-is-the-average-revenue-amount-per-order" class="level4">
 <h4 class="anchored" data-anchor-id="step-16.-what-is-the-average-revenue-amount-per-order">Step 16. What is the average revenue amount per order?</h4>
-<div id="0428705d" class="cell" data-execution_count="23">
+<div id="1d13acb1" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solution 1</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>chipo[<span class="st">'revenue'</span>] <span class="op">=</span> chipo[<span class="st">'quantity'</span>] <span class="op">*</span> chipo[<span class="st">'item_price'</span>]</span>
@@ -784,7 +787,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-17.-how-many-different-items-are-sold" class="level4">
 <h4 class="anchored" data-anchor-id="step-17.-how-many-different-items-are-sold">Step 17. How many different items are sold?</h4>
-<div id="68b7262a" class="cell" data-execution_count="24">
+<div id="aa5cd9dc" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>chipo.item_name.value_counts().count()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>np.int64(50)</code></pre>
@@ -800,7 +803,7 @@ memory usage: 180.7+ KB</code></pre>
 <p>This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.</p>
 <section id="step-1.-import-the-necessary-libraries-1" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-import-the-necessary-libraries-1">Step 1. Import the necessary libraries</h4>
-<div id="dcb4f04f" class="cell" data-execution_count="25">
+<div id="cce41df4" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -809,14 +812,14 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-3.-assign-it-to-a-variable-called-users-and-use-the-user_id-as-index" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-assign-it-to-a-variable-called-users-and-use-the-user_id-as-index">Step 3. Assign it to a variable called users and use the ‘user_id’ as index</h4>
-<div id="07e2b178" class="cell" data-execution_count="26">
+<div id="77ed8b0d" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/u.user'</span>, </span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>                      sep<span class="op">=</span><span class="st">'|'</span>, index_col<span class="op">=</span><span class="st">'user_id'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="step-4.-see-the-first-25-entries" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-see-the-first-25-entries">Step 4. See the first 25 entries</h4>
-<div id="f58fb63a" class="cell" data-execution_count="27">
+<div id="cda6ab2f" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>users.head(<span class="dv">25</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
@@ -1024,7 +1027,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-5.-see-the-last-10-entries" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-see-the-last-10-entries">Step 5. See the last 10 entries</h4>
-<div id="d5687817" class="cell" data-execution_count="28">
+<div id="26368530" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>users.tail(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
@@ -1127,7 +1130,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-6.-what-is-the-number-of-observations-in-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-what-is-the-number-of-observations-in-the-dataset">Step 6. What is the number of observations in the dataset?</h4>
-<div id="a2b661af" class="cell" data-execution_count="29">
+<div id="20a0c2ba" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>users.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>943</code></pre>
@@ -1136,7 +1139,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-7.-what-is-the-number-of-columns-in-the-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-what-is-the-number-of-columns-in-the-dataset">Step 7. What is the number of columns in the dataset?</h4>
-<div id="42b2d58e" class="cell" data-execution_count="30">
+<div id="1e70afed" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>users.shape[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>4</code></pre>
@@ -1145,7 +1148,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-8.-print-the-name-of-all-the-columns." class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-print-the-name-of-all-the-columns.">Step 8. Print the name of all the columns.</h4>
-<div id="914bb498" class="cell" data-execution_count="31">
+<div id="18ab12c1" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>users.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <pre><code>Index(['age', 'gender', 'occupation', 'zip_code'], dtype='object')</code></pre>
@@ -1154,7 +1157,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-9.-how-is-the-dataset-indexed" class="level4">
 <h4 class="anchored" data-anchor-id="step-9.-how-is-the-dataset-indexed">Step 9. How is the dataset indexed?</h4>
-<div id="b88da4a8" class="cell" data-execution_count="32">
+<div id="dedfd687" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># "the index" (aka "the labels")</span></span>
 <span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>users.index</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
@@ -1167,7 +1170,7 @@ memory usage: 180.7+ KB</code></pre>
 </section>
 <section id="step-10.-what-is-the-data-type-of-each-column" class="level4">
 <h4 class="anchored" data-anchor-id="step-10.-what-is-the-data-type-of-each-column">Step 10. What is the data type of each column?</h4>
-<div id="c30e93d7" class="cell" data-execution_count="33">
+<div id="cd07791c" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>users.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <pre><code>age            int64
@@ -1180,7 +1183,7 @@ dtype: object</code></pre>
 </section>
 <section id="step-11.-print-only-the-occupation-column" class="level4">
 <h4 class="anchored" data-anchor-id="step-11.-print-only-the-occupation-column">Step 11. Print only the occupation column</h4>
-<div id="192d351c" class="cell" data-execution_count="34">
+<div id="70544396" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>users.occupation</span>
 <span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
@@ -1205,7 +1208,7 @@ Name: occupation, Length: 943, dtype: object</code></pre>
 </section>
 <section id="step-12.-how-many-different-occupations-are-in-this-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="step-12.-how-many-different-occupations-are-in-this-dataset">Step 12. How many different occupations are in this dataset?</h4>
-<div id="b8b0411e" class="cell" data-execution_count="35">
+<div id="bbdf0a10" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>users.occupation.nunique()</span>
 <span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="co">#or by using value_counts() which returns the count of unique elements</span></span>
 <span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="co">#users.occupation.value_counts().count()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1216,7 +1219,7 @@ Name: occupation, Length: 943, dtype: object</code></pre>
 </section>
 <section id="step-13.-what-is-the-most-frequent-occupation" class="level4">
 <h4 class="anchored" data-anchor-id="step-13.-what-is-the-most-frequent-occupation">Step 13. What is the most frequent occupation?</h4>
-<div id="5f3a72ec" class="cell" data-execution_count="36">
+<div id="b24541de" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Because "most" is asked</span></span>
 <span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a>users.occupation.value_counts().head(<span class="dv">1</span>).index[<span class="dv">0</span>]</span>
 <span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1231,7 +1234,7 @@ Name: occupation, Length: 943, dtype: object</code></pre>
 </section>
 <section id="step-14.-summarize-the-dataframe." class="level4">
 <h4 class="anchored" data-anchor-id="step-14.-summarize-the-dataframe.">Step 14. Summarize the DataFrame.</h4>
-<div id="65cee363" class="cell" data-execution_count="37">
+<div id="c5b8172e" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>users.describe() <span class="co">#Notice: by default, only the numeric columns are returned.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <div>
@@ -1286,7 +1289,7 @@ Name: occupation, Length: 943, dtype: object</code></pre>
 </section>
 <section id="step-15.-summarize-all-the-columns" class="level4">
 <h4 class="anchored" data-anchor-id="step-15.-summarize-all-the-columns">Step 15. Summarize all the columns</h4>
-<div id="5d340747" class="cell" data-execution_count="38">
+<div id="362bf4c0" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>users.describe(include <span class="op">=</span> <span class="st">"all"</span>) <span class="co">#Notice: By default, only the numeric columns are returned.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div>
@@ -1389,7 +1392,7 @@ Name: occupation, Length: 943, dtype: object</code></pre>
 </section>
 <section id="step-16.-summarize-only-the-occupation-column" class="level4">
 <h4 class="anchored" data-anchor-id="step-16.-summarize-only-the-occupation-column">Step 16. Summarize only the occupation column</h4>
-<div id="394d31ed" class="cell" data-execution_count="39">
+<div id="f2a247b6" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>users.occupation.describe()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <pre><code>count         943
@@ -1402,7 +1405,7 @@ Name: occupation, dtype: object</code></pre>
 </section>
 <section id="step-17.-what-is-the-mean-age-of-users" class="level4">
 <h4 class="anchored" data-anchor-id="step-17.-what-is-the-mean-age-of-users">Step 17. What is the mean age of users?</h4>
-<div id="13b507aa" class="cell" data-execution_count="40">
+<div id="8389b8ba" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(users.age.mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <pre><code>34</code></pre>
@@ -1411,7 +1414,7 @@ Name: occupation, dtype: object</code></pre>
 </section>
 <section id="step-18.-what-is-the-age-with-least-occurrence" class="level4">
 <h4 class="anchored" data-anchor-id="step-18.-what-is-the-age-with-least-occurrence">Step 18. What is the age with least occurrence?</h4>
-<div id="7942f10f" class="cell" data-execution_count="41">
+<div id="e327844d" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>users.age.value_counts().tail() <span class="co">#7, 10, 11, 66 and 73 years -&gt; only 1 occurrence</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <pre><code>age
@@ -1436,7 +1439,7 @@ Name: count, dtype: int64</code></pre>
 <p>This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.</p>
 <section id="step-1.-import-the-necessary-libraries-2" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-import-the-necessary-libraries-2">Step 1. Import the necessary libraries</h4>
-<div id="286a952a" class="cell" data-execution_count="42">
+<div id="f0001fc5" class="cell" data-execution_count="42">
 <div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1445,7 +1448,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-3.-assign-it-to-a-variable-called-chipo.-1" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-assign-it-to-a-variable-called-chipo.-1">Step 3. Assign it to a variable called chipo.</h4>
-<div id="2e7bc72d" class="cell" data-execution_count="43">
+<div id="5e29be18" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>chipo <span class="op">=</span> pd.read_csv(url, sep <span class="op">=</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1453,7 +1456,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-4.-how-many-products-cost-more-than-10.00" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-how-many-products-cost-more-than-10.00">Step 4. How many products cost more than $10.00?</h4>
-<div id="1a0dec99" class="cell" data-execution_count="44">
+<div id="586d7979" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean the item_price column and transform it in a float</span></span>
 <span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 清理[item_price]列的数据，将其转换成float类型。</span></span>
 <span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="co"># float(value[1 : -1])表示字符串切片，将第2位至最后一位截取出来，这里作用是将价格最前面的$符号过滤掉，只保留后面的数字。</span></span>
@@ -1495,7 +1498,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-5.-what-is-the-price-of-each-item" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-what-is-the-price-of-each-item">Step 5. What is the price of each item?</h4>
-<div id="6a2bbec5" class="cell" data-execution_count="45">
+<div id="0c7eeb1b" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co">###### print a data frame with only two columns item_name and item_price</span></span>
 <span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="co"># delete the duplicates in item_name and quantity</span></span>
 <span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 删除[item_name]与[quantity]中的重复项。</span></span>
@@ -1638,7 +1641,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-6.-sort-by-the-name-of-the-item" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-sort-by-the-name-of-the-item">Step 6. Sort by the name of the item</h4>
-<div id="d63d9e70" class="cell" data-execution_count="46">
+<div id="a206d91f" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>chipo.item_name.sort_values()</span>
 <span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="co"># OR</span></span>
@@ -1758,7 +1761,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-7.-what-was-the-quantity-of-the-most-expensive-item-ordered" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-what-was-the-quantity-of-the-most-expensive-item-ordered">Step 7. What was the quantity of the most expensive item ordered?</h4>
-<div id="db2b55e1" class="cell" data-execution_count="47">
+<div id="bb2c1569" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>chipo.sort_values(by <span class="op">=</span> <span class="st">"item_price"</span>, ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <div>
@@ -1793,7 +1796,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-8.-how-many-times-was-a-veggie-salad-bowl-ordered" class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-how-many-times-was-a-veggie-salad-bowl-ordered">Step 8. How many times was a Veggie Salad Bowl ordered?</h4>
-<div id="060c277d" class="cell" data-execution_count="48">
+<div id="f0fd92d8" class="cell" data-execution_count="48">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>chipo_salad <span class="op">=</span> chipo[chipo.item_name <span class="op">==</span> <span class="st">"Veggie Salad Bowl"</span>]</span>
 <span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="co"># chipo_salad = chipo.query('item_name == "Veggie Salad Bowl"')</span></span>
 <span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1805,7 +1808,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-9.-how-many-times-did-someone-order-more-than-one-canned-soda" class="level4">
 <h4 class="anchored" data-anchor-id="step-9.-how-many-times-did-someone-order-more-than-one-canned-soda">Step 9. How many times did someone order more than one Canned Soda?</h4>
-<div id="aed215a9" class="cell" data-execution_count="49">
+<div id="8b520196" class="cell" data-execution_count="49">
 <div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>chipo_drink_steak_bowl <span class="op">=</span> chipo[(chipo.item_name <span class="op">==</span> <span class="st">"Canned Soda"</span>) <span class="op">&amp;</span> (chipo.quantity <span class="op">&gt;</span> <span class="dv">1</span>)]</span>
 <span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="co"># chipo_drink_steak_bowl = chipo.query('item_name == "Canned Soda" &amp; quantity &gt; 1')</span></span>
 <span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1824,7 +1827,7 @@ Name: count, dtype: int64</code></pre>
 <p>This time we are going to pull data directly from the internet.</p>
 <section id="step-1.-import-the-necessary-libraries-3" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-import-the-necessary-libraries-3">Step 1. Import the necessary libraries</h4>
-<div id="0440d64d" class="cell" data-execution_count="50">
+<div id="62a4f181" class="cell" data-execution_count="50">
 <div class="sourceCode cell-code" id="cb82"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -1833,7 +1836,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-3.-assign-it-to-a-variable-called-euro12." class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-assign-it-to-a-variable-called-euro12.">Step 3. Assign it to a variable called euro12.</h4>
-<div id="2f41fb06" class="cell" data-execution_count="51">
+<div id="04d888af" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>euro12 <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guipsamora/pandas_exercises/master/02_Filtering_%26_Sorting/Euro12/Euro_2012_stats_TEAM.csv'</span>, sep<span class="op">=</span><span class="st">','</span>)</span>
 <span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>euro12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="51">
@@ -2262,7 +2265,7 @@ Name: count, dtype: int64</code></pre>
 </section>
 <section id="step-4.-select-only-the-goal-column." class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-select-only-the-goal-column.">Step 4. Select only the Goal column.</h4>
-<div id="50529d62" class="cell" data-execution_count="52">
+<div id="a0cbaa5d" class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>euro12.Goals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>0      4
@@ -2287,7 +2290,7 @@ Name: Goals, dtype: int64</code></pre>
 </section>
 <section id="step-5.-how-many-team-participated-in-the-euro2012" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-how-many-team-participated-in-the-euro2012">Step 5. How many team participated in the Euro2012?</h4>
-<div id="bde5cfb5" class="cell" data-execution_count="53">
+<div id="feff32f0" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb86"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a>euro12.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <pre><code>16</code></pre>
@@ -2296,7 +2299,7 @@ Name: Goals, dtype: int64</code></pre>
 </section>
 <section id="step-6.-what-is-the-number-of-columns-in-the-dataset-2" class="level4">
 <h4 class="anchored" data-anchor-id="step-6.-what-is-the-number-of-columns-in-the-dataset-2">Step 6. What is the number of columns in the dataset?</h4>
-<div id="8d3c9970" class="cell" data-execution_count="54">
+<div id="3704eb7a" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a>euro12.info()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -2346,7 +2349,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-7.-view-only-the-columns-team-yellow-cards-and-red-cards-and-assign-them-to-a-dataframe-called-discipline" class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-view-only-the-columns-team-yellow-cards-and-red-cards-and-assign-them-to-a-dataframe-called-discipline">Step 7. View only the columns Team, Yellow Cards and Red Cards and assign them to a dataframe called discipline</h4>
-<div id="c2cb2057" class="cell" data-execution_count="55">
+<div id="4e87c41e" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter only giving the column names</span></span>
 <span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>discipline <span class="op">=</span> euro12[[<span class="st">'Team'</span>, <span class="st">'Yellow Cards'</span>, <span class="st">'Red Cards'</span>]]</span>
@@ -2470,7 +2473,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-8.-sort-the-teams-by-red-cards-then-to-yellow-cards" class="level4">
 <h4 class="anchored" data-anchor-id="step-8.-sort-the-teams-by-red-cards-then-to-yellow-cards">Step 8. Sort the teams by Red Cards, then to Yellow Cards</h4>
-<div id="2701e042" class="cell" data-execution_count="56">
+<div id="3eab8093" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb91"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>discipline.sort_values([<span class="st">'Red Cards'</span>, <span class="st">'Yellow Cards'</span>], ascending <span class="op">=</span> <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="56">
 <div>
@@ -2591,7 +2594,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-9.-calculate-the-mean-yellow-cards-given-per-team" class="level4">
 <h4 class="anchored" data-anchor-id="step-9.-calculate-the-mean-yellow-cards-given-per-team">Step 9. Calculate the mean Yellow Cards given per Team</h4>
-<div id="fc732216" class="cell" data-execution_count="57">
+<div id="2597b380" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="bu">round</span>(discipline[<span class="st">'Yellow Cards'</span>].mean())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>7</code></pre>
@@ -2600,7 +2603,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-10.-filter-teams-that-scored-more-than-6-goals" class="level4">
 <h4 class="anchored" data-anchor-id="step-10.-filter-teams-that-scored-more-than-6-goals">Step 10. Filter teams that scored more than 6 goals</h4>
-<div id="b1bf5015" class="cell" data-execution_count="58">
+<div id="7abee05a" class="cell" data-execution_count="58">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>euro12[euro12.Goals <span class="op">&gt;</span> <span class="dv">6</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="58">
 <div>
@@ -2692,7 +2695,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-11.-select-the-teams-that-start-with-g" class="level4">
 <h4 class="anchored" data-anchor-id="step-11.-select-the-teams-that-start-with-g">Step 11. Select the teams that start with G</h4>
-<div id="18643520" class="cell" data-execution_count="59">
+<div id="06aaa882" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>euro12[euro12.Team.<span class="bu">str</span>.startswith(<span class="st">'G'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="59">
 <div>
@@ -2784,7 +2787,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-12.-select-the-first-7-columns" class="level4">
 <h4 class="anchored" data-anchor-id="step-12.-select-the-first-7-columns">Step 12. Select the first 7 columns</h4>
-<div id="2fdcf416" class="cell" data-execution_count="60">
+<div id="55fa1622" class="cell" data-execution_count="60">
 <div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use .iloc to slices via the position of the passed integers</span></span>
 <span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="co"># : means all, 0:7 means from 0 to 7</span></span>
 <span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2976,7 +2979,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-13.-select-all-columns-except-the-last-3." class="level4">
 <h4 class="anchored" data-anchor-id="step-13.-select-all-columns-except-the-last-3.">Step 13. Select all columns except the last 3.</h4>
-<div id="b0d9efd1" class="cell" data-execution_count="61">
+<div id="fe465b70" class="cell" data-execution_count="61">
 <div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="co"># use negative to exclude the last 3 columns</span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>euro12.iloc[: , :<span class="op">-</span><span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3406,7 +3409,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-14.-present-only-the-shooting-accuracy-from-england-italy-and-russia" class="level4">
 <h4 class="anchored" data-anchor-id="step-14.-present-only-the-shooting-accuracy-from-england-italy-and-russia">Step 14. Present only the Shooting Accuracy from England, Italy and Russia</h4>
-<div id="fdd498ef" class="cell" data-execution_count="62">
+<div id="cd3f0333" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb98"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co"># .loc is another way to slice, using the labels of the columns and indexes</span></span>
 <span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a>euro12.loc[euro12.Team.isin([<span class="st">'England'</span>, <span class="st">'Italy'</span>, <span class="st">'Russia'</span>]), [<span class="st">'Team'</span>,<span class="st">'Shooting Accuracy'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3457,7 +3460,7 @@ memory usage: 4.5+ KB</code></pre>
 <p>This time we are going to pull data directly from the internet. Special thanks to: https://github.com/justmarkham for sharing the dataset and materials.</p>
 <section id="step-1.-import-the-necessary-libraries-4" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-import-the-necessary-libraries-4">Step 1. Import the necessary libraries</h4>
-<div id="518a3959" class="cell" data-execution_count="63">
+<div id="225ef286" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
@@ -3471,7 +3474,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-3.-assign-it-to-a-variable-called-chipo.-2" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-assign-it-to-a-variable-called-chipo.-2">Step 3. Assign it to a variable called chipo.</h4>
-<div id="63c97fdc" class="cell" data-execution_count="64">
+<div id="3882c0a7" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'</span></span>
 <span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>chipo <span class="op">=</span> pd.read_csv(url, sep <span class="op">=</span> <span class="st">'</span><span class="ch">\t</span><span class="st">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3479,7 +3482,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-4.-see-the-first-10-entries-1" class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-see-the-first-10-entries-1">Step 4. See the first 10 entries</h4>
-<div id="3dc8d425" class="cell" data-execution_count="65">
+<div id="3665ae26" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>chipo.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <div>
@@ -3586,7 +3589,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-5.-create-a-histogram-of-the-top-5-items-bought" class="level4">
 <h4 class="anchored" data-anchor-id="step-5.-create-a-histogram-of-the-top-5-items-bought">Step 5. Create a histogram of the top 5 items bought</h4>
-<div id="ab163b12" class="cell" data-execution_count="66">
+<div id="c364a3f9" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get the Series of the names</span></span>
 <span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> chipo.item_name</span>
 <span id="cb102-3"><a href="#cb102-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3623,7 +3626,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="hint-price-should-be-in-the-x-axis-and-items-ordered-in-the-y-axis" class="level4">
 <h4 class="anchored" data-anchor-id="hint-price-should-be-in-the-x-axis-and-items-ordered-in-the-y-axis">Hint: Price should be in the X-axis and Items ordered in the Y-axis</h4>
-<div id="2622ab6d" class="cell" data-execution_count="67">
+<div id="50f3a3ea" class="cell" data-execution_count="67">
 <div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a list of prices</span></span>
 <span id="cb103-2"><a href="#cb103-2" aria-hidden="true" tabindex="-1"></a>chipo.item_price <span class="op">=</span> [<span class="bu">float</span>(value[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>]) <span class="cf">for</span> value <span class="kw">in</span> chipo.item_price] <span class="co"># strip the dollar sign and trailing space</span></span>
 <span id="cb103-3"><a href="#cb103-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3650,7 +3653,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-7.-bonus-create-a-question-and-a-graph-to-answer-your-own-question." class="level4">
 <h4 class="anchored" data-anchor-id="step-7.-bonus-create-a-question-and-a-graph-to-answer-your-own-question.">Step 7. BONUS: Create a question and a graph to answer your own question.</h4>
-<div id="66437ae6" class="cell" data-execution_count="68">
+<div id="1e0fb9c1" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Question: What is the distribution of order prices?</span></span>
 <span id="cb104-2"><a href="#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a histogram of order prices</span></span>
 <span id="cb104-3"><a href="#cb104-3" aria-hidden="true" tabindex="-1"></a>plt.hist(orders.item_price, bins<span class="op">=</span><span class="dv">20</span>, color<span class="op">=</span><span class="st">'blue'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
@@ -3686,7 +3689,7 @@ memory usage: 4.5+ KB</code></pre>
 <p><strong><em>Exercise based on <a href="http://chrisalbon.com/">Chris Albon</a> work, the credits belong to him.</em></strong></p>
 <section id="step-1.-import-the-necessary-libraries-5" class="level4">
 <h4 class="anchored" data-anchor-id="step-1.-import-the-necessary-libraries-5">Step 1. Import the necessary libraries</h4>
-<div id="60a90383" class="cell" data-execution_count="69">
+<div id="bbbdd5c0" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb106-2"><a href="#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb106-3"><a href="#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -3696,7 +3699,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-2.-create-the-dataframe-that-should-look-like-the-one-below." class="level4">
 <h4 class="anchored" data-anchor-id="step-2.-create-the-dataframe-that-should-look-like-the-one-below.">Step 2. Create the DataFrame that should look like the one below.</h4>
-<div id="6874ad32" class="cell" data-execution_count="70">
+<div id="6148cde8" class="cell" data-execution_count="70">
 <div class="sourceCode cell-code" id="cb107"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1" aria-hidden="true" tabindex="-1"></a>raw_data <span class="op">=</span> {<span class="st">'first_name'</span>: [<span class="st">'Jason'</span>, <span class="st">'Molly'</span>, <span class="st">'Tina'</span>, <span class="st">'Jake'</span>, <span class="st">'Amy'</span>], </span>
 <span id="cb107-2"><a href="#cb107-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">'last_name'</span>: [<span class="st">'Miller'</span>, <span class="st">'Jacobson'</span>, <span class="st">'Ali'</span>, <span class="st">'Milner'</span>, <span class="st">'Cooze'</span>], </span>
 <span id="cb107-3"><a href="#cb107-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">'female'</span>: [<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>],</span>
@@ -3777,7 +3780,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-3.-create-a-scatterplot-of-pretestscore-and-posttestscore-with-the-size-of-each-point-determined-by-age" class="level4">
 <h4 class="anchored" data-anchor-id="step-3.-create-a-scatterplot-of-pretestscore-and-posttestscore-with-the-size-of-each-point-determined-by-age">Step 3. Create a Scatterplot of preTestScore and postTestScore, with the size of each point determined by age</h4>
-<div id="fbf46dfa" class="cell" data-execution_count="71">
+<div id="b8b01df6" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb108"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co">#### Hint: Don't forget to place the labels</span></span>
 <span id="cb108-2"><a href="#cb108-2" aria-hidden="true" tabindex="-1"></a>df.plot.scatter(x<span class="op">=</span><span class="st">'preTestScore'</span> , y<span class="op">=</span><span class="st">'postTestScore'</span>  , s<span class="op">=</span>df[<span class="st">'age'</span>].values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -3791,7 +3794,7 @@ memory usage: 4.5+ KB</code></pre>
 </section>
 <section id="step-4.-create-a-scatterplot-of-pretestscore-and-posttestscore." class="level4">
 <h4 class="anchored" data-anchor-id="step-4.-create-a-scatterplot-of-pretestscore-and-posttestscore.">Step 4. Create a Scatterplot of preTestScore and postTestScore.</h4>
-<div id="8c04f00a" class="cell" data-execution_count="72">
+<div id="feeadfc8" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb109"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1" aria-hidden="true" tabindex="-1"></a><span class="co">### This time the size should be 4.5 times the postTestScore and the color determined by sex</span></span>
 <span id="cb109-2"><a href="#cb109-2" aria-hidden="true" tabindex="-1"></a>df.plot.scatter(x<span class="op">=</span><span class="st">'preTestScore'</span> , y<span class="op">=</span><span class="st">'postTestScore'</span> , s<span class="op">=</span>df[<span class="st">'postTestScore'</span>]<span class="op">*</span><span class="fl">4.5</span> , c<span class="op">=</span><span class="st">'female'</span> , colormap<span class="op">=</span><span class="st">'viridis'</span>)</span>
 <span id="cb109-3"><a href="#cb109-3" aria-hidden="true" tabindex="-1"></a><span class="co">### BONUS: Create your own question and answer it.</span></span>

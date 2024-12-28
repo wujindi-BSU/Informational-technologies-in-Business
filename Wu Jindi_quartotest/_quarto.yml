@@ -6,7 +6,7 @@ website:
   navbar:
     background: "#5B00AE"
     left:
-      - href: index.qmd
+      - href: Index.qmd
         text: Index
       - abouteme.qmd
       - homework.qmd
