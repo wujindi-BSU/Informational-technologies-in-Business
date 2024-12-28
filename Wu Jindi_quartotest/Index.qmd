@@ -1,5 +1,5 @@
 ---
-title: "进子's website and data analysis portfolio"
+title: "wujindi's website and data analysis portfolio"
 ---
 
 ## Hello, and thanks for visiting! 

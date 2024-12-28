@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>data-sharing – wujindi</title>
+<title>HW - What should I major in? – wujindi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -150,108 +116,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">HW - What should I major in?</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<p>(data-sharing)= # Sharing Data</p>
-<p>There are many times when you want to share data with a much wider audience. In this chapter, we’ll find out about some ways to share data in ways that are <em>fast</em>, <em>easy for users</em>, and follow <em>best practices</em>. Because it’s by far the most common case, we’ll focus on sharing <em>tabular data</em>.</p>
-<p>When might you want to share your data? If you’ve just finished writing a paper, you might want to share derived series; perhaps the data are the result of the paper if you’re working in a field such as economic history. If you’re working at a firm or in the public sector, perhaps there are datasets that you’ve decided to put out into the public domain and you want a cost effective way to share them. Perhaps you’ve got a slightly larger or more complex dataset that you’d like to put online, password protected, for a large number of co-authors.</p>
-<p>One part of best practice when sharing data is following the FAIR principles:</p>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The first step in the process of turning information into knowledge process is to summarize and describe the raw information - the data. In this assignment we explore data on college majors and earnings, specifically the data begin the FiveThirtyEight story <a href="https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/">“The Economic Guide To Picking A College Major”</a>.</p>
+<p>These data originally come from the American Community Survey (ACS) 2010-2012 Public Use Microdata Series.</p>
+<p>We should also note that there are many considerations that go into picking a major. Earnings potential and employment prospects are two of them, and they are important, but they don’t tell the whole story. Keep this in mind as you analyze the data.</p>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<p>Use <code>pandas</code> for data warnagling and processing,<code>letsplot</code> and <code>matplotlib</code> for visualization.</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>The data can be found on <a href="https://www.kaggle.com/datasets/tunguz/college-majors">Kaggle</a>.</p>
+<p>Let’s think about some questions we might want to answer with these data:</p>
 <ul>
-<li><p>Findable: The first step in allowing people to re-use data is for those people to be able to find them. Metadata and data should be easy to find for both humans and computers. This includes registering data (and meta-data) in a searchable source.</p></li>
-<li><p>Accessible: Once a user finds the required data, they need to know how those data can accessed, possibly including authentication and authorisation. So the data should be retrievable by their identifiers using a standardised protocol that is open, free, and universally implementable.</p></li>
-<li><p>Interoperable: The data usually need to be integrated with other data. In addition, the data need to interoperate with applications or workflows for analysis, storage, and processing. Although there are free tools to open Excel and Stata files, data stored in those formats are that bit more difficult than truly open formats like CSV or parquet. Universally implementable means that Python’s pickle format or R’s .rds format shouldn’t be used to share data either. Interoperability means using open formats that can be accessed using free tools across different languages and operating systems.</p></li>
-<li><p>Reusable: The ultimate goal of FAIR is to optimise the reuse of data. To achieve this, metadata and data should be well-described so that they can be replicated and/or combined in different settings.</p></li>
+<li>Which major has the lowest unemployment rate?</li>
+<li>Which major has the highest percentage of women?</li>
+<li>How do the distributions of median income compare across major categories?</li>
+<li>Do women tend to choose majors with lower or higher earnings?</li>
 </ul>
-<p>Different ways of sharing data are inevitably better or worse across the four principles.</p>
-<p>Another part of best practice in sharing data is following the ‘five safes’:</p>
-<ol type="1">
-<li>Safe projects –– Is this use of the data appropriate, lawful, ethical, and sensible?</li>
-<li>Safe people –– Can the user be trusted to use the data in an appropriate manner?</li>
-<li>Safe data –– Is there a disclosure risk in the data itself?</li>
-<li>Safe settings –– Does the means of access limit unauthorised use?</li>
-<li>Safe outputs –– Are the statistical results non-disclosive?</li>
-</ol>
-<p>You can find out more about data sharing policies and best practice at <a href="https://fairsharing.org/">FAIRsharing</a>.</p>
-<section id="datasette-for-sharing-data" class="level2">
-<h2 class="anchored" data-anchor-id="datasette-for-sharing-data">Datasette for sharing data</h2>
-<p><a href="https://datasette.io/">Datasette</a> is an extraordinary tool for exploring, sharing, and publishing data. It helps you take data of any shape or size, analyze and explore it, and publish it as an interactive website and accompanying API. Remember, API stands for application programming interface, which in this case means the data can be accessed directly through programming languages. Datasette is aimed at data journalists, museum curators, archivists, local governments, <em>economists</em>, and anyone else who has data that they wish to share with the world.</p>
-<p>An example datasette instance is <a href="https://global-power-plants.datasettes.com/">available here</a>; it shows a dataset of power stations.</p>
-<p>So, how does it work? Let’s assume you have some data in a CSV file. The first step in creating a datasette website is to turn that CSV file into a SQL-lite database (don’t worry if you don’t know what that is). The second step is to publish the data either <em>locally</em> (on your own computer) or on the internet (using a cloud service provider). Once the data are published, you and/or others can interact with them in several different ways.</p>
-<p>To use datasette, you’ll need a Python installation and to install some extra packages. (There’s a brief guide to installing packages in the Chapter on {ref}<code>code-preliminaries</code>.). Then, to install the datasette package run</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pip install csvs<span class="op">-</span>to<span class="op">-</span>sqlite datasette </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>on the command line. To convert a CSV file called <code>data.csv</code> into a SQL-lite database (extension .db), use</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">csvs-to-sqlite</span> data.csv data.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>on the command line.</p>
-<section id="run-locally" class="level3">
-<h3 class="anchored" data-anchor-id="run-locally">Run locally</h3>
-<p>To run the data as an interactive website on your own computer, use</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datasette</span> data.db</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>on the command line. You should see a browser link appear; click it to start interactively exploring your data!</p>
+<p>In the next section we aim to answer these questions.</p>
 </section>
-<section id="run-on-the-web" class="level3">
-<h3 class="anchored" data-anchor-id="run-on-the-web">Run on the web</h3>
-<p>There are many different cloud providers for datasettes but here we’ll focus on using Google Cloud Platform (GCP), specifically the Cloud Run service. To run a datasette instance on the web, you will need a GCP account with Cloud Run enabled. You will need to pay to run a datasette instance on Cloud Run, but there is a free tier covering, at the time of writing, the first 180,000 CPU-seconds per month and 2 million requests per month. Note that cloud run only counts time when an instance is serving users.</p>
-<p>To launch your dataset on the web as a <em>datasette</em>, install and configure the Google Cloud Command Line Interface tools by following the instructions <a href="https://cloud.google.com/sdk/">here</a>. Then run</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">datasette</span> publish cloudrun data.db <span class="at">--service</span><span class="op">=</span>mydata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will create a docker container and deploy it to the Cloud Run service. You may be prompted to give a preferred region. Once it’s ready, a website URL will appear: this is your data being served up on the web!</p>
+<section id="exercises" class="level1">
+<h1>Exercises</h1>
+<section id="which-major-has-the-lowest-unemployment-rate" class="level2">
+<h2 class="anchored" data-anchor-id="which-major-has-the-lowest-unemployment-rate">Which major has the lowest unemployment rate?</h2>
+<p>In order to answer this question all you need to use <code>pandas</code> sorting and grouping functions.</p>
 </section>
-<section id="heres-one-i-made-earlier" class="level3">
-<h3 class="anchored" data-anchor-id="heres-one-i-made-earlier">Here’s one I made earlier</h3>
-<p>If you want to follow a full example of serving up data end-to-end, take a look at the <a href="https://github.com/aeturrell/datasette_particulate_matter">particulate matter datasette</a> github repo. These data were constructed by downloading files of estimates of 2.5 micron particulate matter concentration in the UK from the DEFRA website and combining them into a CSV.</p>
-<p><code>dziskuqxeiee Exercises 1. Download the CSV file from the [particulate matter repo](https://github.com/aeturrell/datasette_particulate_matter) and run it as a datasette locally on your own computer. 2. (Advanced) Run the same set of data via a datasette instance on the web using Google Cloud Run. (This requires a Google Cloud Account; you may be billed for excessive use of this service so remember to shut it down via the Google Cloud Console once you're done.)</code></p>
-</section>
-<section id="pros-and-cons-of-datasette" class="level3">
-<h3 class="anchored" data-anchor-id="pros-and-cons-of-datasette">Pros and cons of datasette</h3>
-<p><a href="https://datasette.io/"><strong>datasette</strong></a> is an extremely quick and cost-efficient way to serve up large datasets to anyone with an internet connection. The full utility comes from the ways that people can then use the data. Using the particulate matter example from the previous section, people can:</p>
+<section id="which-major-has-the-highest-percentage-of-women" class="level2">
+<h2 class="anchored" data-anchor-id="which-major-has-the-highest-percentage-of-women">Which major has the highest percentage of women?</h2>
+<p>To answer such a question we need to arrange the data in descending order. For example, if earlier we were interested in the major with the highest unemployment rate, we would use the following:</p>
 <ul>
-<li><p>Manually browse the data, making cuts by choosing from the filtering options or editing the equivalent SQL code.</p></li>
-<li><p>Manually download the data (and cuts thereof) as CSV or JSON files.</p></li>
-<li><p>Once data are filtered, copy the generated SQL code to reproduce the same filters programmatically in future. (This makes getting certain cuts <em>reproducible</em> for users.)</p></li>
-<li><p>Programmatically download cuts of the data using the generated CSV, SQL, or JSON endpoints. For example, to get the anthropogenic numbers for Southwark in 2018 from the particulate matter datasette instance:</p>
-<ul>
-<li>CSV, <code>df = pd.read_csv("https://particulatematter-fsx2r7puuq-nw.a.run.app/uk_particulate_matter.csv?sql=select+rowid%2C+local_authority_code%2C+pm_anthropogenic%2C+pm_total%2C+pm_non_anthropogenic%2C+local_authority_name%2C+year%2C+region%2C+country+from+uk_particulate_matter+where+%22local_authority_name%22+like+%3Ap0+and+%22year%22+%3D+%3Ap1+order+by+rowid+limit+101&amp;p0=%25southwark%25&amp;p1=2018&amp;_size=max")</code></li>
-<li>SQL,<code>select rowid, local_authority_code, pm_anthropogenic, pm_total, pm_non_anthropogenic, local_authority_name, year, region, country from uk_particulate_matter where "local_authority_name" like '%southwark%' and "year" = '2018' order by rowid limit 101</code></li>
-<li>JSON, <code>df = pd.read_json("https://particulatematter-fsx2r7puuq-nw.a.run.app/uk_particulate_matter/uk_particulate_matter.json?_sort=rowid&amp;local_authority_name__contains=southwark&amp;year__exact=2018&amp;_shape=array")</code></li>
-</ul></li>
-<li><p>By integrating with GitHub or other tools, datasette can be automated so that when the raw data change, the instance being served online is updated too.</p></li>
-<li><p>If you are building dashboards that are also deployed on the web, you can use a datasette website as the back-end to serve up the data to the dashboard (making use of the automatic API features of datasette).</p></li>
+<li>Using what you’ve learned so far, arrange the data in descending order with respect to proportion of women in a major, and display only the major, the total number of people with major, and proportion of women. Show only the top 3 majors.</li>
 </ul>
-<p>Publishing data with datasette is <em>fast</em>: we only needed a CSV file and a couple of commands. It’s also <em>easy for end users</em> who can access the data via a website and filter it or download it however they like, and access it both manually and programmatically. By having several options to access data, by allowing users to filter to just the data they need, and by allowing for the inclusion of <a href="https://docs.datasette.io/en/latest/metadata.html">metadata</a> and information <a href="https://docs.datasette.io/en/latest/metadata.html#specifying-units-for-a-column">on units</a>, datasette also makes it easier to follow <em>best practices</em>.</p>
-<p>Datasette also has add-ons that provide extra support for geospatial data, password protection, and more; see the <a href="https://datasette.io/plugins">plug-ins</a> page.</p>
-<p>The <em>downsides</em> of datasette are that you have to pay to serve up the data (at least if it becomes very popular), that it is built around <em>tabular data</em>, and that the data are not very findable (one of the four data principles): they may be available online through a website, but unless you do some work in sharing, promoting, and registering the link where they can be found, people are unlikely to find them.</p>
 </section>
-</section>
-<section id="data-repositories-for-sharing-data" class="level2">
-<h2 class="anchored" data-anchor-id="data-repositories-for-sharing-data">Data repositories for sharing data</h2>
-<p>Putting your data in a managed data repository is another way to ensure others can find it and re-use it. Data repositories are websites where you can deposit a dataset, and its metadata, and others can come along and download it. The repositories are managed by third party organisations, and, typically, they are used to lodge a dataset that won’t be updated, eg if you have a dataset that was used for a paper that’s been published. Some of the benefits of data repositories are:</p>
+<section id="how-do-the-distributions-of-median-income-compare-across-major-categories" class="level2">
+<h2 class="anchored" data-anchor-id="how-do-the-distributions-of-median-income-compare-across-major-categories">How do the distributions of median income compare across major categories?</h2>
+<pre class="{marginfigure}"><code>A percentile is a measure used in statistics indicating the value below which a given percentage of observations in a group of observations fall. For example, the 20th percentile is the value below which 20% of the observations may be found. (Source: [Wikipedia](https://en.wikipedia.org/wiki/Percentile)</code></pre>
+<p>There are three types of incomes reported in this data frame: <code>p25th</code>, <code>median</code>, and <code>p75th</code>. These correspond to the 25th, 50th, and 75th percentiles of the income distribution of sampled individuals for a given major.</p>
 <ul>
-<li><p>You may get a permalink, eg a digital object identifier (DOI), and citation information to help people recognise and refer to your contribution</p></li>
-<li><p>Unless you are lodging <em>extremely</em> large datasets, you will likely not have to pay anything to host your data</p></li>
-<li><p>Data repositories are searchable, both within the site itself and in the sense of being indexed by Google-so people will potentially be able to find your data via a Google search.</p></li>
+<li>Why do we often choose the median, rather than the mean, to describe the typical income of a group of people?</li>
 </ul>
-<p>Some of the less good things, or at least things to bear in mind, about data repositories are:</p>
+<p>The question we want to answer “How do the distributions of median income compare across major categories?”. We need to do a few things to answer this question: First, we need to group the data by <code>major_category</code>. Then, we need a way to summarize the distributions of median income within these groups. This decision will depend on the shapes of these distributions. So first, we need to visualize the data.</p>
+<p>Let’s start simple and take a look at the distribution of all median incomes, without considering the major categories. Create a hishogram. Consider the binwidth we chose for our histogram. It’s good practice to always think in the context of the data and try out a few binwidths before settling on a binwidth. You might ask yourself: “What would be a meaningful difference in median incomes?” $1 is obviously too little, $10000 might be too high.</p>
 <ul>
-<li><p>They are much less suitable for data that are being updated, and not at all suited to automatic updates (datasette is a better tool for this)</p></li>
-<li><p>They do not always provide good accessibility options; usually the only option is to download <em>all</em> of the data in a single format rather than the cut you want in the format you want.</p></li>
-<li><p>Whether or not the data are interoperable comes down to how the user chose to provide the data. Sometimes you will find repositories with closed data formats that require special tools. You can choose to put data in interoperable formats, but you aren’t compelled to.</p></li>
+<li><p>Try binwidths of $1000 and $5000 and choose one. Explain your reasoning for your choice.</p></li>
+<li><p>Plot the distribution of <code>median</code> income using a histogram, faceted by <code>major_category</code>. Use the <code>binwidth</code> you chose in the earlier exercise.</p></li>
 </ul>
-<p>So the canonical use case for a data repository is static data that’s associated with a paper and which you don’t think many people will want to access a lot, or in different ways, but which needs to exist as a matter of record.</p>
-<p>If you’re interested in exploring some data repositories, there are lists <a href="https://authorservices.taylorandfrancis.com/data-sharing-policies/repositories/">here</a> and <a href="https://www.springernature.com/gp/authors/research-data-policy/repositories/12327124">here</a>. If you’d like to see how one works, <a href="https://zenodo.org/">check out Zenodo</a> which, at the time of writing, accepts up to 50GB per dataset and may accept larger files following discussion. Zenodo accepts both code and data, and gives each repo a DOI. Zenodo is run and hosted by CERN, the European Organization for Nuclear Research.</p>
+<p>Now that we’ve seen the shapes of the distributions of median incomes for each major category, we should have a better idea for which summary statistic to use to quantify the typical median income.</p>
+<ul>
+<li><p>Which major category has the highest typical (you’ll need to decide what this means) median income?</p></li>
+<li><p>Which major category is the least popular in this sample?</p></li>
+</ul>
 </section>
-<section id="github-flat-data" class="level2">
-<h2 class="anchored" data-anchor-id="github-flat-data">GitHub Flat Data</h2>
-<p>GitHub, the remote code repository service, recently launched its <a href="https://octo.github.com/projects/flat-data">Flat Data tool</a>. In the launch document they explain that <em>they</em> were inspired by Simon Willison, the creator of the <strong>Datasette</strong> package featured above. Flat Data actually comprises three different tools: <a href="https://github.com/marketplace/actions/flat-data">‘flat action’</a>, which fetches and transforms data using GitHub Actions (don’t worry if you don’t know what that is), <a href="https://marketplace.visualstudio.com/items?itemName=GitHubOCTO.flat">‘flat editor’</a> which is a Visual Studio Code-based graphical interface for creating workflows with flat actions, and ‘flat viewer’ which allows anyone to browse, filter, and access data from flat files stored in a GitHub repo.</p>
-<p>The genius of Flat Data viewer is that any GitHub repository that has a file in the compatible format can be viewed using the tool by using the prefix “flatgithub.com” instead of the usual path to the file. To take a specific example using the particulate matter that we’ve already seen in this chapter,</p>
-<p><a href="https://github.com/aeturrell/datasette_particulate_matter/blob/main/uk_particulate_matter.csv">https://github.com/aeturrell/datasette_particulate_matter/blob/main/uk_particulate_matter.csv</a></p>
-<p>becomes</p>
-<p><a href="https://flatgithub.com/aeturrell/datasette_particulate_matter?filename=uk_particulate_matter.csv">https://flatgithub.com/aeturrell/datasette_particulate_matter?filename=uk_particulate_matter.csv</a></p>
-<p>Not only that but, just as with datasette, you can easily download the data in a format that suits you, and perform rudimentary data filtering.</p>
-<p>Some useful features of <strong>flat data viewer</strong> are that it integrates with your existing GitHub workflow and that it is free. However, the maximum size of dataset that you can lodge in a GitHub repo is limited to 100 Mb.</p>
+<section id="all-stem-fields-arent-the-same" class="level2">
+<h2 class="anchored" data-anchor-id="all-stem-fields-arent-the-same">All STEM fields aren’t the same</h2>
+<p>One of the sections of the <a href="https://fivethirtyeight.com/features/the-economic-guide-to-picking-a-college-major/">FiveThirtyEight story</a> is “All STEM fields aren’t the same”. Let’s see if this is true.</p>
+<p>First, let’s create a list called <code>stem_categories</code> that lists the major categories that are considered STEM fields.</p>
+<p>Then, use this to create a new variable in our dataframe indicating whether a major is STEM or not.</p>
+<p>We can use the logical operators to also filter our data for STEM majors whose median earnings is less than median for all majors’ median earnings.</p>
+<ul>
+<li>Which STEM majors have median salaries equal to or less than the median for all majors’ median earnings? Your output should only show the major name and median, 25th percentile, and 75th percentile earning for that major as and should be sorted such that the major with the highest median earning is on top.</li>
+</ul>
+</section>
+<section id="what-types-of-majors-do-women-tend-to-major-in" class="level2">
+<h2 class="anchored" data-anchor-id="what-types-of-majors-do-women-tend-to-major-in">What types of majors do women tend to major in?</h2>
+<ul>
+<li>Create a scatterplot of median income vs.&nbsp;proportion of women in that major, coloured by whether the major is in a STEM field or not. Describe the association between these three variables.</li>
+</ul>
+</section>
+<section id="further-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="further-exploration">Further exploration</h2>
+<ul>
+<li>Ask a question of interest to you, and answer it using summary statistic(s) and/or visualization(s).</li>
+</ul>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -279,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pd.crosstab(df[<span class="st">"bedrooms"</span>], df[<span class="st">"year_sold"</span>]).style.background_gradient(cmap<span class="op">=</span><span class="st">"plasma"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By default, <code>background_gradient()</code> highlights each number relative to the others in its column; you can highlight by row using <code>axis=1</code> or relative to all table values using <code>axis=0</code>. And of course <code>plasma</code> is just one of <a href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">many available colormaps</a>!</p>
-<p><code>ulgopngtbmcx Exercise Do a new cross-tabulation using a different colourmap.</code></p>
+<p><code>yrrdauwgxumb Exercise Do a new cross-tabulation using a different colourmap.</code></p>
 <p>Here are a couple of other styling tips for dataframes.</p>
 <p>First, use bars to show ordering:</p>
 <div id="cell-34" class="cell">
@@ -379,7 +379,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>skim(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>```ulgopngtbmcx Exercise Apply exploratory data analysis to the ‘titanic’ dataset, which can be loaded from <a href="https://github.com/datasciencedojo/datasets/raw/master/titanic.csv">this link</a>.</p>
+<p>```yrrdauwgxumb Exercise Apply exploratory data analysis to the ‘titanic’ dataset, which can be loaded from <a href="https://github.com/datasciencedojo/datasets/raw/master/titanic.csv">this link</a>.</p>
 <p>First run <strong>skimpy</strong>’s <code>skim()</code> function. Then see what analysis you can do using <strong>pandas</strong> built-in exploratory methods.</p>
 <pre><code>
 ## The **ydata-profiling** package
@@ -402,7 +402,7 @@ The live example in this section is not currently working due to **ydata-profili
 <p>The warnings page shows where <strong>pandas-profiling</strong> really shines. It flags <em>potential</em> issues with the data that should be taken into account in any subsequent analysis. For example, although not relevant here, the report will say if there are very unbalanced classes in a low cardinality categorical variable.</p>
 <p>Let’s explore a couple of the warnings that have been raised. <code>Address</code> has high cardinality; but that’s okay, we expect most addresses to be different because the turn-over of houses is not that frequent. We also see that there are a lot of missing values for <code>LotSize</code>.</p>
 <p>Now let’s dig down into a specific variable, <code>SalePrice</code>. You can view more about it using the ‘Toggle details’ button. We get four extra pages of detail about this variable, in addition to the headline statistics: a comprehensive page of descriptive statistics, a page with a histogram of the variable, a page with a table of common values, and a page of extreme values.</p>
-<p><code>ulgopngtbmcx Exercise Run **ydata-profiling** on the 'titanic' dataset.</code></p>
+<p><code>yrrdauwgxumb Exercise Run **ydata-profiling** on the 'titanic' dataset.</code></p>
 </section>
 <section id="the-dataprep-package" class="level2">
 <h2 class="anchored" data-anchor-id="the-dataprep-package">The <strong>dataprep</strong> package</h2>

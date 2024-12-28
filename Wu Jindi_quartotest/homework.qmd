@@ -957,7 +957,7 @@ print("save success douban_top250.csv")
 ```
 
 ## Practical04
-```{python}
+```{python} echo=False
 from bs4 import BeautifulSoup
 import re  
 import urllib.request, urllib.error  # certain URL
@@ -967,7 +967,7 @@ import xlwt  # excel operation
 def main():
     baseurl = "https://movie.douban.com/top250?start="
     datalist = getdata(baseurl)
-    savepath = ".\\douban_top250.csv"
+    savepath = "douban_top250.csv"
     savedata(datalist, savepath)
  
  
@@ -1063,6 +1063,8 @@ def geturl(url):
 if __name__ == '__main__':
     main()
     print("爬取成功！！！")
+```
+```{python} echo=False
 from bs4 import BeautifulSoup
 import re
 import urllib.request, urllib.error  # for URL requests
@@ -1072,7 +1074,7 @@ import csv  # for saving as CSV
 def main():
     baseurl = "https://movie.douban.com/top250?start="
     datalist = getdata(baseurl)
-    savepath = "./douban_top250.csv"
+    savepath = "douban_top250.csv"
     savedata(datalist, savepath)
 
 
@@ -1163,7 +1165,8 @@ def geturl(url):
 if __name__ == '__main__':
     main()
     print("爬取成功并保存为CSV文件！")
-
+```
+```{python} echo=False
 import pandas as pd
 import matplotlib.pyplot as plt
 
